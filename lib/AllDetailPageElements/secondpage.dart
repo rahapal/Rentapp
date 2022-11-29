@@ -62,6 +62,7 @@ class _SecondpageState extends State<Secondpage> {
                 )),
           ),
         ],
+        //this helps to disable default back button of appbar
         automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
