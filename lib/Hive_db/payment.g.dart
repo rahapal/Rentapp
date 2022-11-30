@@ -18,7 +18,7 @@ class PaymentAdapter extends TypeAdapter<Payment> {
     };
     return Payment(
       spaceid: fields[0] as int,
-      date: fields[1] as String,
+      date: fields[1] as DateTime,
       advanceDeposit: fields[2] as double,
       payedAmount: fields[3] as double,
     );

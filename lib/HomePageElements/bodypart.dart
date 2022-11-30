@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:rentapp/Hive_db/property.dart';
+
 import 'package:rentapp/HomePageElements/bodyparttop.dart';
 import 'package:rentapp/Common/commonButton.dart';
-import 'package:rentapp/AllDetailPageElements/secondpage.dart';
+
 import 'package:rentapp/Routes/Route.dart';
 
 class TableTileData {
@@ -166,13 +166,13 @@ List<TableTileData> tables = [
 //   50
 // ];
 
-class Trying {
-  String status;
+// class Trying {
+//   String status;
 
-  Trying({
-    required this.status,
-  });
-}
+//   Trying({
+//     required this.status,
+//   });
+// }
 
 class _bodypartState extends State<bodypart> {
   @override

@@ -7,7 +7,7 @@ class Payment {
   @HiveField(0)
   int spaceid;
   @HiveField(1)
-  String date;
+  DateTime date;
   @HiveField(2)
   double advanceDeposit;
   @HiveField(3)
