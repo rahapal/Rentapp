@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rentapp/routes/route.dart' as route;
 
-import '../HomePageElements/mainbody.dart';
-import '../HomePageElements/pages.dart';
+import '../viewpage/topbar.dart';
+import '../viewpage/pages.dart';
 
 class BottomNav extends StatefulWidget {
   const BottomNav({super.key});
@@ -14,13 +14,13 @@ class BottomNav extends StatefulWidget {
 class _BottomNavState extends State<BottomNav> {
   int currentTab = 0;
   final List<Widget> screens = [
-    mainbody(),
+    TopBar(),
     pages(),
     pages(),
     pages(),
   ];
   final PageStorageBucket bucket = PageStorageBucket();
-  Widget currentScreen = mainbody();
+  Widget currentScreen = TopBar();
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +60,7 @@ class _BottomNavState extends State<BottomNav> {
                       minWidth: 40,
                       onPressed: () {
                         setState(() {
-                          currentScreen = mainbody();
+                          currentScreen = TopBar();
                           currentTab = 0;
                         });
                       },

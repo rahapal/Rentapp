@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:rentapp/Common/commonButton.dart';
 
 import 'package:rentapp/Routes/Route.dart';
-import 'package:rentapp/pages/HomePageElements/bodyparttop.dart';
+import 'package:rentapp/pages/viewpage/bodyparttop.dart';
 
 class TableTileData {
   int status;

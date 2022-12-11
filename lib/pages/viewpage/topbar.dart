@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'bodypart.dart';
 
-class mainbody extends StatefulWidget {
-  const mainbody({super.key});
+class TopBar extends StatefulWidget {
+  const TopBar({super.key});
 
   @override
-  State<mainbody> createState() => _mainbodyState();
+  State<TopBar> createState() => _TopBarState();
 }
 
-class _mainbodyState extends State<mainbody> {
+class _TopBarState extends State<TopBar> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -18,12 +18,15 @@ class _mainbodyState extends State<mainbody> {
         // const SizedBox(
         //   height: 25,
         // ),
+        // Padding(
+        //   padding: const EdgeInsets.only(
+        //     right: 20.0,
+        //     left: 20,
+        //     top: 80,
+        //),
+        //child:
         Padding(
-          padding: const EdgeInsets.only(
-            right: 20.0,
-            left: 20,
-            top: 80,
-          ),
+          padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -91,11 +94,10 @@ class _mainbodyState extends State<mainbody> {
                 ),
               ),
             ],
+            //),
           ),
         ),
-        const SizedBox(
-          height: 20,
-        ),
+
         const bodypart(),
       ],
     );

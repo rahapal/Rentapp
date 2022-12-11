@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:rentapp/bottomnavbar/BottomNavBar.dart';
 import 'package:rentapp/pages/AllDetailPageElements/secondpage.dart';
-import 'package:rentapp/pages/HomePageElements/mainbody.dart';
-import 'package:rentapp/pages/HomePageElements/pages.dart';
+import 'package:rentapp/pages/bottomnavbar/BottomNavBar.dart';
+import 'package:rentapp/pages/viewpage/topbar.dart';
+import 'package:rentapp/pages/viewpage/pages.dart';
+import 'package:rentapp/pages/viewpage/viewpage.dart';
 
 class RouteManager {
   static const String home = '/';
@@ -20,7 +21,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       );
     case RouteManager.shutter:
       return MaterialPageRoute(
-        builder: (context) => const mainbody(),
+        builder: (context) => const ViewPage(),
       );
     case RouteManager.toBeCreate:
       return MaterialPageRoute(
