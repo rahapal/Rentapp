@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:rentapp/HomePageElements/bodyparttop.dart';
 import 'package:rentapp/Common/commonButton.dart';
 
 import 'package:rentapp/Routes/Route.dart';
+import 'package:rentapp/pages/HomePageElements/bodyparttop.dart';
 
 class TableTileData {
   int status;
@@ -54,21 +54,21 @@ List<TableTileData> tables = [
   TableTileData(status: 1, number: 28),
   TableTileData(status: 1, number: 29),
   TableTileData(status: 1, number: 30),
-  // TableTileData(status: 2, number: 31),
-  // TableTileData(status: 2, number: 1),
-  // TableTileData(status: 2, number: 1),
-  // TableTileData(status: 2, number: 1),
-  // TableTileData(status: 2, number: 1),
-  // TableTileData(status: 2, number: 1),
-  // TableTileData(status: 2, number: 1),
-  // TableTileData(status: 2, number: 1),
-  // TableTileData(status: 2, number: 1),
-  // TableTileData(status: 2, number: 1),
-  // TableTileData(status: 2, number: 1),
-  // TableTileData(status: 2, number: 1),
-  // TableTileData(status: 2, number: 1),
-  // TableTileData(status: 2, number: 1),
-  // TableTileData(status: 2, number: 1),
+  TableTileData(status: 2, number: 31),
+  TableTileData(status: 0, number: 32),
+  TableTileData(status: 2, number: 33),
+  TableTileData(status: 1, number: 34),
+  TableTileData(status: 1, number: 35),
+  TableTileData(status: 0, number: 36),
+  TableTileData(status: 0, number: 37),
+  TableTileData(status: 1, number: 38),
+  TableTileData(status: 2, number: 39),
+  TableTileData(status: 2, number: 40),
+  TableTileData(status: 1, number: 41),
+  TableTileData(status: 1, number: 42),
+  TableTileData(status: 1, number: 43),
+  TableTileData(status: 0, number: 44),
+  TableTileData(status: 1, number: 45),
 ];
 
 // List<Trying> trying = [
@@ -188,11 +188,12 @@ class _bodypartState extends State<bodypart> {
           color: Colors.white,
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const bodytoppart(),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.only(left: 15.0, right: 15, top: 5),
+                padding: const EdgeInsets.only(left: 15.0, right: 15),
                 child: GridView.builder(
                   itemCount: tables.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

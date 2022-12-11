@@ -88,7 +88,7 @@ class _ListOfHistoryState extends State<ListOfHistory> {
                   ],
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
               ],
             );

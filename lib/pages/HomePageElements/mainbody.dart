@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rentapp/HomePageElements/bodypart.dart';
+
+import 'bodypart.dart';
 
 class mainbody extends StatefulWidget {
   const mainbody({super.key});
@@ -19,9 +20,9 @@ class _mainbodyState extends State<mainbody> {
         // ),
         Padding(
           padding: const EdgeInsets.only(
-            right: 10.0,
-            left: 10,
-            top: 32,
+            right: 20.0,
+            left: 20,
+            top: 80,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

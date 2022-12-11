@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:rentapp/AllDetailPageElements/secondpage.dart';
-import 'package:rentapp/BottomNavBar.dart/BottomNavBar.dart';
-import 'package:rentapp/HomePageElements/mainbody.dart';
 
-import '../HomePageElements/pages.dart';
+import 'package:rentapp/bottomnavbar/BottomNavBar.dart';
+import 'package:rentapp/pages/AllDetailPageElements/secondpage.dart';
+import 'package:rentapp/pages/HomePageElements/mainbody.dart';
+import 'package:rentapp/pages/HomePageElements/pages.dart';
 
 class RouteManager {
   static const String home = '/';

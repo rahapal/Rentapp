@@ -16,6 +16,8 @@ class Rentee {
   String citizenimage;
   @HiveField(5)
   String agreementimage;
+  @HiveField(6)
+  String renteeId;
 
   Rentee({
     required this.name,
@@ -24,5 +26,6 @@ class Rentee {
     required this.businessdetail,
     required this.citizenimage,
     required this.agreementimage,
+    required this.renteeId,
   });
 }

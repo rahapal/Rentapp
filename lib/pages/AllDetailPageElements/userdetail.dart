@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import '../Hive_db/rentee.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:rentapp/model/rentee.dart';
 
 class UserDetail extends StatefulWidget {
   const UserDetail({super.key});
@@ -12,8 +12,8 @@ class UserDetail extends StatefulWidget {
 
 class _UserDetailState extends State<UserDetail> {
   late Box<Rentee> Rbox;
-  String name = 'Renna Parajuli';
-  String contact = '9841234567';
+  String name = 'Reena Parajuli';
+  String contact = '9816273940';
 
   @override
   void initState() {
@@ -27,6 +27,7 @@ class _UserDetailState extends State<UserDetail> {
         citizenimage: '',
         businessdetail: '',
         email: '',
+        renteeId: '',
       ),
     );
 
@@ -73,13 +74,13 @@ class _UserDetailState extends State<UserDetail> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      Rbox.getAt(0)!.name,
+                      Rbox.getAt(1)!.name,
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                     ),
                     SizedBox(height: 10),
                     Text(
-                      Rbox.getAt(0)!.contact,
+                      Rbox.getAt(1)!.contact,
                       style: TextStyle(
                         color: Color(0xFF9f9f9f),
                         fontWeight: FontWeight.bold,
@@ -100,7 +101,11 @@ class _UserDetailState extends State<UserDetail> {
                   color: Color(0xFF69AC65),
                 ),
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {});
+                    //show details name which is at index 0
+                    print(Rbox.getAt(0)!.name);
+                  },
                   icon: Icon(
                     Icons.message_rounded,
                     color: Colors.white,

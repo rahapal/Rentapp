@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:rentapp/AllDetailPageElements/history.dart';
-import 'package:rentapp/AllDetailPageElements/listofhistory.dart';
-import 'package:rentapp/AllDetailPageElements/piechart.dart';
-import 'package:rentapp/AllDetailPageElements/rentedproperty.dart';
-import 'package:rentapp/AllDetailPageElements/userdetail.dart';
+
+import 'history.dart';
+import 'listofhistory.dart';
+import 'piechart.dart';
+import 'rentedproperty.dart';
+import 'userdetail.dart';
 
 // import 'upwardpage.dart';
 
@@ -118,6 +119,9 @@ class _SecondpageState extends State<Secondpage> {
               height: 25,
             ),
             History(),
+            const SizedBox(
+              height: 15,
+            ),
             ListOfHistory(),
           ],
         ),

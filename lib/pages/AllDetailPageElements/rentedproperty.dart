@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:rentapp/Hive_db/property.dart';
+import 'package:rentapp/model/property.dart';
 
 class RentedProperty extends StatefulWidget {
   const RentedProperty({super.key});
@@ -20,14 +20,15 @@ class _RentedPropertyState extends State<RentedProperty> {
     Pbox = Hive.box<Property>('property');
     Pbox.add(
       Property(
-          name: name,
-          address: address,
-          description: description,
-          price: price,
-          image: '',
-          type: '',
-          status: '',
-          id: ''),
+        name: name,
+        address: address,
+        description: description,
+        price: price,
+        image: '',
+        type: '',
+        status: '',
+        propertyId: '',
+      ),
     );
     super.initState();
     print("PBOX Values");

@@ -19,7 +19,7 @@ class Property {
   @HiveField(6)
   String status;
   @HiveField(7)
-  String id;
+  String propertyId;
 
   Property({
     required this.name,
@@ -29,6 +29,6 @@ class Property {
     required this.image,
     required this.type,
     required this.status,
-    required this.id,
+    required this.propertyId,
   });
 }

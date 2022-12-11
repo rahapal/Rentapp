@@ -24,7 +24,7 @@ class PropertyAdapter extends TypeAdapter<Property> {
       image: fields[4] as String,
       type: fields[5] as String,
       status: fields[6] as String,
-      id: fields[7] as String,
+      propertyId: fields[7] as String,
     );
   }
 
@@ -47,7 +47,7 @@ class PropertyAdapter extends TypeAdapter<Property> {
       ..writeByte(6)
       ..write(obj.status)
       ..writeByte(7)
-      ..write(obj.id);
+      ..write(obj.propertyId);
   }
 
   @override

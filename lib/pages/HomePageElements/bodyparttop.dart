@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rentapp/HomePageElements/bodypart.dart';
+
+import 'bodypart.dart';
 
 class bodytoppart extends StatelessWidget {
   const bodytoppart({super.key});
