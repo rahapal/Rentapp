@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:rentapp/pages/AllDetailPageElements/secondpage.dart';
 import 'package:rentapp/pages/bottomnavbar/BottomNavBar.dart';
-import 'package:rentapp/pages/viewpage/topbar.dart';
+import 'package:rentapp/pages/detailscreen/detailspage.dart';
 import 'package:rentapp/pages/viewpage/pages.dart';
 import 'package:rentapp/pages/viewpage/viewpage.dart';
 
@@ -29,7 +28,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       );
     case RouteManager.secondpage:
       return MaterialPageRoute(
-        builder: (context) => const Secondpage(),
+        builder: (context) => const DetailsPage(),
       );
     default:
       return MaterialPageRoute(

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'bodypart.dart';
 
-class bodytoppart extends StatelessWidget {
-  const bodytoppart({super.key});
+class BodyTopPart extends StatelessWidget {
+  const BodyTopPart({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +22,10 @@ class bodytoppart extends StatelessWidget {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: Colors.white,
-                    border: Border.all(color: Color(0xFF9f9f9f)),
+                    border: Border.all(color: const Color(0xFF9f9f9f)),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 8,
                 ),
                 Text(

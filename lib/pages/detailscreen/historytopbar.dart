@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-class History extends StatefulWidget {
-  const History({super.key});
+class HistoryTopBar extends StatefulWidget {
+  const HistoryTopBar({super.key});
 
   @override
-  State<History> createState() => _HistoryState();
+  State<HistoryTopBar> createState() => _HistoryTopBarState();
 }
 
-class _HistoryState extends State<History> {
+class _HistoryTopBarState extends State<HistoryTopBar> {
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 20, right: 20),
-      child: Container(
+      child: SizedBox(
         width: double.infinity,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

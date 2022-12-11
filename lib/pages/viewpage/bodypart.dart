@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:rentapp/Common/commonButton.dart';
 
 import 'package:rentapp/Routes/Route.dart';
-import 'package:rentapp/pages/viewpage/bodyparttop.dart';
+import 'package:rentapp/pages/viewpage/bodytoppart.dart';
 
 class TableTileData {
   int status;
@@ -190,7 +190,7 @@ class _bodypartState extends State<bodypart> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const bodytoppart(),
+            const BodyTopPart(),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(left: 15.0, right: 15),

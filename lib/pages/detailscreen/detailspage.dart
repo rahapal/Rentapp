@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:rentapp/model/payment.dart';
 
-import 'history.dart';
-import 'listofhistory.dart';
+import 'historytopbar.dart';
+import 'paymenthistory.dart';
 import 'piechart.dart';
-import 'rentedproperty.dart';
+import 'rentedpropertydetails.dart';
 import 'userdetail.dart';
 
 // import 'upwardpage.dart';
 
-class Secondpage extends StatefulWidget {
-  const Secondpage({super.key});
+class DetailsPage extends StatefulWidget {
+  const DetailsPage({super.key});
 
   @override
-  State<Secondpage> createState() => _SecondpageState();
+  State<DetailsPage> createState() => _DetailsPageState();
 }
 
-class _SecondpageState extends State<Secondpage> {
+class _DetailsPageState extends State<DetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,19 +111,19 @@ class _SecondpageState extends State<Secondpage> {
                     SizedBox(
                       height: 37,
                     ),
-                    RentedProperty(),
+                    RentedPropertyDetails(),
                   ],
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
-            History(),
+            const HistoryTopBar(),
             const SizedBox(
               height: 15,
             ),
-            ListOfHistory(),
+            const PaymentHistory(),
           ],
         ),
       ),

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:rentapp/model/property.dart';
 
-class RentedProperty extends StatefulWidget {
-  const RentedProperty({super.key});
+class RentedPropertyDetails extends StatefulWidget {
+  const RentedPropertyDetails({super.key});
 
   @override
-  State<RentedProperty> createState() => _RentedPropertyState();
+  State<RentedPropertyDetails> createState() => _RentedPropertyDetailsState();
 }
 
-class _RentedPropertyState extends State<RentedProperty> {
+class _RentedPropertyDetailsState extends State<RentedPropertyDetails> {
   late Box<Property> Pbox;
   String name = 'Commercial Shutter';
   String address = 'Trademall,Pokhara';

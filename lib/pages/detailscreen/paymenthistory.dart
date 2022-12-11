@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ListOfHistory extends StatefulWidget {
-  const ListOfHistory({super.key});
+class PaymentHistory extends StatefulWidget {
+  const PaymentHistory({super.key});
 
   @override
-  State<ListOfHistory> createState() => _ListOfHistoryState();
+  State<PaymentHistory> createState() => _PaymentHistoryState();
 }
 
-class _ListOfHistoryState extends State<ListOfHistory> {
+class _PaymentHistoryState extends State<PaymentHistory> {
   List images = [
     'assets/khaltilogo.png',
     'assets/fonepaylogo.png',
