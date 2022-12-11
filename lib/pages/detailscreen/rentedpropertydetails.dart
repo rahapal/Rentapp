@@ -99,6 +99,5 @@ class _RentedPropertyDetailsState extends State<RentedPropertyDetails> {
         )
       ],
     );
-    ;
   }
 }

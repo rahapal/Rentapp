@@ -18,13 +18,6 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      child: Text(
-        text,
-        style: TextStyle(
-          color: textColor,
-          fontWeight: FontWeight.w700,
-        ),
-      ),
       onPressed: onTap,
       style: ElevatedButton.styleFrom(
         shadowColor: shadowColor,
@@ -32,6 +25,13 @@ class CustomButton extends StatelessWidget {
         backgroundColor: color,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+      child: Text(
+        text,
+        style: TextStyle(
+          color: textColor,
+          fontWeight: FontWeight.w700,
         ),
       ),
     );

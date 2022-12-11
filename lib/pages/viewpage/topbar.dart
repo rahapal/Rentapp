@@ -26,7 +26,7 @@ class _TopBarState extends State<TopBar> {
         //),
         //child:
         Padding(
-          padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+          padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -98,7 +98,7 @@ class _TopBarState extends State<TopBar> {
           ),
         ),
 
-        const bodypart(),
+        const BodyPart(),
       ],
     );
   }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:rentapp/Common/commonButton.dart';
+import 'package:rentapp/common/commonbutton.dart';
 
-import 'package:rentapp/Routes/Route.dart';
+import 'package:rentapp/route/route.dart';
 import 'package:rentapp/pages/viewpage/bodytoppart.dart';
 
 class TableTileData {
@@ -16,11 +16,11 @@ class TableTileData {
           : "paid";
 }
 
-class bodypart extends StatefulWidget {
-  const bodypart({super.key});
+class BodyPart extends StatefulWidget {
+  const BodyPart({super.key});
 
   @override
-  State<bodypart> createState() => _bodypartState();
+  State<BodyPart> createState() => _BodyPartState();
 }
 
 List<TableTileData> tables = [
@@ -174,7 +174,7 @@ List<TableTileData> tables = [
 //   });
 // }
 
-class _bodypartState extends State<bodypart> {
+class _BodyPartState extends State<BodyPart> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -204,7 +204,7 @@ class _bodypartState extends State<bodypart> {
                   itemBuilder: (BuildContext context, int index) {
                     return Padding(
                       padding: const EdgeInsets.all(4),
-                      child: Container(
+                      child: SizedBox(
                         height: 100,
                         width: 100,
                         child: CustomButton(
@@ -225,7 +225,7 @@ class _bodypartState extends State<bodypart> {
                             //   ),
                             // );
                             Navigator.pushNamed(
-                                context, RouteManager.secondpage);
+                                context, RouteManager.detailspage);
                           },
                           text: '${tables.elementAt(index).number}',
                           textColor:
@@ -233,9 +233,9 @@ class _bodypartState extends State<bodypart> {
                                   ? Colors.black
                                   : Colors.white,
                           color: tables.elementAt(index).statusName == 'paid'
-                              ? Color(0xFF3abd40)
+                              ? const Color(0xFF3abd40)
                               : tables.elementAt(index).statusName == 'unpaid'
-                                  ? Color(0xFFef4646)
+                                  ? const Color(0xFFef4646)
                                   : tables.elementAt(index).statusName ==
                                           'empty'
                                       ? Colors.white

@@ -104,9 +104,9 @@ class _UserDetailState extends State<UserDetail> {
                   onPressed: () {
                     setState(() {});
                     //show details name which is at index 0
-                    print(Rbox.getAt(0)!.name);
+                    //print(Rbox.getAt(0)!.name);
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.message_rounded,
                     color: Colors.white,
                   ),
@@ -117,6 +117,5 @@ class _UserDetailState extends State<UserDetail> {
         ),
       ),
     );
-    ;
   }
 }

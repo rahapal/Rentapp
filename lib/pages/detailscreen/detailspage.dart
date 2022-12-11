@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rentapp/model/payment.dart';
 
 import 'historytopbar.dart';
 import 'paymenthistory.dart';

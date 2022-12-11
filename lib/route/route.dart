@@ -7,8 +7,8 @@ import 'package:rentapp/pages/viewpage/viewpage.dart';
 
 class RouteManager {
   static const String home = '/';
-  static const String shutter = 'shutter';
-  static const String secondpage = 'secondpage';
+  static const String viewpage = 'viewpage';
+  static const String detailspage = 'detailspage';
   static const String toBeCreate = 'toBeCreate';
 }
 
@@ -18,7 +18,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(
         builder: (context) => const BottomNav(),
       );
-    case RouteManager.shutter:
+    case RouteManager.viewpage:
       return MaterialPageRoute(
         builder: (context) => const ViewPage(),
       );
@@ -26,7 +26,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(
         builder: (context) => const pages(),
       );
-    case RouteManager.secondpage:
+    case RouteManager.detailspage:
       return MaterialPageRoute(
         builder: (context) => const DetailsPage(),
       );

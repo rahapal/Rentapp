@@ -29,8 +29,8 @@ class _BottomNavState extends State<BottomNav> {
       //this helps to avoid the overflow of the screen or the fixedbutton don't come up
       resizeToAvoidBottomInset: false,
       body: PageStorage(
-        child: currentScreen,
         bucket: bucket,
+        child: currentScreen,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -75,7 +75,7 @@ class _BottomNavState extends State<BottomNav> {
                       minWidth: 40,
                       onPressed: () {
                         setState(() {
-                          currentScreen = pages();
+                          currentScreen = const pages();
                           currentTab = 1;
                         });
                       },
@@ -84,8 +84,9 @@ class _BottomNavState extends State<BottomNav> {
                             ? Icons.bookmark
                             : Icons.bookmark_outline,
                         size: 32,
-                        color:
-                            currentTab == 1 ? Color(0xFF5B67FE) : Colors.grey,
+                        color: currentTab == 1
+                            ? const Color(0xFF5B67FE)
+                            : Colors.grey,
                       ),
                     ),
                   ],
@@ -100,7 +101,7 @@ class _BottomNavState extends State<BottomNav> {
                       minWidth: 40,
                       onPressed: () {
                         setState(() {
-                          currentScreen = pages();
+                          currentScreen = const pages();
                           currentTab = 2;
                         });
                       },
@@ -109,23 +110,25 @@ class _BottomNavState extends State<BottomNav> {
                             ? Icons.notifications
                             : Icons.notifications_outlined,
                         size: 32,
-                        color:
-                            currentTab == 2 ? Color(0xFF5B67FE) : Colors.grey,
+                        color: currentTab == 2
+                            ? const Color(0xFF5B67FE)
+                            : Colors.grey,
                       ),
                     ),
                     MaterialButton(
                       minWidth: 40,
                       onPressed: () {
                         setState(() {
-                          currentScreen = pages();
+                          currentScreen = const pages();
                           currentTab = 3;
                         });
                       },
                       child: Icon(
                         currentTab == 3 ? Icons.person : Icons.person_outline,
                         size: 32,
-                        color:
-                            currentTab == 3 ? Color(0xFF5B67FE) : Colors.grey,
+                        color: currentTab == 3
+                            ? const Color(0xFF5B67FE)
+                            : Colors.grey,
                       ),
                     ),
                   ],
