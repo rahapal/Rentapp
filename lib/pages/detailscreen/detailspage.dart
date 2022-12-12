@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rentapp/model/property.dart';
 import 'package:rentapp/route/route.dart' as route;
 
 import 'historytopbar.dart';
@@ -8,8 +9,8 @@ import 'rentedpropertydetails.dart';
 import 'userdetail.dart';
 
 class DetailsPage extends StatefulWidget {
-  final int details;
-  const DetailsPage({Key? key, required this.details}) : super(key: key);
+  Property getdetails;
+  DetailsPage({Key? key, required this.getdetails}) : super(key: key);
 
   @override
   State<DetailsPage> createState() => _DetailsPageState();
@@ -55,7 +56,9 @@ class _DetailsPageState extends State<DetailsPage> {
               bottom: 5,
             ),
             child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  print(widget.getdetails.name);
+                },
                 icon: const Icon(
                   size: 27,
                   Icons.more_vert,
@@ -94,7 +97,7 @@ class _DetailsPageState extends State<DetailsPage> {
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const <Widget>[
+                  children: <Widget>[
                     SizedBox(
                       height: 10,
                     ),
@@ -106,7 +109,7 @@ class _DetailsPageState extends State<DetailsPage> {
                     SizedBox(
                       height: 10,
                     ),
-                    UserDetail(),
+                    UserDetail(getdetails: widget.getdetails),
                     SizedBox(
                       height: 37,
                     ),

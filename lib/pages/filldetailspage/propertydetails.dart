@@ -65,12 +65,12 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
           ElevatedButton(
             onPressed: () {
               provider.addProperty(Property(
-                  name: _Propertyname.toString(),
-                  address: _Propertyaddress.toString(),
-                  description: _Propertdescription.toString(),
-                  price: _Propertyrprice.toString(),
+                  name: _Propertyname.text,
+                  address: _Propertyaddress.text,
+                  description: _Propertdescription.text,
+                  price: _Propertyrprice.text,
                   image: '',
-                  size: _Propertysize.toString(),
+                  size: _Propertysize.text,
                   status: '',
                   propertyId: const Uuid().v4(),
                   rentee: Rentee(

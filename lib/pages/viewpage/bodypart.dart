@@ -291,8 +291,9 @@ class _BodyPartState extends State<BodyPart> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) =>
-                                          DetailsPage(details: index)));
+                                      builder: (context) => DetailsPage(
+                                          getdetails:
+                                              provider.getDetails(index))));
                             }
                           },
                           text: (index + 1).toString(),

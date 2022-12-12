@@ -19,7 +19,7 @@ void main() async {
   var Pbox = await Hive.openBox<Property>('property');
   var Rbox = await Hive.openBox<Rentee>('rentee');
 
-  print(Pbox.values.last);
+  // print(Pbox.values.last);
 
   runApp(
     const RentApp(),

@@ -1,38 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:rentapp/model/rentee.dart';
+import 'package:rentapp/model/property.dart';
 
 class UserDetail extends StatefulWidget {
-  const UserDetail({super.key});
+  Property getdetails;
+  UserDetail({super.key, required this.getdetails});
 
   @override
   State<UserDetail> createState() => _UserDetailState();
 }
 
 class _UserDetailState extends State<UserDetail> {
-  late Box<Rentee> Rbox;
-  String name = 'Reena Parajuli';
-  String contact = '9816273940';
+  // late Box<Rentee> Rbox;
+  // String name = 'Reena Parajuli';
+  // String contact = '9816273940';
 
-  @override
-  void initState() {
-    Rbox = Hive.box<Rentee>('rentee');
-    //add details of rentee
-    Rbox.add(
-      Rentee(
-        renteeContact: contact,
-        renteeEmail: '',
-        renteeName: name,
-        agreementimage: '',
-        citizenimage: '',
-        businessdetail: '',
-        renteeId: '',
-      ),
-    );
+  // @override
+  // void initState() {
+  //   Rbox = Hive.box<Rentee>('rentee');
+  //   //add details of rentee
+  //   Rbox.add(
+  //     Rentee(
+  //       renteeContact: contact,
+  //       renteeEmail: '',
+  //       renteeName: name,
+  //       agreementimage: '',
+  //       citizenimage: '',
+  //       businessdetail: '',
+  //       renteeId: '',
+  //     ),
+  //   );
 
-    super.initState();
-  }
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -72,15 +71,15 @@ class _UserDetailState extends State<UserDetail> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
+                  children: [
                     Text(
-                      Rbox.getAt(1)!.renteeName,
+                      widget.getdetails.name,
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                     ),
                     SizedBox(height: 10),
                     Text(
-                      Rbox.getAt(1)!.renteeContact,
+                      widget.getdetails.name,
                       style: TextStyle(
                         color: Color(0xFF9f9f9f),
                         fontWeight: FontWeight.bold,
@@ -102,7 +101,6 @@ class _UserDetailState extends State<UserDetail> {
                 ),
                 child: IconButton(
                   onPressed: () {
-                    setState(() {});
                     //show details name which is at index 0
                     //print(Rbox.getAt(0)!.name);
                   },

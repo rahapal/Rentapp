@@ -11,38 +11,38 @@ class RentedPropertyDetails extends StatefulWidget {
 }
 
 class _RentedPropertyDetailsState extends State<RentedPropertyDetails> {
-  late Box<Property> Pbox;
-  String name = 'Commercial Shutter';
-  String address = 'Trademall,Pokhara';
-  String description = '12,00 sq.ft·2 rooms';
-  String price = '15/month';
-  @override
-  void initState() {
-    Pbox = Hive.box<Property>('property');
-    Pbox.add(
-      Property(
-          name: name,
-          address: address,
-          description: description,
-          price: price,
-          image: '',
-          size: '',
-          status: '',
-          propertyId: '',
-          rentee: Rentee(
-            agreementimage: '',
-            citizenimage: '',
-            businessdetail: '',
-            renteeId: '',
-            renteeContact: '',
-            renteeEmail: '',
-            renteeName: '',
-          )),
-    );
-    super.initState();
-    print("PBOX Values");
-    print(Pbox.values);
-  }
+  // late Box<Property> Pbox;
+  // String name = 'Commercial Shutter';
+  // String address = 'Trademall,Pokhara';
+  // String description = '12,00 sq.ft·2 rooms';
+  // String price = '15/month';
+  // @override
+  // void initState() {
+  //   Pbox = Hive.box<Property>('property');
+  //   Pbox.add(
+  //     Property(
+  //         name: name,
+  //         address: address,
+  //         description: description,
+  //         price: price,
+  //         image: '',
+  //         size: '',
+  //         status: '',
+  //         propertyId: '',
+  //         rentee: Rentee(
+  //           agreementimage: '',
+  //           citizenimage: '',
+  //           businessdetail: '',
+  //           renteeId: '',
+  //           renteeContact: '',
+  //           renteeEmail: '',
+  //           renteeName: '',
+  //         )),
+  //   );
+  //   super.initState();
+  //   print("PBOX Values");
+  //   print(Pbox.values);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -76,29 +76,29 @@ class _RentedPropertyDetailsState extends State<RentedPropertyDetails> {
                 ),
               ),
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
+              children: const [
                 Text(
-                  Pbox.getAt(0)!.name,
+                  'Hi',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.5),
                 ),
                 SizedBox(height: 10),
                 Text(
-                  Pbox.getAt(0)!.address,
+                  'Hello',
                   style: TextStyle(
                       color: Color(0xFF9f9f9f), fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 10),
                 Text(
-                  Pbox.getAt(0)!.description,
+                  'Kcha',
                   style: TextStyle(
                       color: Color(0xFF9f9f9f), fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 10),
                 Text(
-                  Pbox.getAt(0)!.price,
+                  'thikcha',
                   style: TextStyle(
                       color: Color(0xFF9f9f9f), fontWeight: FontWeight.bold),
                 ),

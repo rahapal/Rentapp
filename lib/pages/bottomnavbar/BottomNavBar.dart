@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:rentapp/common/global_variables.dart';
+import 'package:rentapp/model/property.dart';
+import 'package:rentapp/model/rentee.dart';
 import 'package:rentapp/route/route.dart' as route;
 
 import '../viewpage/topbar.dart';
@@ -20,7 +23,19 @@ class _BottomNavState extends State<BottomNav> {
     pages(),
     pages(),
   ];
+
   final PageStorageBucket bucket = PageStorageBucket();
+  late Box<Property> Pbox;
+  late Box<Rentee> Rbox;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    Pbox = Hive.box<Property>('property');
+    Rbox = Hive.box<Rentee>('rentee');
+    super.initState();
+  }
+
   Widget currentScreen = const TopBar();
 
   @override
@@ -36,6 +51,8 @@ class _BottomNavState extends State<BottomNav> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           //navigate to pages
+          Pbox.clear();
+          Rbox.clear();
 
           Navigator.pushNamed(context, route.RouteManager.toBeCreate);
         },
