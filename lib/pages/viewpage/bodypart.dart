@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:provider/provider.dart';
 
 import 'package:rentapp/common/commonbutton.dart';
+import 'package:rentapp/controller/provider.dart';
+import 'package:rentapp/model/property.dart';
+import 'package:rentapp/pages/detailscreen/detailspage.dart';
 
-import 'package:rentapp/route/route.dart';
-import 'package:rentapp/pages/viewpage/bodytoppart.dart';
+import 'package:rentapp/pages/filldetailspage/propertydetails.dart';
 
-class TableTileData {
-  int status;
-  int number;
-  TableTileData({this.status = 0, required this.number});
-  String get statusName => status == 0
-      ? 'empty'
-      : status == 1
-          ? "unpaid"
-          : "paid";
-}
+// class TableTileData {
+//   int status;
+//   int number;
+//   TableTileData({this.status = 0, required this.number});
+//   String get statusName => status == 0
+//       ? 'empty'
+//       : status == 1
+//           ? "unpaid"
+//           : "paid";
+// }
 
 class BodyPart extends StatefulWidget {
   const BodyPart({super.key});
@@ -23,53 +27,53 @@ class BodyPart extends StatefulWidget {
   State<BodyPart> createState() => _BodyPartState();
 }
 
-List<TableTileData> tables = [
-  TableTileData(status: 0, number: 1),
-  TableTileData(status: 1, number: 2),
-  TableTileData(status: 2, number: 3),
-  TableTileData(status: 2, number: 4),
-  TableTileData(status: 0, number: 5),
-  TableTileData(status: 2, number: 6),
-  TableTileData(status: 2, number: 7),
-  TableTileData(status: 2, number: 8),
-  TableTileData(status: 2, number: 9),
-  TableTileData(status: 2, number: 10),
-  TableTileData(status: 2, number: 11),
-  TableTileData(status: 2, number: 12),
-  TableTileData(status: 1, number: 13),
-  TableTileData(status: 2, number: 14),
-  TableTileData(status: 1, number: 15),
-  TableTileData(status: 1, number: 16),
-  TableTileData(status: 1, number: 17),
-  TableTileData(status: 2, number: 18),
-  TableTileData(status: 2, number: 19),
-  TableTileData(status: 1, number: 20),
-  TableTileData(status: 0, number: 21),
-  TableTileData(status: 2, number: 22),
-  TableTileData(status: 2, number: 23),
-  TableTileData(status: 1, number: 24),
-  TableTileData(status: 2, number: 25),
-  TableTileData(status: 2, number: 26),
-  TableTileData(status: 1, number: 27),
-  TableTileData(status: 1, number: 28),
-  TableTileData(status: 1, number: 29),
-  TableTileData(status: 1, number: 30),
-  TableTileData(status: 2, number: 31),
-  TableTileData(status: 0, number: 32),
-  TableTileData(status: 2, number: 33),
-  TableTileData(status: 1, number: 34),
-  TableTileData(status: 1, number: 35),
-  TableTileData(status: 0, number: 36),
-  TableTileData(status: 0, number: 37),
-  TableTileData(status: 1, number: 38),
-  TableTileData(status: 2, number: 39),
-  TableTileData(status: 2, number: 40),
-  TableTileData(status: 1, number: 41),
-  TableTileData(status: 1, number: 42),
-  TableTileData(status: 1, number: 43),
-  TableTileData(status: 0, number: 44),
-  TableTileData(status: 1, number: 45),
-];
+// List<TableTileData> tables = [
+//   TableTileData(status: 0, number: 1),
+//   TableTileData(status: 1, number: 2),
+//   TableTileData(status: 2, number: 3),
+//   TableTileData(status: 2, number: 4),
+//   TableTileData(status: 0, number: 5),
+//   TableTileData(status: 2, number: 6),
+//   TableTileData(status: 2, number: 7),
+//   TableTileData(status: 2, number: 8),
+//   TableTileData(status: 2, number: 9),
+//   TableTileData(status: 2, number: 10),
+//   TableTileData(status: 2, number: 11),
+//   TableTileData(status: 2, number: 12),
+//   TableTileData(status: 1, number: 13),
+//   TableTileData(status: 2, number: 14),
+//   TableTileData(status: 1, number: 15),
+//   TableTileData(status: 1, number: 16),
+//   TableTileData(status: 1, number: 17),
+//   TableTileData(status: 2, number: 18),
+//   TableTileData(status: 2, number: 19),
+//   TableTileData(status: 1, number: 20),
+//   TableTileData(status: 0, number: 21),
+//   TableTileData(status: 2, number: 22),
+//   TableTileData(status: 2, number: 23),
+//   TableTileData(status: 1, number: 24),
+//   TableTileData(status: 2, number: 25),
+//   TableTileData(status: 2, number: 26),
+//   TableTileData(status: 1, number: 27),
+//   TableTileData(status: 1, number: 28),
+//   TableTileData(status: 1, number: 29),
+//   TableTileData(status: 1, number: 30),
+//   TableTileData(status: 2, number: 31),
+//   TableTileData(status: 0, number: 32),
+//   TableTileData(status: 2, number: 33),
+//   TableTileData(status: 1, number: 34),
+//   TableTileData(status: 1, number: 35),
+//   TableTileData(status: 0, number: 36),
+//   TableTileData(status: 0, number: 37),
+//   TableTileData(status: 1, number: 38),
+//   TableTileData(status: 2, number: 39),
+//   TableTileData(status: 2, number: 40),
+//   TableTileData(status: 1, number: 41),
+//   TableTileData(status: 1, number: 42),
+//   TableTileData(status: 1, number: 43),
+//   TableTileData(status: 0, number: 44),
+//   TableTileData(status: 1, number: 45),
+// ];
 
 // List<Trying> trying = [
 //   Trying(status: 'empty'),
@@ -175,8 +179,17 @@ List<TableTileData> tables = [
 // }
 
 class _BodyPartState extends State<BodyPart> {
+  late Box<Property> box;
+
+  @override
+  void initState() {
+    box = Hive.box('property');
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<PropertyProvider>(context);
     return Expanded(
       child: Container(
         width: double.infinity,
@@ -190,12 +203,12 @@ class _BodyPartState extends State<BodyPart> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const BodyTopPart(),
+            //const BodyTopPart(),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(left: 15.0, right: 15),
                 child: GridView.builder(
-                  itemCount: tables.length,
+                  itemCount: provider.isSelected.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 5,
                     mainAxisSpacing: 15,
@@ -217,29 +230,85 @@ class _BodyPartState extends State<BodyPart> {
                             // .where((element) => element.status == 'paid')
                             // .length);
 
-                            //navigate to second page
+                            //navigate to second page\
+
+                            // context.read<PropertyProvider>().addProperty(
+                            //       Property(
+                            //         propertyId: Uuid().v4(),
+                            //         name: name.toString(),
+                            //         address: '',
+                            //         description: '',
+                            //         image: '',
+                            //         price: '',
+                            //         rentee: Rentee(
+                            //             agreementimage: '',
+                            //             businessdetail: '',
+                            //             citizenimage: '',
+                            //             renteeContact: '',
+                            //             renteeEmail: '',
+                            //             renteeId: '',
+                            //             renteeName: ''),
+                            //         size: '',
+                            //         status: '',
+                            //       ),
+                            // //     );
                             // Navigator.push(
                             //   context,
                             //   MaterialPageRoute(
-                            //     builder: (context) => Secondpage(),
+                            //     builder: (context) => DetailsPage(
+                            //         details: provider.getDetails(index)),
                             //   ),
                             // );
-                            Navigator.pushNamed(
-                                context, RouteManager.detailspage);
+
+                            showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    title: const Text('Your space is Empty'),
+                                    content: const Text(
+                                        'Do you want to add details?'),
+                                    actions: [
+                                      TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: const Text('Cancel')),
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      FillPropertyDetails(
+                                                          getindex: index)));
+                                        },
+                                        child: const Text('OK'),
+                                      ),
+                                    ],
+                                  );
+                                });
+                            if (provider.isSelected[index] == true) {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          DetailsPage(details: index)));
+                            }
                           },
-                          text: '${tables.elementAt(index).number}',
-                          textColor:
-                              tables.elementAt(index).statusName == 'empty'
-                                  ? Colors.black
-                                  : Colors.white,
-                          color: tables.elementAt(index).statusName == 'paid'
-                              ? const Color(0xFF3abd40)
-                              : tables.elementAt(index).statusName == 'unpaid'
-                                  ? const Color(0xFFef4646)
-                                  : tables.elementAt(index).statusName ==
-                                          'empty'
-                                      ? Colors.white
-                                      : Colors.white,
+                          text: (index + 1).toString(),
+                          textColor: Colors.white,
+                          // textColor:
+                          //     tables.elementAt(index).statusName == 'empty'
+                          //         ? Colors.black
+                          //         : Colors.white,
+                          // color: tables.elementAt(index).statusName == 'paid'
+                          //     ? const Color(0xFF3abd40)
+                          //     : tables.elementAt(index).statusName == 'unpaid'
+                          //         ? const Color(0xFFef4646)
+                          //         : tables.elementAt(index).statusName ==
+                          //                 'empty'
+                          //             ? Colors.white
+                          //             : Colors.white,
                         ),
                       ),
                     );

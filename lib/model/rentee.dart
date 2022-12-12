@@ -5,11 +5,11 @@ part 'rentee.g.dart';
 @HiveType(typeId: 1)
 class Rentee {
   @HiveField(0)
-  String name;
+  String renteeName;
   @HiveField(1)
-  String contact;
+  String renteeContact;
   @HiveField(2)
-  String email;
+  String renteeEmail;
   @HiveField(3)
   String businessdetail;
   @HiveField(4)
@@ -20,9 +20,9 @@ class Rentee {
   String renteeId;
 
   Rentee({
-    required this.name,
-    required this.contact,
-    required this.email,
+    required this.renteeName,
+    required this.renteeContact,
+    required this.renteeEmail,
     required this.businessdetail,
     required this.citizenimage,
     required this.agreementimage,

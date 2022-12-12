@@ -1,4 +1,5 @@
 import 'package:hive/hive.dart';
+import 'package:rentapp/model/rentee.dart';
 
 part 'property.g.dart';
 
@@ -15,11 +16,13 @@ class Property {
   @HiveField(4)
   String image;
   @HiveField(5)
-  String type;
+  String size;
   @HiveField(6)
   String status;
   @HiveField(7)
   String propertyId;
+  @HiveField(8)
+  Rentee rentee;
 
   Property({
     required this.name,
@@ -27,8 +30,9 @@ class Property {
     required this.description,
     required this.price,
     required this.image,
-    required this.type,
+    required this.size,
     required this.status,
     required this.propertyId,
+    required this.rentee,
   });
 }

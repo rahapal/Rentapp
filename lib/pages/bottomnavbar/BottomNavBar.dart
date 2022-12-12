@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rentapp/routes/route.dart' as route;
+import 'package:rentapp/common/global_variables.dart';
+import 'package:rentapp/route/route.dart' as route;
 
 import '../viewpage/topbar.dart';
 import '../viewpage/pages.dart';
@@ -20,12 +21,12 @@ class _BottomNavState extends State<BottomNav> {
     pages(),
   ];
   final PageStorageBucket bucket = PageStorageBucket();
-  Widget currentScreen = TopBar();
+  Widget currentScreen = const TopBar();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFEAECFF),
+      backgroundColor: GlobalVariables.backgroundColor,
       //this helps to avoid the overflow of the screen or the fixedbutton don't come up
       resizeToAvoidBottomInset: false,
       body: PageStorage(
@@ -38,8 +39,8 @@ class _BottomNavState extends State<BottomNav> {
 
           Navigator.pushNamed(context, route.RouteManager.toBeCreate);
         },
+        // backgroundColor: const Color(0xFF5B67FE),
         child: const Icon(Icons.add),
-        backgroundColor: const Color(0xFF5B67FE),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
@@ -60,15 +61,16 @@ class _BottomNavState extends State<BottomNav> {
                       minWidth: 40,
                       onPressed: () {
                         setState(() {
-                          currentScreen = TopBar();
+                          currentScreen = const TopBar();
                           currentTab = 0;
                         });
                       },
                       child: Icon(
                         currentTab == 0 ? Icons.home : Icons.home_outlined,
                         size: 32,
-                        color:
-                            currentTab == 0 ? Color(0xFF5B67FE) : Colors.grey,
+                        color: currentTab == 0
+                            ? const Color(0xFF5B67FE)
+                            : Colors.grey,
                       ),
                     ),
                     MaterialButton(

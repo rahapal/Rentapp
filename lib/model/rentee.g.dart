@@ -17,9 +17,9 @@ class RenteeAdapter extends TypeAdapter<Rentee> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Rentee(
-      name: fields[0] as String,
-      contact: fields[1] as String,
-      email: fields[2] as String,
+      renteeName: fields[0] as String,
+      renteeContact: fields[1] as String,
+      renteeEmail: fields[2] as String,
       businessdetail: fields[3] as String,
       citizenimage: fields[4] as String,
       agreementimage: fields[5] as String,
@@ -32,11 +32,11 @@ class RenteeAdapter extends TypeAdapter<Rentee> {
     writer
       ..writeByte(7)
       ..writeByte(0)
-      ..write(obj.name)
+      ..write(obj.renteeName)
       ..writeByte(1)
-      ..write(obj.contact)
+      ..write(obj.renteeContact)
       ..writeByte(2)
-      ..write(obj.email)
+      ..write(obj.renteeEmail)
       ..writeByte(3)
       ..write(obj.businessdetail)
       ..writeByte(4)

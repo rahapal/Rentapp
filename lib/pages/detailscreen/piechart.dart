@@ -94,7 +94,6 @@ class _PieChartState extends State<PieChart> {
                   text: 'Notify',
                   textColor: Colors.white,
                   onTap: () {},
-                  color: Color(0xFF5B67FE),
                 )
               ],
             )

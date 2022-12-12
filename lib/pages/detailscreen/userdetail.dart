@@ -21,12 +21,12 @@ class _UserDetailState extends State<UserDetail> {
     //add details of rentee
     Rbox.add(
       Rentee(
-        name: name,
-        contact: contact,
+        renteeContact: contact,
+        renteeEmail: '',
+        renteeName: name,
         agreementimage: '',
         citizenimage: '',
         businessdetail: '',
-        email: '',
         renteeId: '',
       ),
     );
@@ -74,13 +74,13 @@ class _UserDetailState extends State<UserDetail> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      Rbox.getAt(1)!.name,
+                      Rbox.getAt(1)!.renteeName,
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                     ),
                     SizedBox(height: 10),
                     Text(
-                      Rbox.getAt(1)!.contact,
+                      Rbox.getAt(1)!.renteeContact,
                       style: TextStyle(
                         color: Color(0xFF9f9f9f),
                         fontWeight: FontWeight.bold,

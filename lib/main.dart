@@ -3,9 +3,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:rentapp/model/rentee.dart';
-import 'package:rentapp/Routes/route.dart';
+import 'package:rentapp/route/route.dart';
 
+import 'controller/provider.dart';
 import 'model/property.dart';
 
 void main() async {
@@ -17,7 +19,7 @@ void main() async {
   var Pbox = await Hive.openBox<Property>('property');
   var Rbox = await Hive.openBox<Rentee>('rentee');
 
-  //print(Pbox.values.last); to see values stored in database
+  print(Pbox.values.last);
 
   runApp(
     const RentApp(),
@@ -34,10 +36,28 @@ class RentApp extends StatefulWidget {
 class _RentAppState extends State<RentApp> {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      initialRoute: RouteManager.home,
-      onGenerateRoute: generateRoute,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => PropertyProvider()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primaryColor: const Color(0xFF5B67FE),
+          colorScheme: ColorScheme.fromSwatch()
+              .copyWith(secondary: const Color(0xFF5B67FE)),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFF5B67FE),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+          ),
+        ),
+        initialRoute: RouteManager.home,
+        onGenerateRoute: generateRoute,
+      ),
     );
   }
 }

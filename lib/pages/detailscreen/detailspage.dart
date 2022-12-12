@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rentapp/route/route.dart' as route;
 
 import 'historytopbar.dart';
 import 'paymenthistory.dart';
@@ -6,10 +7,9 @@ import 'piechart.dart';
 import 'rentedpropertydetails.dart';
 import 'userdetail.dart';
 
-// import 'upwardpage.dart';
-
 class DetailsPage extends StatefulWidget {
-  const DetailsPage({super.key});
+  final int details;
+  const DetailsPage({Key? key, required this.details}) : super(key: key);
 
   @override
   State<DetailsPage> createState() => _DetailsPageState();
@@ -42,7 +42,7 @@ class _DetailsPageState extends State<DetailsPage> {
                 color: const Color(0xFFBDC1FF),
                 icon: const Icon(Icons.arrow_back_ios),
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.pushNamed(context, route.RouteManager.home);
                 },
               ),
             ),
