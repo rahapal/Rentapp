@@ -221,46 +221,9 @@ class _BodyPartState extends State<BodyPart> {
                         height: 100,
                         width: 100,
                         child: CustomButton(
-                          key: ValueKey(index),
+                          // key: ValueKey(index),
                           shadowColor: Colors.black,
                           onTap: () {
-                            // print('${trying.elementAt(index).status}');
-
-                            //length of paid
-                            // print(trying
-                            // .where((element) => element.status == 'paid')
-                            // .length);
-
-                            //navigate to second page\
-
-                            // context.read<PropertyProvider>().addProperty(
-                            //       Property(
-                            //         propertyId: Uuid().v4(),
-                            //         name: name.toString(),
-                            //         address: '',
-                            //         description: '',
-                            //         image: '',
-                            //         price: '',
-                            //         rentee: Rentee(
-                            //             agreementimage: '',
-                            //             businessdetail: '',
-                            //             citizenimage: '',
-                            //             renteeContact: '',
-                            //             renteeEmail: '',
-                            //             renteeId: '',
-                            //             renteeName: ''),
-                            //         size: '',
-                            //         status: '',
-                            //       ),
-                            // //     );
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => DetailsPage(
-                            //         details: provider.getDetails(index)),
-                            //   ),
-                            // );
-
                             showDialog(
                                 context: context,
                                 builder: (context) {
@@ -301,9 +264,11 @@ class _BodyPartState extends State<BodyPart> {
                           textColor: provider.isSelected[index] == true
                               ? Colors.white
                               : Colors.black,
-                          color: provider.isSelected[index] == false
+                          color: provider.atIndex(index) == null
                               ? Colors.white
-                              : Colors.green,
+                              : provider.atIndex(index)!.status == 'empty'
+                                  ? Colors.red
+                                  : Colors.blue,
                           //     tables.elementAt(index).statusName == 'empty'
                           //         ? Colors.black
                           //         : Colors.white,

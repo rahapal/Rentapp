@@ -73,16 +73,16 @@ class _UserDetailState extends State<UserDetail> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      widget.getdetails.rentee.renteeName,
+                      widget.getdetails.rentee.renteeId,
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 7),
                     ),
                     SizedBox(height: 10),
                     Text(
-                      widget.getdetails.rentee.renteeContact,
+                      widget.getdetails.name,
                       style: TextStyle(
                         color: Color(0xFF9f9f9f),
-                        fontSize: 5,
+                        fontSize: 15,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

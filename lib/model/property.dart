@@ -23,6 +23,8 @@ class Property {
   String propertyId;
   @HiveField(8)
   Rentee rentee;
+  @HiveField(9)
+  int index;
 
   Property({
     required this.name,
@@ -31,8 +33,11 @@ class Property {
     required this.price,
     required this.image,
     required this.size,
-    required this.status,
+    this.status = 'empty',
     required this.propertyId,
     required this.rentee,
-  });
+    required this.index,
+  }) {
+    print("Property Created, status: $status");
+  }
 }

@@ -71,7 +71,10 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                   price: _Propertyrprice.text,
                   image: '',
                   size: _Propertysize.text,
-                  status: '',
+                  status: _Propertysize.text.isNotEmpty
+                      ? _Propertysize.text
+                      : 'empty',
+                  index: widget.getindex,
                   propertyId: const Uuid().v4(),
                   rentee: Rentee(
                     renteeId: const Uuid().v4(),
