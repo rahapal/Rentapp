@@ -27,13 +27,14 @@ class PropertyAdapter extends TypeAdapter<Property> {
       propertyId: fields[7] as String,
       rentee: fields[8] as Rentee,
       index: fields[9] as int,
+      fieldStatus: fields[10] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, Property obj) {
     writer
-      ..writeByte(10)
+      ..writeByte(11)
       ..writeByte(0)
       ..write(obj.name)
       ..writeByte(1)
@@ -53,7 +54,9 @@ class PropertyAdapter extends TypeAdapter<Property> {
       ..writeByte(8)
       ..write(obj.rentee)
       ..writeByte(9)
-      ..write(obj.index);
+      ..write(obj.index)
+      ..writeByte(10)
+      ..write(obj.fieldStatus);
   }
 
   @override

@@ -62,6 +62,7 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                 address: widget.getDetails.address,
                 size: widget.getDetails.size,
                 index: widget.getDetails.index,
+                fieldStatus: '',
                 rentee: Rentee(
                   renteeId: widget.getDetails.rentee.renteeId,
                   renteeName: _renteeName.text,

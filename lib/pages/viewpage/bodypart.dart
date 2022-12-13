@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
@@ -41,7 +43,6 @@ class _BodyPartState extends State<BodyPart> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            //const BodyTopPart(),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(left: 15.0, right: 15),
@@ -59,9 +60,9 @@ class _BodyPartState extends State<BodyPart> {
                         height: 100,
                         width: 100,
                         child: CustomButton(
-                          // key: ValueKey(index),
                           shadowColor: Colors.black,
                           onTap: () {
+                            log('index at show dialog: $index');
                             showDialog(
                                 context: context,
                                 builder: (context) {
@@ -77,6 +78,7 @@ class _BodyPartState extends State<BodyPart> {
                                           child: const Text('Cancel')),
                                       TextButton(
                                         onPressed: () {
+                                          log('First page before false: $index');
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(
@@ -89,13 +91,16 @@ class _BodyPartState extends State<BodyPart> {
                                     ],
                                   );
                                 });
-                            if (provider.isSelected[index] == true) {
+                            if (provider.isSelected[index] == true &&
+                                index == provider.property[index].index) {
+                              log('First page true: $index');
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => DetailsPage(
-                                          getdetails:
-                                              provider.getDetails(index))));
+                                          getdetails: provider.getDetails(
+                                              provider
+                                                  .property[index].index))));
                             }
                           },
                           text: (index + 1).toString(),

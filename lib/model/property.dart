@@ -25,6 +25,8 @@ class Property {
   Rentee rentee;
   @HiveField(9)
   int index;
+  @HiveField(10)
+  String fieldStatus;
 
   Property({
     required this.name,
@@ -37,6 +39,7 @@ class Property {
     required this.propertyId,
     required this.rentee,
     required this.index,
+    required this.fieldStatus,
   }) {
     //print("Property Created, status: $status");
   }
