@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:rentapp/controller/provider.dart';
 import 'package:rentapp/model/property.dart';
+import 'package:rentapp/pages/filldetailspage/renteedetails.dart';
 import 'package:rentapp/route/route.dart' as route;
 
 import 'historytopbar.dart';
@@ -57,7 +60,11 @@ class _DetailsPageState extends State<DetailsPage> {
             ),
             child: IconButton(
                 onPressed: () {
-                  print(widget.getdetails.name);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => FillRenteeDetails(
+                              getDetails: widget.getdetails)));
                 },
                 icon: const Icon(
                   size: 27,

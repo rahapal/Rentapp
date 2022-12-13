@@ -221,6 +221,7 @@ class _BodyPartState extends State<BodyPart> {
                         height: 100,
                         width: 100,
                         child: CustomButton(
+                          key: ValueKey(index),
                           shadowColor: Colors.black,
                           onTap: () {
                             // print('${trying.elementAt(index).status}');
@@ -297,8 +298,12 @@ class _BodyPartState extends State<BodyPart> {
                             }
                           },
                           text: (index + 1).toString(),
-                          textColor: Colors.white,
-                          // textColor:
+                          textColor: provider.isSelected[index] == true
+                              ? Colors.white
+                              : Colors.black,
+                          color: provider.isSelected[index] == false
+                              ? Colors.white
+                              : Colors.green,
                           //     tables.elementAt(index).statusName == 'empty'
                           //         ? Colors.black
                           //         : Colors.white,
