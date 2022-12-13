@@ -4,7 +4,6 @@ import 'package:rentapp/controller/provider.dart';
 import 'package:rentapp/model/property.dart';
 import 'package:rentapp/model/rentee.dart';
 import 'package:rentapp/route/route.dart' as route;
-import 'package:uuid/uuid.dart';
 
 class FillRenteeDetails extends StatefulWidget {
   Property getDetails;
@@ -15,10 +14,10 @@ class FillRenteeDetails extends StatefulWidget {
 }
 
 class _FillRenteeDetailsState extends State<FillRenteeDetails> {
-  TextEditingController _renteeName = TextEditingController();
-  TextEditingController _renteeContact = TextEditingController();
-  TextEditingController _renteeEmail = TextEditingController();
-  TextEditingController _renteebusinessdetails = TextEditingController();
+  final TextEditingController _renteeName = TextEditingController();
+  final TextEditingController _renteeContact = TextEditingController();
+  final TextEditingController _renteeEmail = TextEditingController();
+  final TextEditingController _renteebusinessdetails = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -33,25 +32,25 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
           TextFormField(
             controller: _renteeName,
             decoration: const InputDecoration(
-              hintText: 'Property Name',
+              hintText: 'Rentee Name',
             ),
           ),
           TextFormField(
             controller: _renteeEmail,
             decoration: const InputDecoration(
-              hintText: 'Property Price',
+              hintText: 'Rentee Email',
             ),
           ),
           TextFormField(
             controller: _renteeContact,
             decoration: const InputDecoration(
-              hintText: 'Property Address',
+              hintText: 'Rentee Contact',
             ),
           ),
           TextFormField(
             controller: _renteebusinessdetails,
             decoration: const InputDecoration(
-              hintText: 'Property Size',
+              hintText: 'Rentee business details',
             ),
           ),
           ElevatedButton(

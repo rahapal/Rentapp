@@ -16,11 +16,11 @@ class FillPropertyDetails extends StatefulWidget {
 }
 
 class _FillPropertyDetailsState extends State<FillPropertyDetails> {
-  TextEditingController _Propertyname = TextEditingController();
-  TextEditingController _Propertyaddress = TextEditingController();
-  TextEditingController _Propertysize = TextEditingController();
-  TextEditingController _Propertdescription = TextEditingController();
-  TextEditingController _Propertyrprice = TextEditingController();
+  final TextEditingController _propertyName = TextEditingController();
+  final TextEditingController _propertyAddress = TextEditingController();
+  final TextEditingController _propertySize = TextEditingController();
+  final TextEditingController _propertyDescription = TextEditingController();
+  final TextEditingController _propertyPrice = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -33,31 +33,31 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
       body: Column(
         children: [
           TextFormField(
-            controller: _Propertyname,
+            controller: _propertyName,
             decoration: const InputDecoration(
               hintText: 'Property Name',
             ),
           ),
           TextFormField(
-            controller: _Propertyrprice,
+            controller: _propertyPrice,
             decoration: const InputDecoration(
               hintText: 'Property Price',
             ),
           ),
           TextFormField(
-            controller: _Propertyaddress,
+            controller: _propertyAddress,
             decoration: const InputDecoration(
               hintText: 'Property Address',
             ),
           ),
           TextFormField(
-            controller: _Propertysize,
+            controller: _propertySize,
             decoration: const InputDecoration(
               hintText: 'Property Size',
             ),
           ),
           TextFormField(
-            controller: _Propertdescription,
+            controller: _propertyDescription,
             decoration: const InputDecoration(
               hintText: 'Property Description',
             ),
@@ -65,14 +65,15 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
           ElevatedButton(
             onPressed: () {
               provider.addProperty(Property(
-                  name: _Propertyname.text,
-                  address: _Propertyaddress.text,
-                  description: _Propertdescription.text,
-                  price: _Propertyrprice.text,
+                  name: _propertyName.text,
+                  address: _propertyAddress.text,
+                  description: _propertyDescription.text,
+                  price: _propertyPrice.text,
                   image: '',
-                  size: _Propertysize.text,
-                  status: _Propertysize.text.isNotEmpty
-                      ? _Propertysize.text
+                  size: _propertySize.text,
+                  //yesai ho herna test garns cha
+                  status: _propertySize.text.isNotEmpty
+                      ? _propertySize.text
                       : 'empty',
                   index: widget.getindex,
                   propertyId: const Uuid().v4(),

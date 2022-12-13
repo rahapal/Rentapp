@@ -35,7 +35,7 @@ class _UserDetailState extends State<UserDetail> {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: SizedBox.fromSize(
-                    size: Size.fromRadius(35),
+                    size: const Size.fromRadius(35),
                     child: Image.asset(
                       'assets/user.png',
                       // height: 58,
@@ -44,20 +44,20 @@ class _UserDetailState extends State<UserDetail> {
                     ),
                   ),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       widget.getdetails.rentee.renteeName,
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 7),
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 18),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Text(
                       widget.getdetails.rentee.renteeContact,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Color(0xFF9f9f9f),
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
@@ -71,11 +71,11 @@ class _UserDetailState extends State<UserDetail> {
               borderRadius: BorderRadius.circular(15),
               color: Colors.white,
               elevation: 5.0,
-              shadowColor: Color(0xFF69AC65),
+              shadowColor: const Color(0xFF69AC65),
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
-                  color: Color(0xFF69AC65),
+                  color: const Color(0xFF69AC65),
                 ),
                 child: IconButton(
                   onPressed: () {

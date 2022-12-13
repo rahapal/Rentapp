@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:rentapp/pages/bottomnavbar/BottomNavBar.dart';
+import 'package:rentapp/pages/bottomnavbar/bottomNavBar.dart';
 import 'package:rentapp/pages/viewpage/pages.dart';
 import 'package:rentapp/pages/viewpage/viewpage.dart';
 

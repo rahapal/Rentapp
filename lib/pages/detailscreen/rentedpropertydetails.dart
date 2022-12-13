@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:rentapp/model/property.dart';
 
-import '../../controller/provider.dart';
+import 'package:rentapp/model/property.dart';
 
 class RentedPropertyDetails extends StatefulWidget {
   Property getdetails;
@@ -37,7 +35,7 @@ class _RentedPropertyDetailsState extends State<RentedPropertyDetails> {
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: SizedBox.fromSize(
-                size: Size.fromRadius(70),
+                size: const Size.fromRadius(70),
                 child: Image.asset(
                   'assets/house.png',
                   // height: 58,
@@ -51,24 +49,25 @@ class _RentedPropertyDetailsState extends State<RentedPropertyDetails> {
               children: [
                 Text(
                   widget.getdetails.name,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.5),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 14.5),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Text(
                   widget.getdetails.address,
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Color(0xFF9f9f9f), fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Text(
                   widget.getdetails.size,
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Color(0xFF9f9f9f), fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Text(
                   '${widget.getdetails.price}/month',
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Color(0xFF9f9f9f), fontWeight: FontWeight.bold),
                 ),
               ],

@@ -7,7 +7,7 @@ import 'package:rentapp/controller/provider.dart';
 import 'package:rentapp/model/property.dart';
 import 'package:rentapp/pages/detailscreen/detailspage.dart';
 
-import 'package:rentapp/pages/filldetailspage/propertydetails.dart';
+import 'package:rentapp/pages/filldetailspage/fillpropertydetails.dart';
 
 class BodyPart extends StatefulWidget {
   const BodyPart({super.key});

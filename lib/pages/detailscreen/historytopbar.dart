@@ -16,7 +16,7 @@ class _HistoryTopBarState extends State<HistoryTopBar> {
         width: double.infinity,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
+          children: const [
             Text(
               'History',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),

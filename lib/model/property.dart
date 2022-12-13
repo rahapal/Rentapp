@@ -38,6 +38,6 @@ class Property {
     required this.rentee,
     required this.index,
   }) {
-    print("Property Created, status: $status");
+    //print("Property Created, status: $status");
   }
 }

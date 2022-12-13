@@ -66,12 +66,12 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                           children: [
                             Text(
                               names[index],
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                             Text(
                               paiddate[index],
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 10,
                                   color: Color(0xFF9f9f9f),
                                   fontWeight: FontWeight.bold),
@@ -80,14 +80,14 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                         ),
                       ],
                     ),
-                    Text(
+                    const Text(
                       '+ 15K',
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
               ],

@@ -18,19 +18,20 @@ class BottomNav extends StatefulWidget {
 class _BottomNavState extends State<BottomNav> {
   int currentTab = 0;
   final List<Widget> screens = [
-    TopBar(),
-    pages(),
-    pages(),
-    pages(),
+    const TopBar(),
+    const pages(),
+    const pages(),
+    const pages(),
   ];
 
   final PageStorageBucket bucket = PageStorageBucket();
+  // ignore: non_constant_identifier_names
   late Box<Property> Pbox;
+  // ignore: non_constant_identifier_names
   late Box<Rentee> Rbox;
 
   @override
   void initState() {
-    // TODO: implement initState
     Pbox = Hive.box<Property>('property');
     Rbox = Hive.box<Rentee>('rentee');
     super.initState();

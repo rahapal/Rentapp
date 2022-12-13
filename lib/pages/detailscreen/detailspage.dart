@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:rentapp/controller/provider.dart';
+
 import 'package:rentapp/model/property.dart';
 import 'package:rentapp/pages/filldetailspage/fillrenteedetails.dart';
 import 'package:rentapp/route/route.dart' as route;
@@ -105,19 +104,19 @@ class _DetailsPageState extends State<DetailsPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     //upwardpage(),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    PieChart(),
-                    SizedBox(
+                    const PieChart(),
+                    const SizedBox(
                       height: 10,
                     ),
                     UserDetail(getdetails: widget.getdetails),
-                    SizedBox(
+                    const SizedBox(
                       height: 37,
                     ),
                     RentedPropertyDetails(getdetails: widget.getdetails),

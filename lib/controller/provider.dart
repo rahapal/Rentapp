@@ -15,7 +15,8 @@ class PropertyProvider with ChangeNotifier {
     // }
     // return null;
 
-    var found = null;
+    // ignore: prefer_typing_uninitialized_variables
+    var found;
 
     for (int i = 0; i < _property.length; i++) {
       if (_property[i].index == index) {
@@ -40,7 +41,7 @@ class PropertyProvider with ChangeNotifier {
 
   void setAllTrue(index) {
     isSelected[index] = true;
-    print('Recieved : $index');
+
     notifyListeners();
   }
 }

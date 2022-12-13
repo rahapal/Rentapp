@@ -26,12 +26,12 @@ class _PieChartState extends State<PieChart> {
               radius: 83,
               lineWidth: 10,
               percent: 0.9,
-              progressColor: Color(0xFF5B67FE),
-              backgroundColor: Color(0xFFB3BBFE),
+              progressColor: const Color(0xFF5B67FE),
+              backgroundColor: const Color(0xFFB3BBFE),
               circularStrokeCap: CircularStrokeCap.round,
               center: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                children: const [
                   Text(
                     '12',
                     style: TextStyle(
@@ -53,7 +53,7 @@ class _PieChartState extends State<PieChart> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   'Due Date',
                   style: TextStyle(
                     color: Color(0xFF9f9f9f),
@@ -61,17 +61,17 @@ class _PieChartState extends State<PieChart> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 2,
                 ),
-                Text(
+                const Text(
                   'May 21,2021',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                Text(
+                const Text(
                   'Due amount',
                   style: TextStyle(
                     fontSize: 14,
@@ -79,14 +79,14 @@ class _PieChartState extends State<PieChart> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 2,
                 ),
-                Text(
+                const Text(
                   '15k',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 CustomButton(
