@@ -10,29 +10,6 @@ class UserDetail extends StatefulWidget {
 }
 
 class _UserDetailState extends State<UserDetail> {
-  // late Box<Rentee> Rbox;
-  // String name = 'Reena Parajuli';
-  // String contact = '9816273940';
-
-  // @override
-  // void initState() {
-  //   Rbox = Hive.box<Rentee>('rentee');
-  //   //add details of rentee
-  //   Rbox.add(
-  //     Rentee(
-  //       renteeContact: contact,
-  //       renteeEmail: '',
-  //       renteeName: name,
-  //       agreementimage: '',
-  //       citizenimage: '',
-  //       businessdetail: '',
-  //       renteeId: '',
-  //     ),
-  //   );
-
-  //   super.initState();
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -73,13 +50,13 @@ class _UserDetailState extends State<UserDetail> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      widget.getdetails.rentee.renteeId,
+                      widget.getdetails.rentee.renteeName,
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 7),
                     ),
                     SizedBox(height: 10),
                     Text(
-                      widget.getdetails.name,
+                      widget.getdetails.rentee.renteeContact,
                       style: TextStyle(
                         color: Color(0xFF9f9f9f),
                         fontSize: 15,

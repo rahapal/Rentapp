@@ -1,49 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:rentapp/model/property.dart';
-import 'package:rentapp/model/rentee.dart';
+
+import '../../controller/provider.dart';
 
 class RentedPropertyDetails extends StatefulWidget {
-  const RentedPropertyDetails({super.key});
+  Property getdetails;
+  RentedPropertyDetails({super.key, required this.getdetails});
 
   @override
   State<RentedPropertyDetails> createState() => _RentedPropertyDetailsState();
 }
 
 class _RentedPropertyDetailsState extends State<RentedPropertyDetails> {
-  // late Box<Property> Pbox;
-  // String name = 'Commercial Shutter';
-  // String address = 'Trademall,Pokhara';
-  // String description = '12,00 sq.ft·2 rooms';
-  // String price = '15/month';
-  // @override
-  // void initState() {
-  //   Pbox = Hive.box<Property>('property');
-  //   Pbox.add(
-  //     Property(
-  //         name: name,
-  //         address: address,
-  //         description: description,
-  //         price: price,
-  //         image: '',
-  //         size: '',
-  //         status: '',
-  //         propertyId: '',
-  //         rentee: Rentee(
-  //           agreementimage: '',
-  //           citizenimage: '',
-  //           businessdetail: '',
-  //           renteeId: '',
-  //           renteeContact: '',
-  //           renteeEmail: '',
-  //           renteeName: '',
-  //         )),
-  //   );
-  //   super.initState();
-  //   print("PBOX Values");
-  //   print(Pbox.values);
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -79,26 +48,26 @@ class _RentedPropertyDetailsState extends State<RentedPropertyDetails> {
             const SizedBox(width: 10),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 Text(
-                  'Hi',
+                  widget.getdetails.name,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.5),
                 ),
                 SizedBox(height: 10),
                 Text(
-                  'Hello',
+                  widget.getdetails.address,
                   style: TextStyle(
                       color: Color(0xFF9f9f9f), fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 10),
                 Text(
-                  'Kcha',
+                  widget.getdetails.size,
                   style: TextStyle(
                       color: Color(0xFF9f9f9f), fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 10),
                 Text(
-                  'thikcha',
+                  '${widget.getdetails.price}/month',
                   style: TextStyle(
                       color: Color(0xFF9f9f9f), fontWeight: FontWeight.bold),
                 ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rentapp/controller/provider.dart';
 import 'package:rentapp/model/property.dart';
-import 'package:rentapp/pages/filldetailspage/renteedetails.dart';
+import 'package:rentapp/pages/filldetailspage/fillrenteedetails.dart';
 import 'package:rentapp/route/route.dart' as route;
 
 import 'historytopbar.dart';
@@ -120,7 +120,7 @@ class _DetailsPageState extends State<DetailsPage> {
                     SizedBox(
                       height: 37,
                     ),
-                    RentedPropertyDetails(),
+                    RentedPropertyDetails(getdetails: widget.getdetails),
                   ],
                 ),
               ),
