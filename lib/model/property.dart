@@ -39,7 +39,7 @@ class Property {
     required this.propertyId,
     required this.rentee,
     required this.index,
-    required this.fieldStatus,
+    this.fieldStatus = 'false',
   }) {
     //print("Property Created, status: $status");
   }

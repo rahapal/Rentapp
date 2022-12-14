@@ -29,15 +29,6 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
       appBar: AppBar(
         title: const Text('Fill Property Details'),
         automaticallyImplyLeading: false,
-        actions: [
-          IconButton(
-            onPressed: () {
-              provider.getboolVal();
-              Navigator.pushNamed(context, route.RouteManager.home);
-            },
-            icon: const Icon(Icons.home),
-          ),
-        ],
       ),
       body:
           //willpopscope is used to prevent back button from slide
@@ -105,10 +96,9 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                 );
                 print('Index at fill : ${widget.getindex}');
                 Navigator.pushNamed(context, route.RouteManager.home);
-                // provider.setboolVal(widget.getindex).then(
-                //       (value) => provider.getboolVal(),
-                //     );
-                // provider.setboolVal(widget.getindex);
+                provider.setboolVal(widget.getindex).then(
+                      (value) => provider.getboolVal(),
+                    );
 
                 //provider.getIndexTrue(widget.getindex);
               },
