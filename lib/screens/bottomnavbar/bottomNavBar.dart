@@ -79,7 +79,7 @@ class _BottomNavState extends State<BottomNav> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               SizedBox(
-                width: MediaQuery.of(context).size.width / 2 - 40,
+                width: MediaQuery.of(context).size.width / 2 - 56,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   //crossAxisAlignment: CrossAxisAlignment.start,

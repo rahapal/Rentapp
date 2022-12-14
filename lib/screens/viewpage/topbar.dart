@@ -15,6 +15,7 @@ class _TopBarState extends State<TopBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 20,
         automaticallyImplyLeading: false,
         backgroundColor: Colors.white.withOpacity(0),
         elevation: 0,
@@ -57,13 +58,13 @@ class _TopBarState extends State<TopBar> {
                           filled: true,
                           fillColor: Colors.white.withOpacity(0.13),
                           enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(18.0),
+                            borderRadius: BorderRadius.circular(15.0),
                             borderSide: BorderSide(
                               color: Colors.white.withOpacity(0.13),
                             ),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(18.0),
+                            borderRadius: BorderRadius.circular(15.0),
                             borderSide: BorderSide(
                               color: Colors.white.withOpacity(0.13),
                             ),

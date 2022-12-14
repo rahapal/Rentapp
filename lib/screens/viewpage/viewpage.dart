@@ -7,11 +7,14 @@ class ViewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: const [
-            TopBar(),
-          ],
+      body: WillPopScope(
+        onWillPop: () async => false,
+        child: SafeArea(
+          child: Column(
+            children: const [
+              TopBar(),
+            ],
+          ),
         ),
       ),
     );
