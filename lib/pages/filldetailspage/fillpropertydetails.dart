@@ -21,6 +21,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
   final TextEditingController _propertySize = TextEditingController();
   final TextEditingController _propertyDescription = TextEditingController();
   final TextEditingController _propertyPrice = TextEditingController();
+  final TextEditingController _propertyStatus = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -66,6 +67,12 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                 hintText: 'Property Description',
               ),
             ),
+            TextFormField(
+              controller: _propertyStatus,
+              decoration: const InputDecoration(
+                hintText: 'Status',
+              ),
+            ),
             ElevatedButton(
               onPressed: () {
                 provider.addProperty(
@@ -77,9 +84,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                     image: '',
                     size: _propertySize.text,
                     //yesai ho herna test garns cha
-                    status: _propertySize.text.isNotEmpty
-                        ? _propertySize.text
-                        : 'empty',
+                    status: _propertyStatus.text,
                     index: widget.getindex,
                     propertyId: const Uuid().v4(),
                     fieldStatus: '',

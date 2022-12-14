@@ -74,7 +74,7 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                 ),
                 description: '',
                 image: '',
-                status: '',
+                status: widget.getDetails.status,
               );
 
               provider.addProperty(property);

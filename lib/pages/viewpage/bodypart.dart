@@ -10,6 +10,7 @@ import 'package:rentapp/model/property.dart';
 import 'package:rentapp/pages/detailscreen/detailspage.dart';
 
 import 'package:rentapp/pages/filldetailspage/fillpropertydetails.dart';
+import 'package:rentapp/pages/viewpage/bodytoppart.dart';
 
 class BodyPart extends StatefulWidget {
   const BodyPart({super.key});
@@ -43,6 +44,7 @@ class _BodyPartState extends State<BodyPart> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const BodyTopPart(),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(left: 15.0, right: 15),
