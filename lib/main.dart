@@ -12,6 +12,7 @@ import 'model/property.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   Directory directory = await getApplicationDocumentsDirectory();
   Hive.init(directory.path);
   Hive.registerAdapter(PropertyAdapter());

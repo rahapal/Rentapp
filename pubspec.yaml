@@ -38,6 +38,7 @@ dependencies:
   hive_flutter: ^1.1.0
   path_provider_ios: ^2.0.11
   uuid: ^3.0.7
+  shared_preferences: ^2.0.15
 
 
 

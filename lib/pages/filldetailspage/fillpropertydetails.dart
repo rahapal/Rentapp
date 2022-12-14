@@ -21,7 +21,6 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
   final TextEditingController _propertySize = TextEditingController();
   final TextEditingController _propertyDescription = TextEditingController();
   final TextEditingController _propertyPrice = TextEditingController();
-  final TextEditingController _propertyStatus = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +29,15 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
       appBar: AppBar(
         title: const Text('Fill Property Details'),
         automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+            onPressed: () {
+              provider.getboolVal();
+              Navigator.pushNamed(context, route.RouteManager.home);
+            },
+            icon: const Icon(Icons.home),
+          ),
+        ],
       ),
       body:
           //willpopscope is used to prevent back button from slide
@@ -67,12 +75,6 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                 hintText: 'Property Description',
               ),
             ),
-            TextFormField(
-              controller: _propertyStatus,
-              decoration: const InputDecoration(
-                hintText: 'Status',
-              ),
-            ),
             ElevatedButton(
               onPressed: () {
                 provider.addProperty(
@@ -84,7 +86,9 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                     image: '',
                     size: _propertySize.text,
                     //yesai ho herna test garns cha
-                    status: _propertyStatus.text,
+                    status: _propertySize.text.isNotEmpty
+                        ? _propertySize.text
+                        : 'empty',
                     index: widget.getindex,
                     propertyId: const Uuid().v4(),
                     fieldStatus: '',
@@ -101,7 +105,12 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                 );
                 print('Index at fill : ${widget.getindex}');
                 Navigator.pushNamed(context, route.RouteManager.home);
-                provider.setIndexTrue(widget.getindex);
+                // provider.setboolVal(widget.getindex).then(
+                //       (value) => provider.getboolVal(),
+                //     );
+                // provider.setboolVal(widget.getindex);
+
+                //provider.getIndexTrue(widget.getindex);
               },
               child: const Text('Save'),
             ),

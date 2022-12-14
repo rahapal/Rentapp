@@ -32,10 +32,8 @@ class BodyTopPart extends StatelessWidget {
                 ),
                 Text(
                   'Empty (${provider.property.where((element) => element.status == 'Empty').length})',
-                  //'Empty(${tables.where((element) => element.statusName == 'empty').length})',
-
                   style: const TextStyle(
-                    color: Colors.black,
+                    color: Color(0xFF9F9F9F),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -57,7 +55,7 @@ class BodyTopPart extends StatelessWidget {
                 Text(
                   'Unpaid(${provider.property.where((element) => element.status == 'Unpaid').length})',
                   style: const TextStyle(
-                    color: Colors.black,
+                    color: Color(0xFF9F9F9F),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -79,7 +77,7 @@ class BodyTopPart extends StatelessWidget {
                 Text(
                   'Paid (${provider.property.where((element) => element.status == 'Paid').length})',
                   style: const TextStyle(
-                    color: Colors.black,
+                    color: Color(0xFF9F9F9F),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
