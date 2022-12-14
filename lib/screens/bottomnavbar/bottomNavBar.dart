@@ -42,7 +42,7 @@ class _BottomNavState extends State<BottomNav> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    // Provider.of<PropertyProvider>(context).getboolVal();
+    Provider.of<PropertyProvider>(context, listen: false).getProperties();
   }
 
   Widget currentScreen = TopBar();

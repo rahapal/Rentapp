@@ -51,7 +51,7 @@ class _BodyPartState extends State<BodyPart> {
                 child:
                     Consumer<PropertyProvider>(builder: (context, val, child) {
                   return GridView.builder(
-                    itemCount: 30,
+                    itemCount: val.isSelected.length,
                     //val.isSelected.length,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
@@ -69,15 +69,13 @@ class _BodyPartState extends State<BodyPart> {
                             shadowColor: Colors.black,
                             onTap: () {
                               log('index at show dialog: $index');
-                              if (context
-                                      .read<PropertyProvider>()
-                                      .atIndex(index) ==
-                                  null) {
+                              if (val.atIndex(index) == null) {
                                 showDialog(
                                     context: context,
                                     builder: (context) {
                                       return AlertDialog(
-                                        title: Text('Your space is Empty'),
+                                        title:
+                                            const Text('Your space is Empty'),
                                         content: const Text(
                                             'Do you want to add details?'),
                                         actions: [
@@ -110,14 +108,18 @@ class _BodyPartState extends State<BodyPart> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => DetailsPage(
-                                      getdetails: context
-                                          .read<PropertyProvider>()
-                                          .getDetails(context
-                                              .read<PropertyProvider>()
-                                              .property[index]
-                                              .index),
-                                    ),
+                                        getdetails: val.getDetails(
+                                            val.property[index].index)),
                                   ),
+
+                                  // Navigator.push(
+                                  //   context,
+                                  //   MaterialPageRoute(
+                                  //     builder: (context) => DetailsPage(
+                                  //       getdetails: context
+                                  //           .read<PropertyProvider>()
+                                  //           .getDetails(box.getAt(index)!.index),
+                                  //     ),
                                 );
                               }
                             },
