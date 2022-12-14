@@ -6,6 +6,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:rentapp/model/rentee.dart';
 import 'package:rentapp/route/route.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'controller/provider.dart';
 import 'model/property.dart';
@@ -14,13 +15,14 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   Directory directory = await getApplicationDocumentsDirectory();
+  await SharedPreferences.getInstance();
   Hive.init(directory.path);
   Hive.registerAdapter(PropertyAdapter());
   Hive.registerAdapter(RenteeAdapter());
   var Pbox = await Hive.openBox<Property>('property');
   var Rbox = await Hive.openBox<Rentee>('rentee');
 
-  // print(Pbox.values.last);
+  //print(Pbox.values.last);
 
   runApp(
     const RentApp(),

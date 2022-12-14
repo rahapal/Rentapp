@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rentapp/pages/viewpage/topbar.dart';
+import 'package:rentapp/screens/viewpage/topbar.dart';
 
 class ViewPage extends StatelessWidget {
   const ViewPage({super.key});

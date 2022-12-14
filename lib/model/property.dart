@@ -26,7 +26,7 @@ class Property {
   @HiveField(9)
   int index;
   @HiveField(10)
-  String fieldStatus;
+  bool fieldStatus;
 
   Property({
     required this.name,
@@ -39,7 +39,7 @@ class Property {
     required this.propertyId,
     required this.rentee,
     required this.index,
-    this.fieldStatus = 'false',
+    this.fieldStatus = false,
   }) {
     //print("Property Created, status: $status");
   }

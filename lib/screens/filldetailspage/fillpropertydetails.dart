@@ -82,7 +82,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                         : 'empty',
                     index: widget.getindex,
                     propertyId: const Uuid().v4(),
-                    fieldStatus: '',
+                    fieldStatus: true,
                     rentee: Rentee(
                       renteeId: const Uuid().v4(),
                       agreementimage: '',
@@ -96,9 +96,9 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                 );
                 print('Index at fill : ${widget.getindex}');
                 Navigator.pushNamed(context, route.RouteManager.home);
-                provider.setboolVal(widget.getindex).then(
-                      (value) => provider.getboolVal(),
-                    );
+                // provider.setboolVal(widget.getindex).then(
+                //       (value) => provider.getboolVal(),
+                //     );
 
                 //provider.getIndexTrue(widget.getindex);
               },

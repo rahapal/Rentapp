@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:provider/provider.dart';
 import 'package:rentapp/common/global_variables.dart';
+import 'package:rentapp/controller/provider.dart';
 import 'package:rentapp/model/property.dart';
 import 'package:rentapp/model/rentee.dart';
 import 'package:rentapp/route/route.dart' as route;
@@ -18,7 +20,7 @@ class BottomNav extends StatefulWidget {
 class _BottomNavState extends State<BottomNav> {
   int currentTab = 0;
   final List<Widget> screens = [
-    const TopBar(),
+    TopBar(),
     const pages(),
     const pages(),
     const pages(),
@@ -37,7 +39,13 @@ class _BottomNavState extends State<BottomNav> {
     super.initState();
   }
 
-  Widget currentScreen = const TopBar();
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Provider.of<PropertyProvider>(context).getboolVal();
+  }
+
+  Widget currentScreen = TopBar();
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +60,7 @@ class _BottomNavState extends State<BottomNav> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           //navigate to pages
+          Provider.of<PropertyProvider>(context, listen: false).clear();
           Pbox.clear();
           Rbox.clear();
 
@@ -79,7 +88,7 @@ class _BottomNavState extends State<BottomNav> {
                       minWidth: 40,
                       onPressed: () {
                         setState(() {
-                          currentScreen = const TopBar();
+                          currentScreen = TopBar();
                           currentTab = 0;
                         });
                       },

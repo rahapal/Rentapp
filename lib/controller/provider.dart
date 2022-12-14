@@ -3,11 +3,13 @@ import 'package:hive/hive.dart';
 import 'package:rentapp/model/property.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../model/rentee.dart';
+
 class PropertyProvider with ChangeNotifier {
   static const String _boxName = 'property';
   final List<Property> _property = [];
   List<Property> get property => _property;
-  List<bool> isSelected = List.generate(30, (index) => false);
+  //List<bool> isSelected = List.generate(30, (index) => false);
 
   Property? atIndex(int index) {
     // var matches = _property.where((element) => element.index == index).toList();
@@ -33,7 +35,8 @@ class PropertyProvider with ChangeNotifier {
     await propertybox.put(property.propertyId, property);
 
     _property.insert(property.index, property);
-
+    print('Property Added');
+    print('Index: ${property.index}');
     notifyListeners();
   }
 
@@ -41,6 +44,15 @@ class PropertyProvider with ChangeNotifier {
     return _property[index];
   }
 
+  void clear() {
+    _property.clear();
+
+    var Pbox = Hive.box<Property>(_boxName);
+    Pbox.clear();
+    var Rbox = Hive.box<Rentee>('Rentee');
+    Rbox.clear();
+    notifyListeners();
+  }
   // Future<void> setIndexTrue(index) async {
   //   final prefs = await SharedPreferences.getInstance();
   //   isSelected[index] = true;
@@ -54,23 +66,38 @@ class PropertyProvider with ChangeNotifier {
   //   notifyListeners();
   // }
 
-  void setIndexTrue(index) {
-    isSelected[index] = true;
+  // void setIndexTrue(index) {
+  //   isSelected[index] = true;
 
-    notifyListeners();
-  }
+  //   notifyListeners();
+  // }
 
-  Future<void> setboolVal(index) async {
-    setIndexTrue(index);
-    final prefs = await SharedPreferences.getInstance();
-    prefs.setStringList(
-        'isSelected', isSelected.map((e) => e.toString()).toList());
-  }
+  // Future<void> setboolVal(index) async {
+  //   setIndexTrue(index);
+  //   final prefs = await SharedPreferences.getInstance();
 
-  Future<void> getboolVal() async {
-    final prefs = await SharedPreferences.getInstance();
-    final list = prefs.getStringList('isSelected');
-    isSelected = list!.map((e) => e == 'true').toList();
-    notifyListeners();
-  }
+  //   prefs.setStringList(
+  //       'isSelected', isSelected.map((e) => e.toString()).toList());
+  //   print(isSelected);
+  //   print('Index: ${index}');
+  //   notifyListeners();
+  // }
+
+  // Future<void> getboolVal() async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   final list = prefs.getStringList('isSelected');
+  //   if (list == null) {
+  //     return;
+  //   } else {
+  //     isSelected = list.map((e) => e == 'true').toList();
+  //   }
+  //   print(isSelected);
+
+  //   notifyListeners();
+  // }
+
+  // removeValues() async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   prefs.clear();
+  // }
 }

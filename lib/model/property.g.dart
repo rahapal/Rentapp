@@ -27,7 +27,7 @@ class PropertyAdapter extends TypeAdapter<Property> {
       propertyId: fields[7] as String,
       rentee: fields[8] as Rentee,
       index: fields[9] as int,
-      fieldStatus: fields[10] as String,
+      fieldStatus: fields[10] as bool,
     );
   }
 

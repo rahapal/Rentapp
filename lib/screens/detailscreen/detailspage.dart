@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:rentapp/model/property.dart';
-import 'package:rentapp/pages/filldetailspage/fillrenteedetails.dart';
+import 'package:rentapp/screens/filldetailspage/fillrenteedetails.dart';
 import 'package:rentapp/route/route.dart' as route;
 
 import 'historytopbar.dart';
