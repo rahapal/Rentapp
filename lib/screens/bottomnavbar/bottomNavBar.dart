@@ -20,7 +20,7 @@ class BottomNav extends StatefulWidget {
 class _BottomNavState extends State<BottomNav> {
   int currentTab = 0;
   final List<Widget> screens = [
-    TopBar(),
+    const TopBar(),
     const pages(),
     const pages(),
     const pages(),
@@ -45,7 +45,7 @@ class _BottomNavState extends State<BottomNav> {
     Provider.of<PropertyProvider>(context).getProperties();
   }
 
-  Widget currentScreen = TopBar();
+  Widget currentScreen = const TopBar();
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +88,7 @@ class _BottomNavState extends State<BottomNav> {
                       minWidth: 40,
                       onPressed: () {
                         setState(() {
-                          currentScreen = TopBar();
+                          currentScreen = const TopBar();
                           currentTab = 0;
                         });
                       },

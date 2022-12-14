@@ -79,6 +79,14 @@ class PropertyProvider with ChangeNotifier {
     Rbox.clear();
     notifyListeners();
   }
+
+  getEmptyLength() {
+    var isSelectLength = isSelected.length;
+    var propertyLength = _property.length;
+    var emptyLength = isSelectLength - propertyLength;
+    return emptyLength;
+  }
+
   // Future<void> setIndexTrue(index) async {
   //   final prefs = await SharedPreferences.getInstance();
   //   isSelected[index] = true;

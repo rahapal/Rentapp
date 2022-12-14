@@ -12,7 +12,8 @@ class BodyTopPart extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: Padding(
-        padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 20),
+        padding:
+            const EdgeInsets.only(left: 20.0, right: 20.0, top: 20, bottom: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -31,7 +32,7 @@ class BodyTopPart extends StatelessWidget {
                   width: 8,
                 ),
                 Text(
-                  'Empty (${provider.property.where((element) => element.status == 'Empty').length})',
+                  'Empty (${provider.getEmptyLength()})',
                   style: const TextStyle(
                     color: Color(0xFF9F9F9F),
                     fontWeight: FontWeight.bold,
@@ -75,7 +76,7 @@ class BodyTopPart extends StatelessWidget {
                   width: 8,
                 ),
                 Text(
-                  'Paid (${provider.property.where((element) => element.status == 'Paid').length})',
+                  'Paid (${provider.property.where((element) => element.status == 'paid').length})',
                   style: const TextStyle(
                     color: Color(0xFF9F9F9F),
                     fontWeight: FontWeight.bold,

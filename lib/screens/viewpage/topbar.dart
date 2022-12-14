@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rentapp/common/global_variables.dart';
 
 import 'bodypart.dart';
 
@@ -13,6 +14,11 @@ class _TopBarState extends State<TopBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.white.withOpacity(0),
+        elevation: 0,
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -27,7 +33,7 @@ class _TopBarState extends State<TopBar> {
           //),
           //child:
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 17),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

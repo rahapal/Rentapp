@@ -77,9 +77,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                     image: '',
                     size: _propertySize.text,
                     //yesai ho herna test garns cha
-                    status: _propertySize.text.isNotEmpty
-                        ? _propertySize.text
-                        : 'empty',
+                    status: 'paid',
                     index: widget.getindex,
                     propertyId: const Uuid().v4(),
                     fieldStatus: true,

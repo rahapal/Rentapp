@@ -123,19 +123,19 @@ class _BodyPartState extends State<BodyPart> {
                               }
                             },
                             text: (index + 1).toString(),
-                            textColor:
+                            textColor: val.atIndex(index) == null
+                                ?
                                 // val.property[index].fieldStatus == true
                                 //?
-                                Colors.red,
+                                Colors.black
+                                : Colors.white,
                             //:
                             // Colors.blue,
                             color: val.atIndex(index) == null
                                 ? Colors.white
-                                : val.atIndex(index)!.fieldStatus == true
-                                    ? Colors.black
-                                    : val.property[index].propertyId.isEmpty
-                                        ? Colors.white
-                                        : Colors.black,
+                                : val.atIndex(index)!.status == 'paid'
+                                    ? Colors.green
+                                    : Colors.red,
                           ),
                         ),
                       );
