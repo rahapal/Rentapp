@@ -14,15 +14,25 @@ class PropertyProvider with ChangeNotifier {
   void addProperty(Property property) async {
     var propertybox = await Hive.openBox<Property>(_boxName);
     await propertybox.put(property.propertyId, property);
-
-    _property.insert(property.index, property);
+    //add the propertbox elements to property
+    _property.add(property);
     print('Property Added');
-    print('Index: ${property.index}');
+    print('Index added at: ${property.index}');
     notifyListeners();
   }
 
   Property getDetails(index) {
-    return _property[index];
+    //done this because we don't have index if we click 1st and then 7
+    var found = null;
+
+    for (int i = 0; i < _property.length; i++) {
+      if (_property[i].index == index) {
+        found = property[i];
+        break;
+      }
+    }
+
+    return found;
   }
 
   Property? atIndex(int index) {
@@ -47,9 +57,16 @@ class PropertyProvider with ChangeNotifier {
   Future<void> getProperties() async {
     var propertybox = await Hive.openBox<Property>(_boxName);
     _property.clear();
+
     for (int i = 0; i < propertybox.length; i++) {
+      // insert the propertybox to the _property at the index of the propertybox
       _property.add(propertybox.getAt(i)!);
+      //add(propertybox.getAt(i)!);
+      //print('property at index: ${propertybox.getAt(i)!.index}');
     }
+
+    //property index
+    //print('property length: ${_property.length}');
     notifyListeners();
   }
 

@@ -100,16 +100,15 @@ class _BodyPartState extends State<BodyPart> {
                                         ],
                                       );
                                     });
-                              }
-
-                              if (val.property[index].fieldStatus == true &&
-                                  index == val.property[index].index) {
+                              } else if ( //when property is not empty
+                                  val.atIndex(index)!.fieldStatus == true &&
+                                      index == val.atIndex(index)!.index) {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => DetailsPage(
                                         getdetails: val.getDetails(
-                                            val.property[index].index)),
+                                            val.atIndex(index)!.index)),
                                   ),
 
                                   // Navigator.push(
@@ -132,7 +131,7 @@ class _BodyPartState extends State<BodyPart> {
                             // Colors.blue,
                             color: val.atIndex(index) == null
                                 ? Colors.white
-                                : val.property[index].fieldStatus == true
+                                : val.atIndex(index)!.fieldStatus == true
                                     ? Colors.black
                                     : val.property[index].propertyId.isEmpty
                                         ? Colors.white
