@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rentapp/controller/provider.dart';
+import 'package:rentapp/model/payment.dart';
 import 'package:rentapp/model/property.dart';
 import 'package:rentapp/model/rentee.dart';
 import 'package:rentapp/route/route.dart' as route;
@@ -82,15 +83,17 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                     propertyId: const Uuid().v4(),
                     fieldStatus: true,
                     rentee: Rentee(
-                      renteeId: const Uuid().v4(),
-                      agreementimage: '',
-                      businessdetail: '',
-                      citizenimage: '',
-                      renteeContact: '',
-                      renteeEmail: '',
-                      renteeName: '',
-                      dueAmount: 0,
-                    ),
+                        renteeId: const Uuid().v4(),
+                        agreementimage: '',
+                        businessdetail: '',
+                        citizenimage: '',
+                        renteeContact: '',
+                        renteeEmail: '',
+                        renteeName: '',
+                        renteePayment: Payment(
+                            paymentId: const Uuid().v4(),
+                            paymentNote: '',
+                            paymentDate: null)),
                   ),
                 );
                 print('Index at fill : ${widget.getindex}');
