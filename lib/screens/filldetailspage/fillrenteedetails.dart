@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rentapp/controller/provider.dart';
+import 'package:rentapp/model/payment.dart';
 import 'package:rentapp/model/property.dart';
 import 'package:rentapp/model/rentee.dart';
 import 'package:rentapp/route/route.dart' as route;
+import 'package:uuid/uuid.dart';
 
 class FillRenteeDetails extends StatefulWidget {
   Property getDetails;
@@ -64,14 +66,17 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                 index: widget.getDetails.index,
                 fieldStatus: widget.getDetails.fieldStatus,
                 rentee: Rentee(
-                  renteeId: widget.getDetails.rentee.renteeId,
-                  renteeName: _renteeName.text,
-                  renteeEmail: _renteeEmail.text,
-                  renteeContact: _renteeContact.text,
-                  businessdetail: _renteebusinessdetails.text,
-                  agreementimage: '',
-                  citizenimage: '',
-                ),
+                    renteeId: widget.getDetails.rentee.renteeId,
+                    renteeName: _renteeName.text,
+                    renteeEmail: _renteeEmail.text,
+                    renteeContact: _renteeContact.text,
+                    businessdetail: _renteebusinessdetails.text,
+                    agreementimage: '',
+                    citizenimage: '',
+                    renteePayment: Payment(
+                        paymentId: Uuid().v4(),
+                        paymentDate: DateTime.now(),
+                        paymentNote: '')),
                 description: '',
                 image: '',
                 status: widget.getDetails.status,
