@@ -10,6 +10,7 @@ import 'package:rentapp/route/route.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'controller/provider.dart';
+import 'model/payment.dart';
 import 'model/property.dart';
 
 void main() async {
@@ -20,8 +21,10 @@ void main() async {
   Hive.init(directory.path);
   Hive.registerAdapter(PropertyAdapter());
   Hive.registerAdapter(RenteeAdapter());
+  Hive.registerAdapter(PaymentAdapter());
   var Pbox = await Hive.openBox<Property>('property');
   var Rbox = await Hive.openBox<Rentee>('rentee');
+  var Paybox = await Hive.openBox<Payment>('payment');
 
   //print(Pbox.values.last);
 

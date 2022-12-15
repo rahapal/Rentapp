@@ -2,7 +2,7 @@ import 'package:hive/hive.dart';
 
 part 'payment.g.dart';
 
-@HiveType(typeId: 0)
+@HiveType(typeId: 2)
 class Payment {
   @HiveField(0)
   String paymentId;
