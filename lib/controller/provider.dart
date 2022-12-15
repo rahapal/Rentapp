@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:rentapp/model/payment.dart';
 import 'package:rentapp/model/property.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../model/rentee.dart';
 
@@ -77,6 +77,8 @@ class PropertyProvider with ChangeNotifier {
     Pbox.clear();
     var Rbox = Hive.box<Rentee>('Rentee');
     Rbox.clear();
+    var Paybox = Hive.box('Payment');
+    Paybox.clear();
     notifyListeners();
   }
 
@@ -86,6 +88,7 @@ class PropertyProvider with ChangeNotifier {
     var emptyLength = isSelectLength - propertyLength;
     return emptyLength;
   }
+}
 
   // Future<void> setIndexTrue(index) async {
   //   final prefs = await SharedPreferences.getInstance();
@@ -134,4 +137,4 @@ class PropertyProvider with ChangeNotifier {
   //   SharedPreferences prefs = await SharedPreferences.getInstance();
   //   prefs.clear();
   // }
-}
+

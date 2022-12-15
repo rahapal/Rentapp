@@ -3,6 +3,7 @@ import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import 'package:rentapp/common/global_variables.dart';
 import 'package:rentapp/controller/provider.dart';
+import 'package:rentapp/model/payment.dart';
 import 'package:rentapp/model/property.dart';
 import 'package:rentapp/model/rentee.dart';
 import 'package:rentapp/route/route.dart' as route;
@@ -31,11 +32,13 @@ class _BottomNavState extends State<BottomNav> {
   late Box<Property> Pbox;
   // ignore: non_constant_identifier_names
   late Box<Rentee> Rbox;
+  late Box<Payment> Paybox;
 
   @override
   void initState() {
     Pbox = Hive.box<Property>('property');
     Rbox = Hive.box<Rentee>('rentee');
+    Paybox = Hive.box<Payment>('payment');
     super.initState();
   }
 
@@ -61,8 +64,9 @@ class _BottomNavState extends State<BottomNav> {
         onPressed: () {
           //navigate to pages
           Provider.of<PropertyProvider>(context, listen: false).clear();
-          Pbox.clear();
-          Rbox.clear();
+          // Pbox.clear();
+          // Rbox.clear();
+          // Paybox.clear();
 
           //Navigator.pushNamed(context, route.RouteManager.toBeCreate);
         },

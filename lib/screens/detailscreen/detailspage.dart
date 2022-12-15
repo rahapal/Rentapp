@@ -58,13 +58,14 @@ class _DetailsPageState extends State<DetailsPage> {
               bottom: 5,
             ),
             child: IconButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => FillRenteeDetails(
-                              getDetails: widget.getdetails)));
-                },
+                onPressed: () {},
+                // onPressed: () {
+                //   Navigator.push(
+                //       context,
+                //       MaterialPageRoute(
+                //           builder: (context) => FillRenteeDetails(
+                //               getDetails: widget.getdetails)));
+                // },
                 icon: const Icon(
                   size: 27,
                   Icons.more_vert,
@@ -111,7 +112,7 @@ class _DetailsPageState extends State<DetailsPage> {
                     const SizedBox(
                       height: 10,
                     ),
-                    const PieChart(),
+                    PieChart(getdetails: widget.getdetails),
                     const SizedBox(
                       height: 10,
                     ),

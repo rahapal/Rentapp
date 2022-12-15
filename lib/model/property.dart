@@ -12,7 +12,7 @@ class Property {
   @HiveField(2)
   String description;
   @HiveField(3)
-  String price;
+  int price;
   @HiveField(4)
   String image;
   @HiveField(5)

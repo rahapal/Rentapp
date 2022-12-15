@@ -74,7 +74,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                     name: _propertyName.text,
                     address: _propertyAddress.text,
                     description: _propertyDescription.text,
-                    price: _propertyPrice.text,
+                    price: int.parse(_propertyPrice.text),
                     image: '',
                     size: _propertySize.text,
                     //yesai ho herna test garns cha

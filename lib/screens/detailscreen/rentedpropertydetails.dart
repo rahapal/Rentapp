@@ -66,7 +66,7 @@ class _RentedPropertyDetailsState extends State<RentedPropertyDetails> {
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  '${widget.getdetails.price}/month',
+                  'Rs ${widget.getdetails.price}/ month',
                   style: const TextStyle(
                       color: Color(0xFF9f9f9f), fontWeight: FontWeight.bold),
                 ),

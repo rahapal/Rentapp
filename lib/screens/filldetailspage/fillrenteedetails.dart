@@ -20,6 +20,7 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
   final TextEditingController _renteeContact = TextEditingController();
   final TextEditingController _renteeEmail = TextEditingController();
   final TextEditingController _renteebusinessdetails = TextEditingController();
+  final TextEditingController _renteeDueAmount = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +56,12 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
               hintText: 'Rentee business details',
             ),
           ),
+          TextFormField(
+            controller: _renteeDueAmount,
+            decoration: const InputDecoration(
+              hintText: 'Rentee Due Amount',
+            ),
+          ),
           ElevatedButton(
             onPressed: () {
               final property = Property(
@@ -73,8 +80,9 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                     businessdetail: _renteebusinessdetails.text,
                     agreementimage: '',
                     citizenimage: '',
+                    dueAmount: int.parse(_renteeDueAmount.text),
                     renteePayment: Payment(
-                        paymentId: Uuid().v4(),
+                        paymentId: const Uuid().v4(),
                         paymentDate: DateTime.now(),
                         paymentNote: '')),
                 description: '',

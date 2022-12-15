@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:provider/provider.dart';
 import 'package:rentapp/common/commonbutton.dart';
+import 'package:rentapp/controller/provider.dart';
+import 'package:rentapp/model/property.dart';
 
 class PieChart extends StatefulWidget {
-  const PieChart({super.key});
+  Property getdetails;
+  PieChart({super.key, required this.getdetails});
 
   @override
   State<PieChart> createState() => _PieChartState();
@@ -57,7 +61,7 @@ class _PieChartState extends State<PieChart> {
                   'Due Date',
                   style: TextStyle(
                     color: Color(0xFF9f9f9f),
-                    fontSize: 14,
+                    fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -71,10 +75,10 @@ class _PieChartState extends State<PieChart> {
                 const SizedBox(
                   height: 10,
                 ),
-                const Text(
-                  'Due amount',
-                  style: TextStyle(
-                    fontSize: 14,
+                Text(
+                  'Due Amount Rs ${widget.getdetails.rentee.dueAmount.toInt()}',
+                  style: const TextStyle(
+                    fontSize: 16,
                     color: Color(0xFF9f9f9f),
                     fontWeight: FontWeight.bold,
                   ),
@@ -82,16 +86,17 @@ class _PieChartState extends State<PieChart> {
                 const SizedBox(
                   height: 2,
                 ),
-                const Text(
-                  '15k',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                Text(
+                  'Monthly Rs ${widget.getdetails.price.toInt()}',
+                  style: const TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(
                   height: 15,
                 ),
                 CustomButton(
                   shadowColor: Colors.blue,
-                  text: 'Notify',
+                  text: 'Paid',
                   textColor: Colors.white,
                   onTap: () {},
                 )

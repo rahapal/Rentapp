@@ -20,7 +20,7 @@ class PropertyAdapter extends TypeAdapter<Property> {
       name: fields[0] as String,
       address: fields[1] as String,
       description: fields[2] as String,
-      price: fields[3] as String,
+      price: fields[3] as int,
       image: fields[4] as String,
       size: fields[5] as String,
       status: fields[6] as String,
