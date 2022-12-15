@@ -1,4 +1,5 @@
 import 'package:hive/hive.dart';
+import 'package:rentapp/model/payment.dart';
 
 part 'rentee.g.dart';
 
@@ -18,6 +19,12 @@ class Rentee {
   String agreementimage;
   @HiveField(6)
   String renteeId;
+  @HiveField(7)
+  int dueAmount;
+  @HiveField(8)
+  int advanceAmount;
+  @HiveField(9)
+  Payment renteePayment;
 
   Rentee({
     required this.renteeName,
@@ -27,5 +34,8 @@ class Rentee {
     required this.citizenimage,
     required this.agreementimage,
     required this.renteeId,
+    this.dueAmount = 0,
+    this.advanceAmount = 0,
+    required this.renteePayment,
   });
 }

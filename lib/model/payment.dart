@@ -5,18 +5,18 @@ part 'payment.g.dart';
 @HiveType(typeId: 0)
 class Payment {
   @HiveField(0)
-  int spaceid;
+  String paymentId;
   @HiveField(1)
-  DateTime date;
+  DateTime? paymentDate;
   @HiveField(2)
-  double advanceDeposit;
+  int payedAmount;
   @HiveField(3)
-  double payedAmount;
+  String paymentNote;
 
   Payment({
-    required this.spaceid,
-    required this.date,
-    required this.advanceDeposit,
-    required this.payedAmount,
+    required this.paymentId,
+    required this.paymentDate,
+    this.payedAmount = 0,
+    required this.paymentNote,
   });
 }

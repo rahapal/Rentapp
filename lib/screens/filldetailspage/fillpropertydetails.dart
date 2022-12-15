@@ -89,6 +89,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                       renteeContact: '',
                       renteeEmail: '',
                       renteeName: '',
+                      dueAmount: 0,
                     ),
                   ),
                 );

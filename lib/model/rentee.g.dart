@@ -24,13 +24,16 @@ class RenteeAdapter extends TypeAdapter<Rentee> {
       citizenimage: fields[4] as String,
       agreementimage: fields[5] as String,
       renteeId: fields[6] as String,
+      dueAmount: fields[7] as int,
+      advanceAmount: fields[8] as int,
+      renteePayment: fields[9] as Payment,
     );
   }
 
   @override
   void write(BinaryWriter writer, Rentee obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(10)
       ..writeByte(0)
       ..write(obj.renteeName)
       ..writeByte(1)
@@ -44,7 +47,13 @@ class RenteeAdapter extends TypeAdapter<Rentee> {
       ..writeByte(5)
       ..write(obj.agreementimage)
       ..writeByte(6)
-      ..write(obj.renteeId);
+      ..write(obj.renteeId)
+      ..writeByte(7)
+      ..write(obj.dueAmount)
+      ..writeByte(8)
+      ..write(obj.advanceAmount)
+      ..writeByte(9)
+      ..write(obj.renteePayment);
   }
 
   @override

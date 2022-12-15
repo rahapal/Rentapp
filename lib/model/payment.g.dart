@@ -17,10 +17,10 @@ class PaymentAdapter extends TypeAdapter<Payment> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Payment(
-      spaceid: fields[0] as int,
-      date: fields[1] as DateTime,
-      advanceDeposit: fields[2] as double,
-      payedAmount: fields[3] as double,
+      paymentId: fields[0] as String,
+      paymentDate: fields[1] as DateTime?,
+      payedAmount: fields[2] as int,
+      paymentNote: fields[3] as String,
     );
   }
 
@@ -29,13 +29,13 @@ class PaymentAdapter extends TypeAdapter<Payment> {
     writer
       ..writeByte(4)
       ..writeByte(0)
-      ..write(obj.spaceid)
+      ..write(obj.paymentId)
       ..writeByte(1)
-      ..write(obj.date)
+      ..write(obj.paymentDate)
       ..writeByte(2)
-      ..write(obj.advanceDeposit)
+      ..write(obj.payedAmount)
       ..writeByte(3)
-      ..write(obj.payedAmount);
+      ..write(obj.paymentNote);
   }
 
   @override

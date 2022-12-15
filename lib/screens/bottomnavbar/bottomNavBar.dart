@@ -64,7 +64,7 @@ class _BottomNavState extends State<BottomNav> {
           Pbox.clear();
           Rbox.clear();
 
-          Navigator.pushNamed(context, route.RouteManager.toBeCreate);
+          //Navigator.pushNamed(context, route.RouteManager.toBeCreate);
         },
         // backgroundColor: const Color(0xFF5B67FE),
         child: const Icon(Icons.add),

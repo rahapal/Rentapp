@@ -100,7 +100,9 @@ class _BodyPartState extends State<BodyPart> {
                                         ],
                                       );
                                     });
-                              } else if ( //when property is not empty
+                              } else if (
+                                  //used this val.atIndex everywhere because we can assign details in any shutter
+                                  //which can be in any index.
                                   val.atIndex(index)!.fieldStatus == true &&
                                       index == val.atIndex(index)!.index) {
                                 Navigator.push(
