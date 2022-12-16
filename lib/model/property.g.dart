@@ -17,7 +17,7 @@ class PropertyAdapter extends TypeAdapter<Property> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Property(
-      name: fields[0] as String,
+      propertyName: fields[0] as String,
       address: fields[1] as String,
       description: fields[2] as String,
       price: fields[3] as int,
@@ -36,7 +36,7 @@ class PropertyAdapter extends TypeAdapter<Property> {
     writer
       ..writeByte(11)
       ..writeByte(0)
-      ..write(obj.name)
+      ..write(obj.propertyName)
       ..writeByte(1)
       ..write(obj.address)
       ..writeByte(2)

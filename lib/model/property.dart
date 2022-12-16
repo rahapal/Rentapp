@@ -6,7 +6,7 @@ part 'property.g.dart';
 @HiveType(typeId: 0)
 class Property {
   @HiveField(0)
-  String name;
+  String propertyName;
   @HiveField(1)
   String address;
   @HiveField(2)
@@ -29,7 +29,7 @@ class Property {
   bool fieldStatus;
 
   Property({
-    required this.name,
+    required this.propertyName,
     required this.address,
     required this.description,
     required this.price,
@@ -40,7 +40,7 @@ class Property {
     required this.rentee,
     required this.index,
     this.fieldStatus = false,
-  }) {
-    //print("Property Created, status: $status");
-  }
+  });
+  //print("Property Created, status: $status");
+
 }

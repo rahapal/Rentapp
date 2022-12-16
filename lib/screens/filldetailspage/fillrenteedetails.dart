@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:rentapp/controller/provider.dart';
 import 'package:rentapp/model/payment.dart';
@@ -16,11 +17,11 @@ class FillRenteeDetails extends StatefulWidget {
 }
 
 class _FillRenteeDetailsState extends State<FillRenteeDetails> {
-  final TextEditingController _renteeName = TextEditingController();
-  final TextEditingController _renteeContact = TextEditingController();
-  final TextEditingController _renteeEmail = TextEditingController();
-  final TextEditingController _renteebusinessdetails = TextEditingController();
-  final TextEditingController _renteeDueAmount = TextEditingController();
+  TextEditingController _renteeName = TextEditingController();
+  TextEditingController _renteeContact = TextEditingController();
+  TextEditingController _renteeEmail = TextEditingController();
+  TextEditingController _renteebusinessdetails = TextEditingController();
+  TextEditingController _renteeDueAmount = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +47,8 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
           ),
           TextFormField(
             controller: _renteeContact,
+            keyboardType: TextInputType.number,
+            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
             decoration: const InputDecoration(
               hintText: 'Rentee Contact',
             ),
@@ -58,6 +61,8 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
           ),
           TextFormField(
             controller: _renteeDueAmount,
+            keyboardType: TextInputType.number,
+            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
             decoration: const InputDecoration(
               hintText: 'Rentee Due Amount',
             ),
@@ -66,7 +71,7 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
             onPressed: () {
               final property = Property(
                 propertyId: widget.getDetails.propertyId,
-                name: widget.getDetails.name,
+                propertyName: widget.getDetails.propertyName,
                 price: widget.getDetails.price,
                 address: widget.getDetails.address,
                 size: widget.getDetails.size,

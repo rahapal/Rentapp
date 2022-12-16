@@ -48,7 +48,7 @@ class _RentedPropertyDetailsState extends State<RentedPropertyDetails> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  widget.getdetails.name,
+                  widget.getdetails.propertyName,
                   style: const TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 14.5),
                 ),

@@ -137,4 +137,3 @@ class PropertyProvider with ChangeNotifier {
   //   SharedPreferences prefs = await SharedPreferences.getInstance();
   //   prefs.clear();
   // }
-
