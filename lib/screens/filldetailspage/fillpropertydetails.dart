@@ -34,7 +34,6 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white.withOpacity(0),
-        title: const Text('Fill Property Details'),
         automaticallyImplyLeading: false,
         elevation: 0,
         leading: Padding(
@@ -67,7 +66,6 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 43, vertical: 20),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -88,296 +86,325 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
               const SizedBox(
                 height: 38,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'Property Name',
-                    style: TextStyle(fontWeight: FontWeight.w300, fontSize: 14),
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  TextFormField(
-                    controller: _propertyName,
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: GlobalVariables.textFieldbackgroundColor,
-                      contentPadding: const EdgeInsets.symmetric(
-                          vertical: 10, horizontal: 10),
-                      hintText: 'Enter property name',
-                      hintStyle: const TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w300,
-                      ),
-                      border: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(5.0),
-                        ),
-                      ),
-                      enabledBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: GlobalVariables.textFieldborderColor,
-                        ),
-                      ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 17),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'Property Name',
+                      style:
+                          TextStyle(fontWeight: FontWeight.w300, fontSize: 14),
                     ),
-                  ),
-                ],
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'Location',
-                    style: TextStyle(fontWeight: FontWeight.w300, fontSize: 14),
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  TextFormField(
-                    controller: _propertyAddress,
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: GlobalVariables.textFieldbackgroundColor,
-                      contentPadding: const EdgeInsets.symmetric(
-                          vertical: 10, horizontal: 10),
-                      hintText: 'Enter property location',
-                      hintStyle: const TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w300,
-                      ),
-                      border: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(5.0),
-                        ),
-                      ),
-                      enabledBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: GlobalVariables.textFieldborderColor,
-                        ),
-                      ),
+                    const SizedBox(
+                      height: 12,
                     ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(
-                    width: 135,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Size',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w300, fontSize: 14),
+                    TextFormField(
+                      controller: _propertyName,
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: GlobalVariables.textFieldbackgroundColor,
+                        contentPadding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 10),
+                        hintText: 'Enter property name',
+                        hintStyle: const TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w300,
                         ),
-                        const SizedBox(
-                          height: 12,
-                        ),
-                        TextFormField(
-                          textAlign: TextAlign.end,
-                          controller: _propertySize,
-                          decoration: InputDecoration(
-                            filled: true,
-                            fillColor: GlobalVariables.textFieldbackgroundColor,
-                            contentPadding: const EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 10),
-                            hintText: '/sq.ft',
-                            hintStyle: const TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w300,
-                            ),
-                            border: const OutlineInputBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(5.0),
-                              ),
-                            ),
-                            enabledBorder: const OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: GlobalVariables.textFieldborderColor,
-                              ),
-                            ),
+                        border: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(5.0),
                           ),
                         ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    width: 135,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Rent Cost',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w300, fontSize: 14),
-                        ),
-                        const SizedBox(
-                          height: 12,
-                        ),
-                        TextFormField(
-                          controller: _propertyPrice,
-                          decoration: InputDecoration(
-                            filled: true,
-                            fillColor: GlobalVariables.textFieldbackgroundColor,
-                            contentPadding: const EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 10),
-                            border: const OutlineInputBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(5.0),
-                              ),
-                            ),
-                            enabledBorder: const OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: GlobalVariables.textFieldborderColor,
-                              ),
-                            ),
+                        enabledBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: GlobalVariables.textFieldborderColor,
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'Description',
-                    style: TextStyle(fontWeight: FontWeight.w300, fontSize: 14),
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  TextFormField(
-                    controller: _propertyDescription,
-                    minLines: 5,
-                    keyboardType: TextInputType.multiline,
-                    maxLines: null,
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: GlobalVariables.textFieldbackgroundColor,
-                      contentPadding: const EdgeInsets.symmetric(
-                          vertical: 10, horizontal: 10),
-                      border: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(5.0),
-                        ),
-                      ),
-                      enabledBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: GlobalVariables.textFieldborderColor,
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(
-                    width: 160,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Agreement date start',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w300, fontSize: 14),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 17),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 12),
+                      child: Text(
+                        'Location',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w300, fontSize: 14),
+                      ),
+                    ),
+                    TextFormField(
+                      controller: _propertyAddress,
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: GlobalVariables.textFieldbackgroundColor,
+                        contentPadding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 10),
+                        hintText: 'Enter property location',
+                        hintStyle: const TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w300,
                         ),
-                        const SizedBox(
-                          height: 12,
-                        ),
-                        TextFormField(
-                          keyboardType: TextInputType.none,
-                          textAlign: TextAlign.start,
-                          controller: _agreementDateStart,
-                          decoration: InputDecoration(
-                            filled: true,
-                            fillColor: GlobalVariables.textFieldbackgroundColor,
-                            contentPadding: const EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 10),
-                            prefixIcon: const Icon(Icons.calendar_today),
-                            hintText: 'Select date',
-                            hintStyle: const TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w300,
-                            ),
-                            border: const OutlineInputBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(5.0),
-                              ),
-                            ),
-                            enabledBorder: const OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: GlobalVariables.textFieldborderColor,
-                              ),
-                            ),
+                        border: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(5.0),
                           ),
-                          onTap: () async {
-                            //helps to disable keyboard
-                            SystemChannels.textInput
-                                .invokeMethod('TextInput.hide');
-                            DateTime? date = await showDatePicker(
-                                context: context,
-                                initialDate: DateTime.now(),
-                                firstDate: DateTime(2000),
-                                lastDate: DateTime(2100));
-                            if (date != null) {
-                              setState(() {
-                                _agreementDateStart.text =
-                                    DateTime(date.year, date.month, date.day)
+                        ),
+                        enabledBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: GlobalVariables.textFieldborderColor,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 17),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 33),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.only(bottom: 12),
+                              child: Text(
+                                'Size',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w300, fontSize: 14),
+                              ),
+                            ),
+                            TextFormField(
+                              textAlign: TextAlign.end,
+                              controller: _propertySize,
+                              decoration: InputDecoration(
+                                filled: true,
+                                fillColor:
+                                    GlobalVariables.textFieldbackgroundColor,
+                                contentPadding: const EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 10),
+                                hintText: 'sq.ft',
+                                hintStyle: const TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                                border: const OutlineInputBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(5.0),
+                                  ),
+                                ),
+                                enabledBorder: const OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: GlobalVariables.textFieldborderColor,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 33),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.only(bottom: 12),
+                              child: Text(
+                                'Rent Cost',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w300, fontSize: 14),
+                              ),
+                            ),
+                            TextFormField(
+                              controller: _propertyPrice,
+                              decoration: InputDecoration(
+                                filled: true,
+                                fillColor:
+                                    GlobalVariables.textFieldbackgroundColor,
+                                contentPadding: const EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 10),
+                                border: const OutlineInputBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(5.0),
+                                  ),
+                                ),
+                                enabledBorder: const OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: GlobalVariables.textFieldborderColor,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 17),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 12),
+                      child: Text(
+                        'Description',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w300, fontSize: 14),
+                      ),
+                    ),
+                    TextFormField(
+                      controller: _propertyDescription,
+                      minLines: 5,
+                      keyboardType: TextInputType.multiline,
+                      maxLines: null,
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: GlobalVariables.textFieldbackgroundColor,
+                        contentPadding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 10),
+                        border: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(5.0),
+                          ),
+                        ),
+                        enabledBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: GlobalVariables.textFieldborderColor,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 40),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 5),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.only(bottom: 12),
+                              child: Text(
+                                'Agreement date start',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w300, fontSize: 14),
+                              ),
+                            ),
+                            TextFormField(
+                              controller: _agreementDateStart,
+                              decoration: InputDecoration(
+                                prefixIcon: const Icon(
+                                  Icons.calendar_today,
+                                ),
+                                filled: true,
+                                fillColor:
+                                    GlobalVariables.textFieldbackgroundColor,
+                                contentPadding: const EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 10),
+                                hintText: 'Select date',
+                                hintStyle: const TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                                border: const OutlineInputBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(5.0),
+                                  ),
+                                ),
+                                enabledBorder: const OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: GlobalVariables.textFieldborderColor,
+                                  ),
+                                ),
+                              ),
+                              onTap: () async {
+                                final DateTime? date = await showDatePicker(
+                                  context: context,
+                                  initialDate: DateTime.now(),
+                                  firstDate: DateTime(2000),
+                                  lastDate: DateTime(2100),
+                                );
+                                if (date != null) {
+                                  setState(() {
+                                    _agreementDateStart.text = DateTime(
+                                            date.year, date.month, date.day)
                                         .toString()
                                         .substring(0, 10);
-                              });
-                            }
-                          },
+                                  });
+                                }
+                              },
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 120,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Advance deposit',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w300, fontSize: 14),
-                        ),
-                        const SizedBox(
-                          height: 12,
-                        ),
-                        TextFormField(
-                          controller: _propertyPrice,
-                          decoration: InputDecoration(
-                            filled: true,
-                            fillColor: GlobalVariables.textFieldbackgroundColor,
-                            contentPadding: const EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 10),
-                            border: const OutlineInputBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(5.0),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 14),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.only(bottom: 12),
+                              child: Text(
+                                'Advance deposit',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w300, fontSize: 14),
                               ),
                             ),
-                            enabledBorder: const OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: GlobalVariables.textFieldborderColor,
+                            TextFormField(
+                              controller: _propertyPrice,
+                              decoration: InputDecoration(
+                                filled: true,
+                                fillColor:
+                                    GlobalVariables.textFieldbackgroundColor,
+                                contentPadding: const EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 10),
+                                border: const OutlineInputBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(5.0),
+                                  ),
+                                ),
+                                enabledBorder: const OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: GlobalVariables.textFieldborderColor,
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  minimumSize: const Size(double.infinity, 50),
+                ),
                 onPressed: () {
                   provider.addProperty(
                     Property(
