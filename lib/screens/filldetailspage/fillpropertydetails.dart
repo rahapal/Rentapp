@@ -230,6 +230,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                               ),
                             ),
                             TextFormField(
+                              keyboardType: TextInputType.number,
                               controller: _propertyPrice,
                               decoration: InputDecoration(
                                 filled: true,
@@ -313,6 +314,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                               ),
                             ),
                             TextFormField(
+                              keyboardType: TextInputType.none,
                               controller: _agreementDateStart,
                               decoration: InputDecoration(
                                 prefixIcon: const Icon(
@@ -375,7 +377,8 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                               ),
                             ),
                             TextFormField(
-                              controller: _propertyPrice,
+                              keyboardType: TextInputType.number,
+                              controller: _propertyAdvanceDeposit,
                               decoration: InputDecoration(
                                 filled: true,
                                 fillColor:
