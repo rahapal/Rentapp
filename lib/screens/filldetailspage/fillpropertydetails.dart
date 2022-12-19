@@ -95,7 +95,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                     const Text(
                       'Property Name',
                       style:
-                          TextStyle(fontWeight: FontWeight.w300, fontSize: 14),
+                          TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
                     ),
                     const SizedBox(
                       height: 12,
@@ -109,7 +109,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                             vertical: 10, horizontal: 10),
                         hintText: 'Enter property name',
                         hintStyle: const TextStyle(
-                          fontSize: 12,
+                          fontSize: 14,
                           fontWeight: FontWeight.w300,
                         ),
                         border: const OutlineInputBorder(
@@ -411,6 +411,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                 onPressed: () {
                   provider.addProperty(
                     Property(
+                      propertyId: const Uuid().v4(),
                       propertyName: _propertyName.text,
                       address: _propertyAddress.text,
                       description: _propertyDescription.text,
@@ -420,20 +421,21 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                       //yesai ho herna test garns cha
                       status: 'paid',
                       index: widget.getindex,
-                      propertyId: const Uuid().v4(),
+
                       fieldStatus: true,
                       rentee: Rentee(
-                          renteeId: const Uuid().v4(),
-                          agreementimage: '',
-                          businessdetail: '',
-                          citizenimage: '',
-                          renteeContact: '',
-                          renteeEmail: '',
-                          renteeName: '',
-                          renteePayment: Payment(
-                              paymentId: const Uuid().v4(),
-                              paymentNote: '',
-                              paymentDate: null)),
+                        renteeId: const Uuid().v4(),
+                        agreementimage: '',
+                        businessdetail: '',
+                        citizenimage: '',
+                        renteeContact: '',
+                        renteeEmail: '',
+                        renteeName: '',
+                        renteePayment: Payment(
+                            paymentId: const Uuid().v4(),
+                            paymentNote: '',
+                            paymentDate: null),
+                      ),
                     ),
                   );
                   print('Index at fill : ${widget.getindex}');
