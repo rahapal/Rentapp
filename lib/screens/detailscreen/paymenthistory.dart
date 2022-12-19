@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:rentapp/controller/provider.dart';
 
 class PaymentHistory extends StatefulWidget {
   const PaymentHistory({super.key});
@@ -8,23 +10,24 @@ class PaymentHistory extends StatefulWidget {
 }
 
 class _PaymentHistoryState extends State<PaymentHistory> {
-  List images = [
-    'assets/khaltilogo.png',
-    'assets/fonepaylogo.png',
-    'assets/cashlogo.png',
-  ];
-  var names = [
-    'Khalti',
-    'Fonepay',
-    'Cash',
-  ];
-  var paiddate = [
-    'Mar 21,2021',
-    'Feb 21 2021',
-    'Jan 21 2021',
-  ];
+  // List images = [
+  //   'assets/khaltilogo.png',
+  //   'assets/fonepaylogo.png',
+  //   'assets/cashlogo.png',
+  // ];
+  // var names = [
+  //   'Khalti',
+  //   'Fonepay',
+  //   'Cash',
+  // ];
+  // var paiddate = [
+  //   'Mar 21,2021',
+  //   'Feb 21 2021',
+  //   'Jan 21 2021',
+  // ];
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<PropertyProvider>(context);
     return SizedBox(
       height: 200,
       child: Padding(
@@ -33,7 +36,7 @@ class _PaymentHistoryState extends State<PaymentHistory> {
           left: 20,
         ),
         child: ListView.builder(
-          itemCount: 3,
+          itemCount: provider.payedList.length,
           shrinkWrap: true,
           itemBuilder: (context, index) {
             return Column(
@@ -54,7 +57,7 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                             ),
                           ),
                           child: Image.asset(
-                            images[index],
+                            "assets/cashlogo.png",
                             fit: BoxFit.fitWidth,
                           ),
                         ),
@@ -65,12 +68,13 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              names[index],
+                              provider.payedList[index].payedAmount.toString(),
+                              // provider.payedList[index]{"paymentId,
                               style: const TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                             Text(
-                              paiddate[index],
+                              "12",
                               style: const TextStyle(
                                   fontSize: 10,
                                   color: Color(0xFF9f9f9f),
@@ -80,8 +84,8 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                         ),
                       ],
                     ),
-                    const Text(
-                      '+ 15K',
+                    Text(
+                      "Paid Date",
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),

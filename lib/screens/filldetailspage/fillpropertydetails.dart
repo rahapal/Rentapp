@@ -434,7 +434,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                         renteePayment: Payment(
                             paymentId: const Uuid().v4(),
                             paymentNote: '',
-                            paymentDate: null),
+                            paymentDate: DateTime.now()),
                       ),
                     ),
                   );

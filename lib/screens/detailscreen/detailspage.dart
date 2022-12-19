@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'package:rentapp/model/property.dart';
 import 'package:rentapp/screens/filldetailspage/fillrenteedetails.dart';
 import 'package:rentapp/route/route.dart' as route;
 
+import '../../controller/provider.dart';
 import 'historytopbar.dart';
 import 'paymenthistory.dart';
 import 'piechart.dart';
@@ -42,12 +44,14 @@ class _DetailsPageState extends State<DetailsPage> {
             child: Padding(
               padding: const EdgeInsets.only(left: 3),
               child: IconButton(
-                color: const Color(0xFFBDC1FF),
-                icon: const Icon(Icons.arrow_back_ios),
-                onPressed: () {
-                  Navigator.pushNamed(context, route.RouteManager.home);
-                },
-              ),
+                  color: const Color(0xFFBDC1FF),
+                  icon: const Icon(Icons.arrow_back_ios),
+                  onPressed: () {
+                    Navigator.pushNamed(context, route.RouteManager.home);
+                    Provider.of<PropertyProvider>(context, listen: false)
+                        .payedList
+                        .clear();
+                  }),
             ),
           ),
         ),

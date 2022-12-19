@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:provider/provider.dart';
 import 'package:rentapp/common/commonbutton.dart';
 import 'package:rentapp/controller/provider.dart';
+import 'package:rentapp/model/payment.dart';
 import 'package:rentapp/model/property.dart';
 
 class PieChart extends StatefulWidget {
@@ -18,6 +20,7 @@ class _PieChartState extends State<PieChart> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<PropertyProvider>(context);
     return SizedBox(
       width: double.infinity,
       child: Padding(
@@ -98,8 +101,18 @@ class _PieChartState extends State<PieChart> {
                   shadowColor: Colors.blue,
                   text: 'Paid',
                   textColor: Colors.white,
-                  onTap: () {},
-                )
+                  onTap: () async {
+                    var paymentbox = await Hive.openBox<Payment>('payment');
+                    provider.paymentAdd(
+                      Payment(
+                          paymentId:
+                              widget.getdetails.rentee.renteePayment.paymentId,
+                          paymentDate: DateTime.now(),
+                          paymentNote: '',
+                          payedAmount: widget.getdetails.price.toInt()),
+                    );
+                  },
+                ),
               ],
             )
           ],
