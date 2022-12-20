@@ -102,8 +102,9 @@ class _PieChartState extends State<PieChart> {
                   text: 'Paid',
                   textColor: Colors.white,
                   onTap: () async {
-                    var paymentbox = await Hive.openBox<Payment>('payment');
+                    // var paymentbox = await Hive.openBox<Payment>('payment');
                     provider.paymentAdd(
+                      widget.getdetails.index,
                       Payment(
                           paymentId:
                               widget.getdetails.rentee.renteePayment.paymentId,

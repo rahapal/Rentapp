@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:rentapp/model/payment.dart';
@@ -12,10 +10,32 @@ class PropertyProvider with ChangeNotifier {
   final List<Property> _property = [];
   List<Property> get property => _property;
   List<bool> isSelected = List.generate(30, (index) => false);
-  List<Payment> _paymentList = [];
-  List<Payment> get paymentList => _paymentList;
-  List<Payment> _payedList = [];
-  List<Payment> get payedList => _payedList;
+  // List<Payment> _paymentList = [];
+  // List<Payment> get paymentList => _paymentList;
+  // List<Payment> _payedList = [];
+  // List<Payment> get payedList => _payedList;
+
+  Map<int, List<Payment>> _paymentMap = {};
+
+  bool _hasSomePayments(int index) {
+    return _paymentMap.containsKey(index) && _paymentMap[index]!.isNotEmpty;
+  }
+
+  List<Payment> getPaymentsIn(int index) {
+    if (_hasSomePayments(index)) {
+      return _paymentMap[index]!;
+    }
+    return [];
+  }
+
+  void addPayment(int index, Payment payment) {
+    if (_hasSomePayments(index)) {
+      _paymentMap[index]!.add(payment);
+    } else {
+      _paymentMap[index] = [payment];
+    }
+    notifyListeners();
+  }
 
   void addProperty(Property property) async {
     var propertybox = await Hive.openBox<Property>(_boxName);
@@ -95,112 +115,35 @@ class PropertyProvider with ChangeNotifier {
     return emptyLength;
   }
 
-  Future<void> paymentAdd(Payment payment) async {
+  Future<void> paymentAdd(int index, Payment payment) async {
     var paymentbox = await Hive.openBox<Payment>('payment');
     await paymentbox.add(payment);
-    _paymentList.clear();
+    // _paymentList.clear();
 
-    print(paymentbox.length);
+    // print(paymentbox.length);
 
-    for (var element in paymentbox.values) {
-      _paymentList.add(element);
-    }
-    // List<dynamic> getPaymentList = _paymentList
+    // for (var element in paymentbox.values) {
+    // _paymentList.add(element);
+    // }
+
+    addPayment(index, payment);
+
+    // List<Payment> getPaymentList = _paymentList
     //     .where((element) => element.paymentId == payment.paymentId)
-    //     .map((e) => {
-    //           'paymentId': e.paymentId,
-    //           'payedAmount': e.payedAmount,
-    //           'paymentDate': e.paymentDate,
-    //           'paymentNote': e.paymentNote
-    //         })
+    //     .map((e) => Payment(
+    //           paymentId: e.paymentId,
+    //           payedAmount: e.payedAmount,
+    //           paymentDate: e.paymentDate,
+    //           paymentNote: e.paymentNote,
+    //         ))
     //     .toList();
-    List<Payment> getPaymentList = _paymentList
-        .where((element) => element.paymentId == payment.paymentId)
-        .map((e) => Payment(
-              paymentId: e.paymentId,
-              payedAmount: e.payedAmount,
-              paymentDate: e.paymentDate,
-              paymentNote: e.paymentNote,
-            ))
-        .toList();
 
     //  _payedList.add();
-    print("Show:${getPaymentList}");
+    // print("Show:${getPaymentList}");
 
-    _payedList.clear();
-    _payedList.addAll(getPaymentList);
+    // _payedList.clear();
+    // _payedList.addAll(getPaymentList);
 
     notifyListeners();
   }
 }
-
-  // Future<void> getPaymentList(Payment payment) async {
-  //   var paymentbox = await Hive.openBox<Payment>('payment');
-  //   _payment.clear();
-
-  //   for (var element in paymentbox.values) {
-  //     _payment.add(element);
-  //   }
-
-  //   List<int> show = _payment
-  //       .where((element) => element.paymentId == payment.paymentId)
-  //       .map((e) => e.payedAmount)
-  //       .toList();
-
-  //   print(show);
-  //   notifyListeners();
-  // }
-
-
-
-    
-
-
-
-  // Future<void> setIndexTrue(index) async {
-  //   final prefs = await SharedPreferences.getInstance();
-  //   isSelected[index] = true;
-  //   prefs.setBool('isSelected', isSelected[index]);
-  //   notifyListeners();
-  // }
-
-  // Future<void> getIndexTrue(index) async {
-  //   final prefs = await SharedPreferences.getInstance();
-  //   isSelected[index] = prefs.getBool('isSelected') ?? false;
-  //   notifyListeners();
-  // }
-
-  // void setIndexTrue(index) {
-  //   isSelected[index] = true;
-
-  //   notifyListeners();
-  // }
-
-  // Future<void> setboolVal(index) async {
-  //   setIndexTrue(index);
-  //   final prefs = await SharedPreferences.getInstance();
-
-  //   prefs.setStringList(
-  //       'isSelected', isSelected.map((e) => e.toString()).toList());
-  //   print(isSelected);
-  //   print('Index: ${index}');
-  //   notifyListeners();
-  // }
-
-  // Future<void> getboolVal() async {
-  //   final prefs = await SharedPreferences.getInstance();
-  //   final list = prefs.getStringList('isSelected');
-  //   if (list == null) {
-  //     return;
-  //   } else {
-  //     isSelected = list.map((e) => e == 'true').toList();
-  //   }
-  //   print(isSelected);
-
-  //   notifyListeners();
-  // }
-
-  // removeValues() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   prefs.clear();
-  // }

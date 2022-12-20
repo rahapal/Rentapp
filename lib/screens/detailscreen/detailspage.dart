@@ -47,10 +47,10 @@ class _DetailsPageState extends State<DetailsPage> {
                   color: const Color(0xFFBDC1FF),
                   icon: const Icon(Icons.arrow_back_ios),
                   onPressed: () {
-                    Navigator.pushNamed(context, route.RouteManager.home);
-                    Provider.of<PropertyProvider>(context, listen: false)
-                        .payedList
-                        .clear();
+                    Navigator.pop(context);
+                    // Provider.of<PropertyProvider>(context, listen: false)
+                    //     .payedList
+                    //     .clear();
                   }),
             ),
           ),
@@ -136,7 +136,7 @@ class _DetailsPageState extends State<DetailsPage> {
             const SizedBox(
               height: 15,
             ),
-            const PaymentHistory(),
+            PaymentHistory(widget.getdetails),
           ],
         ),
       ),

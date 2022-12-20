@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rentapp/controller/provider.dart';
+import 'package:rentapp/model/property.dart';
 
 class PaymentHistory extends StatefulWidget {
-  const PaymentHistory({super.key});
+  final Property property;
+  const PaymentHistory(this.property, {super.key});
 
   @override
   State<PaymentHistory> createState() => _PaymentHistoryState();
@@ -28,6 +30,7 @@ class _PaymentHistoryState extends State<PaymentHistory> {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<PropertyProvider>(context);
+    var payments = provider.getPaymentsIn(widget.property.index);
     return SizedBox(
       height: 200,
       child: Padding(
@@ -36,7 +39,7 @@ class _PaymentHistoryState extends State<PaymentHistory> {
           left: 20,
         ),
         child: ListView.builder(
-          itemCount: provider.payedList.length,
+          itemCount: payments.length,
           shrinkWrap: true,
           itemBuilder: (context, index) {
             return Column(
@@ -68,13 +71,13 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              provider.payedList[index].payedAmount.toString(),
+                              'Cash',
                               // provider.payedList[index]{"paymentId,
                               style: const TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                             Text(
-                              "12",
+                              payments[index].paymentDate.toString(),
                               style: const TextStyle(
                                   fontSize: 10,
                                   color: Color(0xFF9f9f9f),
@@ -85,7 +88,7 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                       ],
                     ),
                     Text(
-                      "Paid Date",
+                      payments[index].payedAmount.toString(),
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
