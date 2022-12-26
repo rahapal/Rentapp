@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:rentapp/controller/provider.dart';
 import 'package:rentapp/model/payment.dart';
@@ -9,15 +8,15 @@ import 'package:rentapp/route/route.dart' as route;
 
 import '../../common/global_variables.dart';
 
-class FillRenteeDetails extends StatefulWidget {
+class EditRenteeDetails extends StatefulWidget {
   Property getDetails;
-  FillRenteeDetails({Key? key, required this.getDetails}) : super(key: key);
+  EditRenteeDetails({Key? key, required this.getDetails}) : super(key: key);
 
   @override
-  State<FillRenteeDetails> createState() => _FillRenteeDetailsState();
+  State<EditRenteeDetails> createState() => _EditRenteeDetailsState();
 }
 
-class _FillRenteeDetailsState extends State<FillRenteeDetails> {
+class _EditRenteeDetailsState extends State<EditRenteeDetails> {
   TextEditingController _renteeName = TextEditingController();
   TextEditingController _renteeContact = TextEditingController();
   TextEditingController _renteeEmail = TextEditingController();
@@ -25,6 +24,19 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
   TextEditingController _renteeDueAmount = TextEditingController();
   TextEditingController _renteePanNumber = TextEditingController();
   TextEditingController _renteeAdvanceDeposit = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _renteeName.text = widget.getDetails.rentee.renteeName;
+    _renteeContact.text = widget.getDetails.rentee.renteeContact;
+    _renteeEmail.text = widget.getDetails.rentee.renteeEmail;
+    _renteeBusinessName.text = widget.getDetails.rentee.businessdetail;
+    _renteeDueAmount.text = widget.getDetails.rentee.dueAmount.toString();
+    _renteePanNumber.text = widget.getDetails.rentee.renteePanNumber;
+    _renteeAdvanceDeposit.text =
+        widget.getDetails.rentee.advanceAmount.toString();
+  }
 
   @override
   void dispose() {

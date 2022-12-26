@@ -441,6 +441,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                         renteeContact: '',
                         renteeEmail: '',
                         renteeName: '',
+                        renteePanNumber: '',
                         renteePayment: Payment(
                           paymentId: '',
                           paymentNote: '',

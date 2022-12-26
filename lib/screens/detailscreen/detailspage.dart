@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:rentapp/model/property.dart';
+import 'package:rentapp/screens/filldetailspage/editrenteedetails.dart';
 import 'package:rentapp/screens/filldetailspage/fillrenteedetails.dart';
 import 'package:rentapp/route/route.dart' as route;
 
@@ -59,14 +60,16 @@ class _DetailsPageState extends State<DetailsPage> {
               bottom: 5,
             ),
             child: IconButton(
-                onPressed: () {},
-                // onPressed: () {
-                //   Navigator.push(
-                //       context,
-                //       MaterialPageRoute(
-                //           builder: (context) => FillRenteeDetails(
-                //               getDetails: widget.getdetails)));
-                // },
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => EditRenteeDetails(
+                        getDetails: widget.getdetails,
+                      ),
+                    ),
+                  );
+                },
                 icon: const Icon(
                   size: 27,
                   Icons.more_vert,

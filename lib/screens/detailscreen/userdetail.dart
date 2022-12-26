@@ -47,7 +47,7 @@ class _UserDetailState extends State<UserDetail> {
                     child: SizedBox.fromSize(
                       size: const Size.fromRadius(35),
                       child: Image.asset(
-                        'assets/user.png',
+                        'assets/userface.png',
                         // height: 58,
                         // width: 58,
                         fit: BoxFit.cover,
