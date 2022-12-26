@@ -21,8 +21,10 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
   TextEditingController _renteeName = TextEditingController();
   TextEditingController _renteeContact = TextEditingController();
   TextEditingController _renteeEmail = TextEditingController();
-  TextEditingController _renteebusinessdetails = TextEditingController();
+  TextEditingController _renteeBusinessName = TextEditingController();
   TextEditingController _renteeDueAmount = TextEditingController();
+  TextEditingController _renteePanNumber = TextEditingController();
+  TextEditingController _renteeAdvanceDeposit = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -138,7 +140,7 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                       height: 12,
                     ),
                     TextFormField(
-                      controller: _renteeName,
+                      controller: _renteeContact,
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: GlobalVariables.textFieldbackgroundColor,
@@ -179,7 +181,7 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                       height: 12,
                     ),
                     TextFormField(
-                      controller: _renteeName,
+                      controller: _renteeEmail,
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: GlobalVariables.textFieldbackgroundColor,
@@ -215,7 +217,7 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                       height: 12,
                     ),
                     TextFormField(
-                      controller: _renteeName,
+                      controller: _renteeBusinessName,
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: GlobalVariables.textFieldbackgroundColor,
@@ -251,7 +253,7 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                       height: 12,
                     ),
                     TextFormField(
-                      controller: _renteeName,
+                      controller: _renteeDueAmount,
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: GlobalVariables.textFieldbackgroundColor,
@@ -292,7 +294,7 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                             ),
                             TextFormField(
                               textAlign: TextAlign.end,
-                              controller: _renteeName,
+                              controller: _renteePanNumber,
                               decoration: InputDecoration(
                                 filled: true,
                                 fillColor:
@@ -331,7 +333,7 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                             ),
                             TextFormField(
                               keyboardType: TextInputType.number,
-                              controller: _renteeName,
+                              controller: _renteeAdvanceDeposit,
                               decoration: InputDecoration(
                                 filled: true,
                                 fillColor:
@@ -423,7 +425,7 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                         renteeName: _renteeName.text,
                         renteeEmail: _renteeEmail.text,
                         renteeContact: _renteeContact.text,
-                        businessdetail: _renteebusinessdetails.text,
+                        businessdetail: _renteeBusinessName.text,
                         agreementimage: '',
                         citizenimage: '',
                         dueAmount: int.parse(_renteeDueAmount.text),
