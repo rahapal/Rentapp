@@ -396,7 +396,28 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                         ),
                         ElevatedButton(
                           onPressed: () {},
-                          child: const Text('Upload an image'),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                'assets/upload.png',
+                                height: 23,
+                              ),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              const Text(
+                                'Upload an image',
+                                style: TextStyle(color: Colors.black),
+                              ),
+                            ],
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            side: const BorderSide(
+                              width: 2.0,
+                              color: Color(0xFFBDC1FF),
+                            ),
+                            backgroundColor: Colors.white,
+                          ),
                         ),
                       ],
                     ),
@@ -415,7 +436,30 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                         ),
                         ElevatedButton(
                           onPressed: () {},
-                          child: const Text('Upload an image'),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                'assets/upload.png',
+                                height: 23,
+                              ),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              const Text(
+                                'Upload an image',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ],
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            side: const BorderSide(
+                              width: 2.0,
+                              color: Color(0xFFBDC1FF),
+                            ),
+                            backgroundColor: Colors.white,
+                          ),
                         ),
                       ],
                     ),
@@ -423,6 +467,9 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                 ),
               ),
               ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  minimumSize: const Size(double.infinity, 50),
+                ),
                 onPressed: () {
                   final property = Property(
                     propertyId: widget.getDetails.propertyId,
