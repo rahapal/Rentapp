@@ -27,6 +27,18 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
   TextEditingController _renteeAdvanceDeposit = TextEditingController();
 
   @override
+  void dispose() {
+    _renteeName.dispose();
+    _renteeContact.dispose();
+    _renteeEmail.dispose();
+    _renteeBusinessName.dispose();
+    _renteeDueAmount.dispose();
+    _renteePanNumber.dispose();
+    _renteeAdvanceDeposit.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final provider = Provider.of<PropertyProvider>(context);
     return Scaffold(

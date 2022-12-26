@@ -25,6 +25,19 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
   TextEditingController _propertyPrice = TextEditingController();
   TextEditingController _propertyAdvanceDeposit = TextEditingController();
   TextEditingController _agreementDateStart = TextEditingController();
+
+  @override
+  void dispose() {
+    _propertyName.dispose();
+    _propertyAddress.dispose();
+    _propertySize.dispose();
+    _propertyDescription.dispose();
+    _propertyPrice.dispose();
+    _propertyAdvanceDeposit.dispose();
+    _agreementDateStart.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<PropertyProvider>(context, listen: false);
