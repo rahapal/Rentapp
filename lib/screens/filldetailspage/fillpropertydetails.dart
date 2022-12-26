@@ -1,7 +1,4 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:rentapp/common/global_variables.dart';
 import 'package:rentapp/controller/provider.dart';
@@ -70,16 +67,16 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
-                    'Add Properties',
-                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+                  Image.asset(
+                    'assets/home.png',
+                    height: 23,
                   ),
                   const SizedBox(
                     width: 5,
                   ),
-                  Image.asset(
-                    'assets/home.png',
-                    height: 23,
+                  const Text(
+                    'Add Properties',
+                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
                   ),
                 ],
               ),
@@ -137,7 +134,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                       child: Text(
                         'Location',
                         style: TextStyle(
-                            fontWeight: FontWeight.w300, fontSize: 14),
+                            fontWeight: FontWeight.w400, fontSize: 16),
                       ),
                     ),
                     TextFormField(
@@ -149,7 +146,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                             vertical: 10, horizontal: 10),
                         hintText: 'Enter property location',
                         hintStyle: const TextStyle(
-                          fontSize: 12,
+                          fontSize: 14,
                           fontWeight: FontWeight.w300,
                         ),
                         border: const OutlineInputBorder(
@@ -182,7 +179,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                               child: Text(
                                 'Size',
                                 style: TextStyle(
-                                    fontWeight: FontWeight.w300, fontSize: 14),
+                                    fontWeight: FontWeight.w400, fontSize: 16),
                               ),
                             ),
                             TextFormField(
@@ -196,7 +193,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                                     vertical: 10, horizontal: 10),
                                 hintText: 'sq.ft',
                                 hintStyle: const TextStyle(
-                                  fontSize: 12,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w300,
                                 ),
                                 border: const OutlineInputBorder(
@@ -226,7 +223,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                               child: Text(
                                 'Rent Cost',
                                 style: TextStyle(
-                                    fontWeight: FontWeight.w300, fontSize: 14),
+                                    fontWeight: FontWeight.w400, fontSize: 16),
                               ),
                             ),
                             TextFormField(
@@ -267,7 +264,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                       child: Text(
                         'Description',
                         style: TextStyle(
-                            fontWeight: FontWeight.w300, fontSize: 14),
+                            fontWeight: FontWeight.w400, fontSize: 16),
                       ),
                     ),
                     TextFormField(
@@ -310,7 +307,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                               child: Text(
                                 'Agreement date start',
                                 style: TextStyle(
-                                    fontWeight: FontWeight.w300, fontSize: 14),
+                                    fontWeight: FontWeight.w400, fontSize: 16),
                               ),
                             ),
                             TextFormField(
@@ -327,7 +324,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                                     vertical: 10, horizontal: 10),
                                 hintText: 'Select date',
                                 hintStyle: const TextStyle(
-                                  fontSize: 12,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w300,
                                 ),
                                 border: const OutlineInputBorder(
@@ -373,7 +370,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                               child: Text(
                                 'Advance deposit',
                                 style: TextStyle(
-                                    fontWeight: FontWeight.w300, fontSize: 14),
+                                    fontWeight: FontWeight.w400, fontSize: 16),
                               ),
                             ),
                             TextFormField(
@@ -432,9 +429,11 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                         renteeEmail: '',
                         renteeName: '',
                         renteePayment: Payment(
-                            paymentId: const Uuid().v4(),
-                            paymentNote: '',
-                            paymentDate: DateTime.now()),
+                          paymentId: '',
+                          paymentNote: '',
+                          paymentDate: DateTime.now(),
+                          fieldIndex: widget.getindex,
+                        ),
                       ),
                     ),
                   );
@@ -446,7 +445,9 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
 
                   //provider.getIndexTrue(widget.getindex);
                 },
-                child: const Text('Upload details'),
+                child: const Text(
+                  'Upload details',
+                ),
               ),
             ],
           ),

@@ -30,6 +30,7 @@ class _PaymentHistoryState extends State<PaymentHistory> {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<PropertyProvider>(context);
+
     var payments = provider.getPaymentsIn(widget.property.index);
     return SizedBox(
       height: 200,
@@ -70,10 +71,10 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
+                            const Text(
                               'Cash',
                               // provider.payedList[index]{"paymentId,
-                              style: const TextStyle(
+                              style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                             Text(
@@ -89,8 +90,9 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                     ),
                     Text(
                       payments[index].payedAmount.toString(),
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      // payments[index].payedAmount.toString(),
+                      style: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),

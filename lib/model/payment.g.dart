@@ -21,13 +21,14 @@ class PaymentAdapter extends TypeAdapter<Payment> {
       paymentDate: fields[1] as DateTime?,
       payedAmount: fields[2] as int,
       paymentNote: fields[3] as String,
+      fieldIndex: fields[4] as int,
     );
   }
 
   @override
   void write(BinaryWriter writer, Payment obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.paymentId)
       ..writeByte(1)
@@ -35,7 +36,9 @@ class PaymentAdapter extends TypeAdapter<Payment> {
       ..writeByte(2)
       ..write(obj.payedAmount)
       ..writeByte(3)
-      ..write(obj.paymentNote);
+      ..write(obj.paymentNote)
+      ..writeByte(4)
+      ..write(obj.fieldIndex);
   }
 
   @override

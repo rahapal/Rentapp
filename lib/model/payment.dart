@@ -12,11 +12,14 @@ class Payment {
   int payedAmount;
   @HiveField(3)
   String paymentNote;
+  @HiveField(4)
+  int fieldIndex;
 
   Payment({
     required this.paymentId,
     required this.paymentDate,
     this.payedAmount = 0,
     required this.paymentNote,
+    required this.fieldIndex,
   });
 }

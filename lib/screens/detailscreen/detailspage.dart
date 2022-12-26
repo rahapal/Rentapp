@@ -48,9 +48,6 @@ class _DetailsPageState extends State<DetailsPage> {
                   icon: const Icon(Icons.arrow_back_ios),
                   onPressed: () {
                     Navigator.pop(context);
-                    // Provider.of<PropertyProvider>(context, listen: false)
-                    //     .payedList
-                    //     .clear();
                   }),
             ),
           ),

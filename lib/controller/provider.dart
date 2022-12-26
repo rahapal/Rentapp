@@ -10,32 +10,8 @@ class PropertyProvider with ChangeNotifier {
   final List<Property> _property = [];
   List<Property> get property => _property;
   List<bool> isSelected = List.generate(30, (index) => false);
-  // List<Payment> _paymentList = [];
-  // List<Payment> get paymentList => _paymentList;
-  // List<Payment> _payedList = [];
-  // List<Payment> get payedList => _payedList;
 
   Map<int, List<Payment>> _paymentMap = {};
-
-  bool _hasSomePayments(int index) {
-    return _paymentMap.containsKey(index) && _paymentMap[index]!.isNotEmpty;
-  }
-
-  List<Payment> getPaymentsIn(int index) {
-    if (_hasSomePayments(index)) {
-      return _paymentMap[index]!;
-    }
-    return [];
-  }
-
-  void addPayment(int index, Payment payment) {
-    if (_hasSomePayments(index)) {
-      _paymentMap[index]!.add(payment);
-    } else {
-      _paymentMap[index] = [payment];
-    }
-    notifyListeners();
-  }
 
   void addProperty(Property property) async {
     var propertybox = await Hive.openBox<Property>(_boxName);
@@ -96,18 +72,6 @@ class PropertyProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void clear() {
-    _property.clear();
-
-    var Pbox = Hive.box<Property>(_boxName);
-    Pbox.clear();
-    var Rbox = Hive.box<Rentee>('rentee');
-    Rbox.clear();
-    var Paybox = Hive.box('payment');
-    Paybox.clear();
-    notifyListeners();
-  }
-
   getEmptyLength() {
     var isSelectLength = isSelected.length;
     var propertyLength = _property.length;
@@ -118,31 +82,28 @@ class PropertyProvider with ChangeNotifier {
   Future<void> paymentAdd(int index, Payment payment) async {
     var paymentbox = await Hive.openBox<Payment>('payment');
     await paymentbox.add(payment);
-    // _paymentList.clear();
-
-    // print(paymentbox.length);
-
-    // for (var element in paymentbox.values) {
-    // _paymentList.add(element);
-    // }
-
+    print("Payment Added");
     addPayment(index, payment);
+    notifyListeners();
+  }
 
-    // List<Payment> getPaymentList = _paymentList
-    //     .where((element) => element.paymentId == payment.paymentId)
-    //     .map((e) => Payment(
-    //           paymentId: e.paymentId,
-    //           payedAmount: e.payedAmount,
-    //           paymentDate: e.paymentDate,
-    //           paymentNote: e.paymentNote,
-    //         ))
-    //     .toList();
+  bool _hasSomePayments(int index) {
+    return _paymentMap.containsKey(index) && _paymentMap[index]!.isNotEmpty;
+  }
 
-    //  _payedList.add();
-    // print("Show:${getPaymentList}");
+  List<Payment> getPaymentsIn(int index) {
+    if (_hasSomePayments(index)) {
+      return _paymentMap[index]!;
+    }
+    return [];
+  }
 
-    // _payedList.clear();
-    // _payedList.addAll(getPaymentList);
+  void addPayment(int index, Payment payment) async {
+    if (_hasSomePayments(index)) {
+      _paymentMap[index]!.add(payment);
+    } else {
+      _paymentMap[index] = [payment];
+    }
 
     notifyListeners();
   }

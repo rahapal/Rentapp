@@ -112,27 +112,13 @@ class _BodyPartState extends State<BodyPart> {
                                         getdetails: val.getDetails(
                                             val.atIndex(index)!.index)),
                                   ),
-
-                                  // Navigator.push(
-                                  //   context,
-                                  //   MaterialPageRoute(
-                                  //     builder: (context) => DetailsPage(
-                                  //       getdetails: context
-                                  //           .read<PropertyProvider>()
-                                  //           .getDetails(box.getAt(index)!.index),
-                                  //     ),
                                 );
                               }
                             },
                             text: (index + 1).toString(),
                             textColor: val.atIndex(index) == null
-                                ?
-                                // val.property[index].fieldStatus == true
-                                //?
-                                Colors.black
+                                ? Colors.black
                                 : Colors.white,
-                            //:
-                            // Colors.blue,
                             color: val.atIndex(index) == null
                                 ? Colors.white
                                 : val.atIndex(index)!.status == 'paid'

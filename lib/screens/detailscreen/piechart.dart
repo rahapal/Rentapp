@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
@@ -6,6 +9,7 @@ import 'package:rentapp/common/commonbutton.dart';
 import 'package:rentapp/controller/provider.dart';
 import 'package:rentapp/model/payment.dart';
 import 'package:rentapp/model/property.dart';
+import 'package:uuid/uuid.dart';
 
 class PieChart extends StatefulWidget {
   Property getdetails;
@@ -16,7 +20,18 @@ class PieChart extends StatefulWidget {
 }
 
 class _PieChartState extends State<PieChart> {
-  // final String _phoneNumber = '9816273940';
+  @override
+  void initState() {
+    super.initState();
+
+    // Provider.of<PropertyProvider>(context, listen: false)
+    //     .addPayment(widget.getdetails.index);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -106,11 +121,12 @@ class _PieChartState extends State<PieChart> {
                     provider.paymentAdd(
                       widget.getdetails.index,
                       Payment(
-                          paymentId:
-                              widget.getdetails.rentee.renteePayment.paymentId,
-                          paymentDate: DateTime.now(),
-                          paymentNote: '',
-                          payedAmount: widget.getdetails.price.toInt()),
+                        paymentId: const Uuid().v4(),
+                        paymentDate: DateTime.now(),
+                        paymentNote: '',
+                        payedAmount: widget.getdetails.price.toInt(),
+                        fieldIndex: widget.getdetails.index,
+                      ),
                     );
                   },
                 ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rentapp/common/global_variables.dart';
 
 import 'bodypart.dart';
 
