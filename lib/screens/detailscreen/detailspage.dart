@@ -153,7 +153,23 @@ class _DetailsPageState extends State<DetailsPage> {
                     const SizedBox(
                       height: 10,
                     ),
-                    UserDetail(getdetails: widget.getdetails),
+
+                    Consumer<PropertyProvider>(
+                        builder: (context, propProvider, child) {
+                      Property? foundProperty;
+
+                      var properties = propProvider.property.where((element) {
+                        return element.propertyId ==
+                            widget.getdetails.propertyId;
+                      }).toList();
+
+                      if (properties.length > 0) {
+                        foundProperty = properties[0];
+                        return UserDetail(getdetails: foundProperty);
+                      } else {
+                        return const Text("User not found");
+                      }
+                    }),
                     const SizedBox(
                       height: 37,
                     ),
