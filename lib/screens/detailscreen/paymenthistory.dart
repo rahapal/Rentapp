@@ -12,21 +12,6 @@ class PaymentHistory extends StatefulWidget {
 }
 
 class _PaymentHistoryState extends State<PaymentHistory> {
-  // List images = [
-  //   'assets/khaltilogo.png',
-  //   'assets/fonepaylogo.png',
-  //   'assets/cashlogo.png',
-  // ];
-  // var names = [
-  //   'Khalti',
-  //   'Fonepay',
-  //   'Cash',
-  // ];
-  // var paiddate = [
-  //   'Mar 21,2021',
-  //   'Feb 21 2021',
-  //   'Jan 21 2021',
-  // ];
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<PropertyProvider>(context);

@@ -100,7 +100,7 @@ class _EditRenteeDetailsState extends State<EditRenteeDetails> {
                     width: 5,
                   ),
                   const Text(
-                    'Add new Profile',
+                    'Edit Profile',
                     style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
                   ),
                 ],
@@ -408,6 +408,13 @@ class _EditRenteeDetailsState extends State<EditRenteeDetails> {
                         ),
                         ElevatedButton(
                           onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            side: const BorderSide(
+                              width: 2.0,
+                              color: Color(0xFFBDC1FF),
+                            ),
+                            backgroundColor: Colors.white,
+                          ),
                           child: Row(
                             children: [
                               Image.asset(
@@ -422,13 +429,6 @@ class _EditRenteeDetailsState extends State<EditRenteeDetails> {
                                 style: TextStyle(color: Colors.black),
                               ),
                             ],
-                          ),
-                          style: ElevatedButton.styleFrom(
-                            side: const BorderSide(
-                              width: 2.0,
-                              color: Color(0xFFBDC1FF),
-                            ),
-                            backgroundColor: Colors.white,
                           ),
                         ),
                       ],
@@ -448,6 +448,13 @@ class _EditRenteeDetailsState extends State<EditRenteeDetails> {
                         ),
                         ElevatedButton(
                           onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            side: const BorderSide(
+                              width: 2.0,
+                              color: Color(0xFFBDC1FF),
+                            ),
+                            backgroundColor: Colors.white,
+                          ),
                           child: Row(
                             children: [
                               Image.asset(
@@ -464,13 +471,6 @@ class _EditRenteeDetailsState extends State<EditRenteeDetails> {
                                 ),
                               ),
                             ],
-                          ),
-                          style: ElevatedButton.styleFrom(
-                            side: const BorderSide(
-                              width: 2.0,
-                              color: Color(0xFFBDC1FF),
-                            ),
-                            backgroundColor: Colors.white,
                           ),
                         ),
                       ],

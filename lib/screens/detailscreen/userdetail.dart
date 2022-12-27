@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:rentapp/model/property.dart';
 
+import '../../controller/provider.dart';
 import '../filldetailspage/fillrenteedetails.dart';
 
 class UserDetail extends StatefulWidget {
@@ -16,11 +18,15 @@ class _UserDetailState extends State<UserDetail> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
+        if (widget.getdetails.rentee.renteeName.isEmpty) {
+          Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) =>
-                    FillRenteeDetails(getDetails: widget.getdetails)));
+              builder: (context) =>
+                  FillRenteeDetails(getDetails: widget.getdetails),
+            ),
+          );
+        }
       },
       child: Container(
         width: double.infinity,

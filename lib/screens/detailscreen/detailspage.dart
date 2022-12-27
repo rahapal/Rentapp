@@ -59,8 +59,9 @@ class _DetailsPageState extends State<DetailsPage> {
               right: 8,
               bottom: 5,
             ),
-            child: IconButton(
-                onPressed: () {
+            child: PopupMenuButton(
+              onSelected: (value) {
+                if (value == 0) {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -69,12 +70,44 @@ class _DetailsPageState extends State<DetailsPage> {
                       ),
                     ),
                   );
-                },
-                icon: const Icon(
-                  size: 27,
-                  Icons.more_vert,
-                  color: Color(0xFF9f9f9f),
-                )),
+                }
+              },
+              offset: const Offset(0, 40),
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(12),
+                ),
+              ),
+              icon: const Icon(
+                Icons.more_vert,
+                color: Color(0xFF9f9f9f),
+              ),
+              itemBuilder: (context) => [
+                PopupMenuItem(
+                  value: 0,
+                  child: Row(
+                    children: const [
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Icon(
+                        Icons.edit,
+                        color: Colors.black,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        'Edit',
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
         //this helps to disable default back button of appbar

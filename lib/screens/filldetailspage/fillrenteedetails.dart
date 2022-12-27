@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:rentapp/controller/provider.dart';
 import 'package:rentapp/model/payment.dart';
@@ -396,6 +395,13 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                         ),
                         ElevatedButton(
                           onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            side: const BorderSide(
+                              width: 2.0,
+                              color: Color(0xFFBDC1FF),
+                            ),
+                            backgroundColor: Colors.white,
+                          ),
                           child: Row(
                             children: [
                               Image.asset(
@@ -410,13 +416,6 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                                 style: TextStyle(color: Colors.black),
                               ),
                             ],
-                          ),
-                          style: ElevatedButton.styleFrom(
-                            side: const BorderSide(
-                              width: 2.0,
-                              color: Color(0xFFBDC1FF),
-                            ),
-                            backgroundColor: Colors.white,
                           ),
                         ),
                       ],
@@ -436,6 +435,13 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                         ),
                         ElevatedButton(
                           onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            side: const BorderSide(
+                              width: 2.0,
+                              color: Color(0xFFBDC1FF),
+                            ),
+                            backgroundColor: Colors.white,
+                          ),
                           child: Row(
                             children: [
                               Image.asset(
@@ -452,13 +458,6 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                                 ),
                               ),
                             ],
-                          ),
-                          style: ElevatedButton.styleFrom(
-                            side: const BorderSide(
-                              width: 2.0,
-                              color: Color(0xFFBDC1FF),
-                            ),
-                            backgroundColor: Colors.white,
                           ),
                         ),
                       ],
@@ -501,7 +500,7 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                   );
 
                   provider.addProperty(property);
-                  Navigator.pop(context);
+                  Navigator.pushNamed(context, route.RouteManager.viewpage);
                 },
                 child: const Text('Save Profile'),
               ),
