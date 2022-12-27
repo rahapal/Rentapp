@@ -500,7 +500,8 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                   );
 
                   provider.addProperty(property);
-                  Navigator.pushNamed(context, route.RouteManager.viewpage);
+                  //Navigator.pushNamed(context, route.RouteManager.viewpage);
+                  Navigator.pop(context);
                 },
                 child: const Text('Save Profile'),
               ),

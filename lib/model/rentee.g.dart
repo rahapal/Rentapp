@@ -26,7 +26,7 @@ class RenteeAdapter extends TypeAdapter<Rentee> {
       renteeId: fields[6] as String,
       dueAmount: fields[7] as int,
       advanceAmount: fields[8] as int,
-      renteePayment: fields[10] as Payment,
+      renteePayment: fields[11] as Payment,
       renteePanNumber: fields[9] as String,
     );
   }
@@ -55,7 +55,7 @@ class RenteeAdapter extends TypeAdapter<Rentee> {
       ..write(obj.advanceAmount)
       ..writeByte(9)
       ..write(obj.renteePanNumber)
-      ..writeByte(10)
+      ..writeByte(11)
       ..write(obj.renteePayment);
   }
 

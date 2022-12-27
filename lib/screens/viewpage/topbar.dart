@@ -22,16 +22,6 @@ class _TopBarState extends State<TopBar> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // const SizedBox(
-          //   height: 25,
-          // ),
-          // Padding(
-          //   padding: const EdgeInsets.only(
-          //     right: 20.0,
-          //     left: 20,
-          //     top: 80,
-          //),
-          //child:
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 17),
             child: Row(
@@ -104,7 +94,6 @@ class _TopBarState extends State<TopBar> {
               //),
             ),
           ),
-
           const BodyPart(),
         ],
       ),

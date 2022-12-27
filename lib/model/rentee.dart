@@ -25,7 +25,8 @@ class Rentee {
   int advanceAmount;
   @HiveField(9)
   String renteePanNumber;
-  @HiveField(10)
+
+  @HiveField(11)
   Payment renteePayment;
 
   Rentee({
