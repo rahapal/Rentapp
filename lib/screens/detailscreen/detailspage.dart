@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 import 'package:rentapp/model/property.dart';
 import 'package:rentapp/screens/filldetailspage/editrenteedetails.dart';
-import 'package:rentapp/screens/filldetailspage/fillrenteedetails.dart';
-import 'package:rentapp/route/route.dart' as route;
 
 import '../../controller/provider.dart';
 import 'historytopbar.dart';
@@ -30,20 +29,20 @@ class _DetailsPageState extends State<DetailsPage> {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: Padding(
-          padding: const EdgeInsets.only(
-            bottom: 8,
-            left: 16,
-            top: 8,
+          padding: EdgeInsets.only(
+            bottom: 8.h,
+            left: 16.w,
+            top: 8.h,
           ),
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(15.r),
               border: Border.all(
                 color: const Color(0xFFE0E5FF),
               ),
             ),
             child: Padding(
-              padding: const EdgeInsets.only(left: 3),
+              padding: EdgeInsets.only(left: 3.w),
               child: IconButton(
                   color: const Color(0xFFBDC1FF),
                   icon: const Icon(Icons.arrow_back_ios),
@@ -55,9 +54,9 @@ class _DetailsPageState extends State<DetailsPage> {
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.only(
-              right: 8,
-              bottom: 5,
+            padding: EdgeInsets.only(
+              right: 8.w,
+              bottom: 5.h,
             ),
             child: PopupMenuButton(
               onSelected: (value) {
@@ -86,18 +85,18 @@ class _DetailsPageState extends State<DetailsPage> {
                 PopupMenuItem(
                   value: 0,
                   child: Row(
-                    children: const [
+                    children: [
                       SizedBox(
-                        width: 10,
+                        width: 10.w,
                       ),
-                      Icon(
+                      const Icon(
                         Icons.edit,
                         color: Colors.black,
                       ),
                       SizedBox(
-                        width: 10,
+                        width: 10.w,
                       ),
-                      Text(
+                      const Text(
                         'Edit',
                         style: TextStyle(
                           color: Colors.black,
@@ -119,39 +118,39 @@ class _DetailsPageState extends State<DetailsPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 520,
+              height: 684.h,
               width: double.infinity,
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(30),
-                  bottomRight: Radius.circular(30),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(30.r),
+                  bottomRight: Radius.circular(30.r),
                 ),
                 boxShadow: [
                   BoxShadow(
                     color: const Color(0xFF5b67fe).withOpacity(0.3),
-                    blurRadius: 25,
+                    blurRadius: 25.r,
                   ),
                 ],
               ),
               child: Padding(
-                padding: const EdgeInsets.only(
-                  left: 20,
-                  right: 20,
+                padding: EdgeInsets.only(
+                  left: 20.w,
+                  right: 20.w,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    const SizedBox(
-                      height: 10,
+                    SizedBox(
+                      height: 10.h,
                     ),
                     //upwardpage(),
-                    const SizedBox(
-                      height: 10,
+                    SizedBox(
+                      height: 10.h,
                     ),
                     PieChart(getdetails: widget.getdetails),
-                    const SizedBox(
-                      height: 10,
+                    SizedBox(
+                      height: 10.h,
                     ),
 
                     Consumer<PropertyProvider>(
@@ -170,20 +169,20 @@ class _DetailsPageState extends State<DetailsPage> {
                         return const Text("User not found");
                       }
                     }),
-                    const SizedBox(
-                      height: 37,
+                    SizedBox(
+                      height: 37.h,
                     ),
                     RentedPropertyDetails(getdetails: widget.getdetails),
                   ],
                 ),
               ),
             ),
-            const SizedBox(
-              height: 25,
+            SizedBox(
+              height: 25.h,
             ),
             const HistoryTopBar(),
-            const SizedBox(
-              height: 15,
+            SizedBox(
+              height: 15.h,
             ),
             PaymentHistory(widget.getdetails),
           ],

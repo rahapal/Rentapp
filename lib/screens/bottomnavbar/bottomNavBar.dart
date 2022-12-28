@@ -79,7 +79,7 @@ class _BottomNavState extends State<BottomNav> {
         shape: const CircularNotchedRectangle(),
         notchMargin: 10.h,
         child: SizedBox(
-          height: 66.h,
+          height: 72.h,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
