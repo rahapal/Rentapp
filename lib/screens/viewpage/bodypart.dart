@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 
@@ -34,10 +35,10 @@ class _BodyPartState extends State<BodyPart> {
     return Expanded(
       child: Container(
         width: double.infinity,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30),
-            topRight: Radius.circular(30),
+            topLeft: Radius.circular(30.r),
+            topRight: Radius.circular(30.r),
           ),
           color: Colors.white,
         ),
@@ -47,7 +48,7 @@ class _BodyPartState extends State<BodyPart> {
             const BodyTopPart(),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.only(left: 15.0, right: 15),
+                padding: EdgeInsets.only(left: 15.0.w, right: 15.w),
                 child:
                     Consumer<PropertyProvider>(builder: (context, val, child) {
                   return GridView.builder(
@@ -61,10 +62,10 @@ class _BodyPartState extends State<BodyPart> {
                     ),
                     itemBuilder: (BuildContext context, int index) {
                       return Padding(
-                        padding: const EdgeInsets.all(4),
+                        padding: EdgeInsets.all(4.w),
                         child: SizedBox(
-                          height: 100,
-                          width: 100,
+                          height: 100.h,
+                          width: 100.w,
                           child: CustomButton(
                             shadowColor: Colors.black,
                             onTap: () {

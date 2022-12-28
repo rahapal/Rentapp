@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
@@ -45,23 +46,26 @@ class _RentAppState extends State<RentApp> {
       providers: [
         ChangeNotifierProvider(create: (_) => PropertyProvider()),
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primaryColor: const Color(0xFF5B67FE),
-          colorScheme: ColorScheme.fromSwatch()
-              .copyWith(secondary: const Color(0xFF5B67FE)),
-          elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF5B67FE),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
+      child: ScreenUtilInit(
+        builder: (context, child) => MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primaryColor: const Color(0xFF5B67FE),
+            colorScheme: ColorScheme.fromSwatch()
+                .copyWith(secondary: const Color(0xFF5B67FE)),
+            elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF5B67FE),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
               ),
             ),
           ),
+          initialRoute: RouteManager.home,
+          onGenerateRoute: generateRoute,
         ),
-        initialRoute: RouteManager.home,
-        onGenerateRoute: generateRoute,
+        designSize: const Size(430, 932),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import 'package:rentapp/common/global_variables.dart';
@@ -76,20 +77,20 @@ class _BottomNavState extends State<BottomNav> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
-        notchMargin: 10,
+        notchMargin: 10.h,
         child: SizedBox(
-          height: 66,
+          height: 66.h,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               SizedBox(
-                width: MediaQuery.of(context).size.width / 2 - 56,
+                width: 180.w,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   //crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     MaterialButton(
-                      minWidth: 40,
+                      minWidth: 40.w,
                       onPressed: () {
                         setState(() {
                           currentScreen = const TopBar();
@@ -98,14 +99,14 @@ class _BottomNavState extends State<BottomNav> {
                       },
                       child: Icon(
                         currentTab == 0 ? Icons.home : Icons.home_outlined,
-                        size: 32,
+                        size: 32.w,
                         color: currentTab == 0
                             ? const Color(0xFF5B67FE)
                             : Colors.grey,
                       ),
                     ),
                     MaterialButton(
-                      minWidth: 40,
+                      minWidth: 40.w,
                       onPressed: () {
                         setState(() {
                           currentScreen = const pages();
@@ -116,7 +117,7 @@ class _BottomNavState extends State<BottomNav> {
                         currentTab == 1
                             ? Icons.bookmark
                             : Icons.bookmark_outline,
-                        size: 32,
+                        size: 32.w,
                         color: currentTab == 1
                             ? const Color(0xFF5B67FE)
                             : Colors.grey,
@@ -126,12 +127,12 @@ class _BottomNavState extends State<BottomNav> {
                 ),
               ),
               SizedBox(
-                width: MediaQuery.of(context).size.width / 2 - 40,
+                width: 180.w,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     MaterialButton(
-                      minWidth: 40,
+                      minWidth: 40.w,
                       onPressed: () {
                         setState(() {
                           currentScreen = const pages();
@@ -142,14 +143,14 @@ class _BottomNavState extends State<BottomNav> {
                         currentTab == 2
                             ? Icons.notifications
                             : Icons.notifications_outlined,
-                        size: 32,
+                        size: 32.w,
                         color: currentTab == 2
                             ? const Color(0xFF5B67FE)
                             : Colors.grey,
                       ),
                     ),
                     MaterialButton(
-                      minWidth: 40,
+                      minWidth: 40.w,
                       onPressed: () {
                         setState(() {
                           currentScreen = const pages();
@@ -158,7 +159,7 @@ class _BottomNavState extends State<BottomNav> {
                       },
                       child: Icon(
                         currentTab == 3 ? Icons.person : Icons.person_outline,
-                        size: 32,
+                        size: 32.w,
                         color: currentTab == 3
                             ? const Color(0xFF5B67FE)
                             : Colors.grey,

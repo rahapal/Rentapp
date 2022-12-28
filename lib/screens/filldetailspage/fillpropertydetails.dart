@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:rentapp/common/global_variables.dart';
 import 'package:rentapp/controller/provider.dart';
@@ -47,20 +48,20 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
         automaticallyImplyLeading: false,
         elevation: 0,
         leading: Padding(
-          padding: const EdgeInsets.only(
-            bottom: 8,
-            left: 16,
-            top: 8,
+          padding: EdgeInsets.only(
+            bottom: 8.h,
+            left: 16.w,
+            top: 8.h,
           ),
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(15.r),
               border: Border.all(
                 color: const Color(0xFFE0E5FF),
               ),
             ),
             child: Padding(
-              padding: const EdgeInsets.only(left: 3),
+              padding: EdgeInsets.only(left: 3.w),
               child: IconButton(
                 color: const Color(0xFFBDC1FF),
                 icon: const Icon(Icons.arrow_back_ios),
@@ -74,7 +75,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 43, vertical: 20),
+          padding: EdgeInsets.symmetric(horizontal: 43.h, vertical: 20.w),
           child: Column(
             children: [
               Row(
@@ -82,44 +83,45 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                 children: [
                   Image.asset(
                     'assets/home.png',
-                    height: 23,
+                    height: 23.h,
                   ),
-                  const SizedBox(
-                    width: 5,
+                  SizedBox(
+                    width: 5.w,
                   ),
-                  const Text(
+                  Text(
                     'Add Properties',
-                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+                    style:
+                        TextStyle(fontWeight: FontWeight.w600, fontSize: 20.sp),
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 38,
+              SizedBox(
+                height: 38.h,
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 17),
+                padding: EdgeInsets.only(bottom: 17.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
+                    Text(
                       'Property Name',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w400, fontSize: 16.sp),
                     ),
-                    const SizedBox(
-                      height: 12,
+                    SizedBox(
+                      height: 12.h,
                     ),
                     TextFormField(
                       controller: _propertyName,
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: GlobalVariables.textFieldbackgroundColor,
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 10),
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: 10.h, horizontal: 10.w),
                         hintText: 'Enter property name',
-                        hintStyle: const TextStyle(
-                          fontSize: 14,
+                        hintStyle: TextStyle(
+                          fontSize: 14.sp,
                           fontWeight: FontWeight.w300,
                         ),
                         border: const OutlineInputBorder(
@@ -138,16 +140,16 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 17),
+                padding: EdgeInsets.only(bottom: 17.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 12),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 12.h),
                       child: Text(
                         'Location',
                         style: TextStyle(
-                            fontWeight: FontWeight.w400, fontSize: 16),
+                            fontWeight: FontWeight.w400, fontSize: 16.sp),
                       ),
                     ),
                     TextFormField(
@@ -155,16 +157,16 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: GlobalVariables.textFieldbackgroundColor,
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 10),
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: 10.h, horizontal: 10.w),
                         hintText: 'Enter property location',
-                        hintStyle: const TextStyle(
-                          fontSize: 14,
+                        hintStyle: TextStyle(
+                          fontSize: 14.sp,
                           fontWeight: FontWeight.w300,
                         ),
-                        border: const OutlineInputBorder(
+                        border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(
-                            Radius.circular(5.0),
+                            Radius.circular(5.0.r),
                           ),
                         ),
                         enabledBorder: const OutlineInputBorder(
@@ -178,21 +180,22 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 17),
+                padding: EdgeInsets.only(bottom: 17.h),
                 child: Row(
                   children: [
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 33),
+                        padding: EdgeInsets.only(right: 33.w),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Padding(
-                              padding: EdgeInsets.only(bottom: 12),
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 12.h),
                               child: Text(
                                 'Size',
                                 style: TextStyle(
-                                    fontWeight: FontWeight.w400, fontSize: 16),
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 16.sp),
                               ),
                             ),
                             TextFormField(
@@ -202,16 +205,16 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                                 filled: true,
                                 fillColor:
                                     GlobalVariables.textFieldbackgroundColor,
-                                contentPadding: const EdgeInsets.symmetric(
-                                    vertical: 10, horizontal: 10),
+                                contentPadding: EdgeInsets.symmetric(
+                                    vertical: 10.h, horizontal: 10.w),
                                 hintText: 'sq.ft',
-                                hintStyle: const TextStyle(
-                                  fontSize: 14,
+                                hintStyle: TextStyle(
+                                  fontSize: 14.sp,
                                   fontWeight: FontWeight.w300,
                                 ),
-                                border: const OutlineInputBorder(
+                                border: OutlineInputBorder(
                                   borderRadius: BorderRadius.all(
-                                    Radius.circular(5.0),
+                                    Radius.circular(5.0.r),
                                   ),
                                 ),
                                 enabledBorder: const OutlineInputBorder(
@@ -227,16 +230,17 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                     ),
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 33),
+                        padding: EdgeInsets.only(left: 33.w),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Padding(
-                              padding: EdgeInsets.only(bottom: 12),
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 12.h),
                               child: Text(
                                 'Rent Cost',
                                 style: TextStyle(
-                                    fontWeight: FontWeight.w400, fontSize: 16),
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 16.sp),
                               ),
                             ),
                             TextFormField(
@@ -246,11 +250,11 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                                 filled: true,
                                 fillColor:
                                     GlobalVariables.textFieldbackgroundColor,
-                                contentPadding: const EdgeInsets.symmetric(
-                                    vertical: 10, horizontal: 10),
-                                border: const OutlineInputBorder(
+                                contentPadding: EdgeInsets.symmetric(
+                                    vertical: 10.h, horizontal: 10.w),
+                                border: OutlineInputBorder(
                                   borderRadius: BorderRadius.all(
-                                    Radius.circular(5.0),
+                                    Radius.circular(5.0.r),
                                   ),
                                 ),
                                 enabledBorder: const OutlineInputBorder(
@@ -268,16 +272,16 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 17),
+                padding: EdgeInsets.only(bottom: 17.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 12),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 12.h),
                       child: Text(
                         'Description',
                         style: TextStyle(
-                            fontWeight: FontWeight.w400, fontSize: 16),
+                            fontWeight: FontWeight.w400, fontSize: 16.sp),
                       ),
                     ),
                     TextFormField(
@@ -288,11 +292,11 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: GlobalVariables.textFieldbackgroundColor,
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 10),
-                        border: const OutlineInputBorder(
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: 10.h, horizontal: 10.w),
+                        border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(
-                            Radius.circular(5.0),
+                            Radius.circular(5.0.r),
                           ),
                         ),
                         enabledBorder: const OutlineInputBorder(
@@ -306,21 +310,22 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 40),
+                padding: EdgeInsets.only(bottom: 40.h),
                 child: Row(
                   children: [
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 5),
+                        padding: EdgeInsets.only(right: 5.w),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Padding(
-                              padding: EdgeInsets.only(bottom: 12),
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 12.h),
                               child: Text(
                                 'Agreement date start',
                                 style: TextStyle(
-                                    fontWeight: FontWeight.w400, fontSize: 16),
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 16.sp),
                               ),
                             ),
                             TextFormField(
@@ -333,16 +338,16 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                                 filled: true,
                                 fillColor:
                                     GlobalVariables.textFieldbackgroundColor,
-                                contentPadding: const EdgeInsets.symmetric(
-                                    vertical: 10, horizontal: 10),
+                                contentPadding: EdgeInsets.symmetric(
+                                    vertical: 10.h, horizontal: 10.w),
                                 hintText: 'Select date',
-                                hintStyle: const TextStyle(
-                                  fontSize: 14,
+                                hintStyle: TextStyle(
+                                  fontSize: 14.sp,
                                   fontWeight: FontWeight.w300,
                                 ),
-                                border: const OutlineInputBorder(
+                                border: OutlineInputBorder(
                                   borderRadius: BorderRadius.all(
-                                    Radius.circular(5.0),
+                                    Radius.circular(5.0.r),
                                   ),
                                 ),
                                 enabledBorder: const OutlineInputBorder(
@@ -374,16 +379,17 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                     ),
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 14),
+                        padding: EdgeInsets.only(left: 14.w),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Padding(
-                              padding: EdgeInsets.only(bottom: 12),
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 12.h),
                               child: Text(
                                 'Advance deposit',
                                 style: TextStyle(
-                                    fontWeight: FontWeight.w400, fontSize: 16),
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 16.sp),
                               ),
                             ),
                             TextFormField(
@@ -393,11 +399,11 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                                 filled: true,
                                 fillColor:
                                     GlobalVariables.textFieldbackgroundColor,
-                                contentPadding: const EdgeInsets.symmetric(
-                                    vertical: 10, horizontal: 10),
-                                border: const OutlineInputBorder(
+                                contentPadding: EdgeInsets.symmetric(
+                                    vertical: 10.h, horizontal: 10.w),
+                                border: OutlineInputBorder(
                                   borderRadius: BorderRadius.all(
-                                    Radius.circular(5.0),
+                                    Radius.circular(5.0.r),
                                   ),
                                 ),
                                 enabledBorder: const OutlineInputBorder(
@@ -416,7 +422,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(double.infinity, 50),
+                  minimumSize: Size(double.infinity, 50.h),
                 ),
                 onPressed: () {
                   provider.addProperty(
