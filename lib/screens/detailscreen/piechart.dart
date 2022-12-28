@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive/hive.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:provider/provider.dart';
@@ -39,34 +40,34 @@ class _PieChartState extends State<PieChart> {
     return SizedBox(
       width: double.infinity,
       child: Padding(
-        padding: const EdgeInsets.only(right: 20.0, bottom: 30),
+        padding: EdgeInsets.only(right: 20.0.w, bottom: 30.h),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             CircularPercentIndicator(
               animation: true,
-              radius: 83,
-              lineWidth: 10,
+              radius: 110.r,
+              lineWidth: 10.w,
               percent: 0.9,
               progressColor: const Color(0xFF5B67FE),
               backgroundColor: const Color(0xFFB3BBFE),
               circularStrokeCap: CircularStrokeCap.round,
               center: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   Text(
                     '12',
                     style: TextStyle(
-                      fontSize: 35,
+                      fontSize: 35.sp,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   Text(
                     'days left',
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF9f9f9f),
+                      color: const Color(0xFF9f9f9f),
                     ),
                   ),
                 ],
@@ -75,42 +76,43 @@ class _PieChartState extends State<PieChart> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   'Due Date',
                   style: TextStyle(
-                    color: Color(0xFF9f9f9f),
-                    fontSize: 16,
+                    color: const Color(0xFF9f9f9f),
+                    fontSize: 17.sp,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(
-                  height: 2,
+                SizedBox(
+                  height: 2.h,
                 ),
-                const Text(
+                Text(
                   'May 21,2021',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style:
+                      TextStyle(fontSize: 17.sp, fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(
-                  height: 10,
+                SizedBox(
+                  height: 10.h,
                 ),
                 Text(
                   'Due Amount Rs ${widget.getdetails.rentee.dueAmount.toInt()}',
-                  style: const TextStyle(
-                    fontSize: 16,
-                    color: Color(0xFF9f9f9f),
+                  style: TextStyle(
+                    fontSize: 17.sp,
+                    color: const Color(0xFF9f9f9f),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(
-                  height: 2,
+                SizedBox(
+                  height: 2.h,
                 ),
                 Text(
                   'Monthly Rs ${widget.getdetails.price.toInt()}',
-                  style: const TextStyle(
-                      fontSize: 16, fontWeight: FontWeight.bold),
+                  style:
+                      TextStyle(fontSize: 17.sp, fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(
-                  height: 15,
+                SizedBox(
+                  height: 15.h,
                 ),
                 CustomButton(
                   shadowColor: Colors.blue,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:rentapp/model/property.dart';
 
@@ -17,12 +18,12 @@ class _RentedPropertyDetailsState extends State<RentedPropertyDetails> {
       children: <Widget>[
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const <Widget>[
+          children: <Widget>[
             Text(
               'Rented Property',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 17.sp, fontWeight: FontWeight.bold),
             ),
-            Text(
+            const Text(
               'View all',
               style: TextStyle(
                   fontWeight: FontWeight.bold, color: Color(0xFF9f9f9f)),
@@ -33,9 +34,9 @@ class _RentedPropertyDetailsState extends State<RentedPropertyDetails> {
           //mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             ClipRRect(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(10.r),
               child: SizedBox.fromSize(
-                size: const Size.fromRadius(70),
+                size: Size.fromRadius(110.r),
                 child: Image.asset(
                   'assets/house.png',
                   // height: 58,
@@ -43,28 +44,28 @@ class _RentedPropertyDetailsState extends State<RentedPropertyDetails> {
                 ),
               ),
             ),
-            const SizedBox(width: 10),
+            SizedBox(width: 10.w),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   widget.getdetails.propertyName,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 14.5),
+                  style:
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 14.5.sp),
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: 10.h),
                 Text(
                   widget.getdetails.address,
                   style: const TextStyle(
                       color: Color(0xFF9f9f9f), fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: 10.h),
                 Text(
                   widget.getdetails.size,
                   style: const TextStyle(
                       color: Color(0xFF9f9f9f), fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: 10.h),
                 Text(
                   'Rs ${widget.getdetails.price}/ month',
                   style: const TextStyle(

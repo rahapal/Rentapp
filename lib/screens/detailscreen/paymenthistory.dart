@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:rentapp/controller/provider.dart';
 import 'package:rentapp/model/property.dart';
@@ -18,11 +19,11 @@ class _PaymentHistoryState extends State<PaymentHistory> {
 
     var payments = provider.getPaymentsIn(widget.property.index);
     return SizedBox(
-      height: 200,
+      height: 200.h,
       child: Padding(
-        padding: const EdgeInsets.only(
-          right: 20,
-          left: 20,
+        padding: EdgeInsets.only(
+          right: 20.w,
+          left: 20.w,
         ),
         child: ListView.builder(
           itemCount: payments.length,
@@ -36,11 +37,11 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                     Row(
                       children: [
                         Container(
-                          height: 50,
-                          width: 50,
+                          height: 55.h,
+                          width: 55.w,
                           decoration: BoxDecoration(
                             color: Colors.white,
-                            borderRadius: BorderRadius.circular(15),
+                            borderRadius: BorderRadius.circular(15.r),
                             border: Border.all(
                               color: const Color(0xFFE0E5FF),
                             ),
@@ -50,23 +51,23 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                             fit: BoxFit.fitWidth,
                           ),
                         ),
-                        const SizedBox(
-                          width: 10,
+                        SizedBox(
+                          width: 10.w,
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
+                            Text(
                               'Cash',
                               // provider.payedList[index]{"paymentId,
                               style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
+                                  fontSize: 17.sp, fontWeight: FontWeight.bold),
                             ),
                             Text(
                               payments[index].paymentDate.toString(),
-                              style: const TextStyle(
-                                  fontSize: 10,
-                                  color: Color(0xFF9f9f9f),
+                              style: TextStyle(
+                                  fontSize: 11.sp,
+                                  color: const Color(0xFF9f9f9f),
                                   fontWeight: FontWeight.bold),
                             ),
                           ],
@@ -76,13 +77,13 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                     Text(
                       payments[index].payedAmount.toString(),
                       // payments[index].payedAmount.toString(),
-                      style: const TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontSize: 17.sp, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 20,
+                SizedBox(
+                  height: 20.h,
                 ),
               ],
             );
