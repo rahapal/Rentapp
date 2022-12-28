@@ -30,14 +30,14 @@ class _TopBarState extends State<TopBar> {
               children: [
                 Expanded(
                   child: PhysicalModel(
-                    borderRadius: BorderRadius.circular(15.r),
+                    borderRadius: BorderRadius.circular(20.r),
                     color: Colors.white,
-                    elevation: 5.0,
+                    elevation: 5.0.h,
                     shadowColor: Colors.black,
                     child: TextField(
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(
-                          top: 7.h,
+                          top: 30.h,
                         ),
                         hintText: "Search",
                         hintStyle: const TextStyle(color: Color(0xFF9F9F9F)),
@@ -48,7 +48,7 @@ class _TopBarState extends State<TopBar> {
                         filled: true,
                         fillColor: Colors.white.withOpacity(0.13),
                         enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15.0.r),
+                          borderRadius: BorderRadius.circular(20.0.r),
                           borderSide: BorderSide(
                             color: Colors.white.withOpacity(0.13),
                           ),
@@ -69,16 +69,16 @@ class _TopBarState extends State<TopBar> {
                 Padding(
                   padding: EdgeInsets.only(left: 10.w),
                   child: PhysicalModel(
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.circular(20.r),
                     color: const Color(0xFF5B67FE),
-                    elevation: 5.0,
+                    elevation: 5.0.h,
                     shadowColor: const Color(0xFF5B67FE),
                     child: Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(20.r),
                         color: const Color(0xFF5B67FE),
                       ),
-                      height: 45.h,
+                      height: 55.h,
                       width: 45.w,
                       child: RotatedBox(
                         quarterTurns: 1,

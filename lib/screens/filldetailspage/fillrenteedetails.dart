@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:rentapp/controller/provider.dart';
 import 'package:rentapp/model/payment.dart';
@@ -46,20 +47,20 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
         automaticallyImplyLeading: false,
         elevation: 0,
         leading: Padding(
-          padding: const EdgeInsets.only(
-            bottom: 8,
-            left: 16,
-            top: 8,
+          padding: EdgeInsets.only(
+            bottom: 8.h,
+            left: 16.w,
+            top: 8.h,
           ),
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(15.r),
               border: Border.all(
                 color: const Color(0xFFE0E5FF),
               ),
             ),
             child: Padding(
-              padding: const EdgeInsets.only(left: 3),
+              padding: EdgeInsets.only(left: 3.w),
               child: IconButton(
                 color: const Color(0xFFBDC1FF),
                 icon: const Icon(Icons.arrow_back_ios),
@@ -73,7 +74,7 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 43, vertical: 20),
+          padding: EdgeInsets.symmetric(horizontal: 43.w, vertical: 20.w),
           child: Column(
             children: [
               Row(
@@ -81,49 +82,50 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                 children: [
                   Image.asset(
                     'assets/user.png',
-                    height: 23,
+                    height: 23.h,
                   ),
-                  const SizedBox(
-                    width: 5,
+                  SizedBox(
+                    width: 5.w,
                   ),
-                  const Text(
+                  Text(
                     'Add new Profile',
-                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+                    style:
+                        TextStyle(fontWeight: FontWeight.w600, fontSize: 20.sp),
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 38,
+              SizedBox(
+                height: 38.h,
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 17),
+                padding: EdgeInsets.only(bottom: 17.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
+                    Text(
                       'Rentee Name',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w400, fontSize: 16.sp),
                     ),
-                    const SizedBox(
-                      height: 12,
+                    SizedBox(
+                      height: 12.h,
                     ),
                     TextFormField(
                       controller: _renteeName,
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: GlobalVariables.textFieldbackgroundColor,
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 10),
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: 10.h, horizontal: 10.w),
                         hintText: 'Enter full name',
-                        hintStyle: const TextStyle(
-                          fontSize: 14,
+                        hintStyle: TextStyle(
+                          fontSize: 14.sp,
                           fontWeight: FontWeight.w300,
                         ),
-                        border: const OutlineInputBorder(
+                        border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(
-                            Radius.circular(5.0),
+                            Radius.circular(5.0.r),
                           ),
                         ),
                         enabledBorder: const OutlineInputBorder(
@@ -137,18 +139,18 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 17),
+                padding: EdgeInsets.only(bottom: 17.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
+                    Text(
                       'Mobile number',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w400, fontSize: 16.sp),
                     ),
-                    const SizedBox(
-                      height: 12,
+                    SizedBox(
+                      height: 12.h,
                     ),
                     TextFormField(
                       controller: _renteeContact,
@@ -158,13 +160,13 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                         contentPadding: const EdgeInsets.symmetric(
                             vertical: 10, horizontal: 10),
                         hintText: '+977',
-                        hintStyle: const TextStyle(
-                          fontSize: 14,
+                        hintStyle: TextStyle(
+                          fontSize: 14.sp,
                           fontWeight: FontWeight.w300,
                         ),
-                        border: const OutlineInputBorder(
+                        border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(
-                            Radius.circular(5.0),
+                            Radius.circular(5.0.r),
                           ),
                         ),
                         enabledBorder: const OutlineInputBorder(
@@ -178,29 +180,29 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 17),
+                padding: EdgeInsets.only(bottom: 17.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
+                    Text(
                       'E-mail',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w400, fontSize: 16.sp),
                     ),
-                    const SizedBox(
-                      height: 12,
+                    SizedBox(
+                      height: 12.h,
                     ),
                     TextFormField(
                       controller: _renteeEmail,
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: GlobalVariables.textFieldbackgroundColor,
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 10),
-                        border: const OutlineInputBorder(
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: 10.h, horizontal: 10.w),
+                        border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(
-                            Radius.circular(5.0),
+                            Radius.circular(5.0.r),
                           ),
                         ),
                         enabledBorder: const OutlineInputBorder(
@@ -214,29 +216,29 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 17),
+                padding: EdgeInsets.only(bottom: 17.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
+                    Text(
                       'Business name',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w400, fontSize: 16.sp),
                     ),
-                    const SizedBox(
-                      height: 12,
+                    SizedBox(
+                      height: 12.h,
                     ),
                     TextFormField(
                       controller: _renteeBusinessName,
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: GlobalVariables.textFieldbackgroundColor,
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 10),
-                        border: const OutlineInputBorder(
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: 10.h, horizontal: 10.w),
+                        border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(
-                            Radius.circular(5.0),
+                            Radius.circular(5.0.r),
                           ),
                         ),
                         enabledBorder: const OutlineInputBorder(
@@ -250,29 +252,29 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 17),
+                padding: EdgeInsets.only(bottom: 17.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
+                    Text(
                       'Rentee Due Amount',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w400, fontSize: 16.sp),
                     ),
-                    const SizedBox(
-                      height: 12,
+                    SizedBox(
+                      height: 12.h,
                     ),
                     TextFormField(
                       controller: _renteeDueAmount,
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: GlobalVariables.textFieldbackgroundColor,
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 10),
-                        border: const OutlineInputBorder(
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: 10.h, horizontal: 10.w),
+                        border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(
-                            Radius.circular(5.0),
+                            Radius.circular(5.0.r),
                           ),
                         ),
                         enabledBorder: const OutlineInputBorder(
@@ -286,21 +288,22 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 30),
+                padding: EdgeInsets.only(bottom: 30.h),
                 child: Row(
                   children: [
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 10),
+                        padding: EdgeInsets.only(right: 10.w),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Padding(
-                              padding: EdgeInsets.only(bottom: 12),
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 12.h),
                               child: Text(
                                 'Pan number',
                                 style: TextStyle(
-                                    fontWeight: FontWeight.w400, fontSize: 16),
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 16.sp),
                               ),
                             ),
                             TextFormField(
@@ -310,11 +313,11 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                                 filled: true,
                                 fillColor:
                                     GlobalVariables.textFieldbackgroundColor,
-                                contentPadding: const EdgeInsets.symmetric(
-                                    vertical: 10, horizontal: 20),
-                                border: const OutlineInputBorder(
+                                contentPadding: EdgeInsets.symmetric(
+                                    vertical: 10.h, horizontal: 20.w),
+                                border: OutlineInputBorder(
                                   borderRadius: BorderRadius.all(
-                                    Radius.circular(5.0),
+                                    Radius.circular(5.0.r),
                                   ),
                                 ),
                                 enabledBorder: const OutlineInputBorder(
@@ -330,16 +333,17 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                     ),
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 10),
+                        padding: EdgeInsets.only(left: 10.w),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Padding(
-                              padding: EdgeInsets.only(bottom: 12),
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 12.h),
                               child: Text(
                                 'Advance deposit',
                                 style: TextStyle(
-                                    fontWeight: FontWeight.w400, fontSize: 16),
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 16.sp),
                               ),
                             ),
                             TextFormField(
@@ -349,11 +353,11 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                                 filled: true,
                                 fillColor:
                                     GlobalVariables.textFieldbackgroundColor,
-                                contentPadding: const EdgeInsets.symmetric(
-                                    vertical: 10, horizontal: 10),
-                                border: const OutlineInputBorder(
+                                contentPadding: EdgeInsets.symmetric(
+                                    vertical: 10.h, horizontal: 10.w),
+                                border: OutlineInputBorder(
                                   borderRadius: BorderRadius.all(
-                                    Radius.circular(5.0),
+                                    Radius.circular(5.0.r),
                                   ),
                                 ),
                                 enabledBorder: const OutlineInputBorder(
@@ -371,34 +375,34 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 17),
+                padding: EdgeInsets.only(bottom: 17.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
+                    Text(
                       'Documents',
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 16.sp),
                     ),
-                    const SizedBox(
-                      height: 12,
+                    SizedBox(
+                      height: 12.h,
                     ),
                     Row(
                       children: [
-                        const Text(
+                        Text(
                           'Citizenship',
                           style: TextStyle(
-                              fontWeight: FontWeight.w400, fontSize: 16),
+                              fontWeight: FontWeight.w400, fontSize: 16.sp),
                         ),
-                        const SizedBox(
-                          width: 66,
+                        SizedBox(
+                          width: 66.w,
                         ),
                         ElevatedButton(
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
-                            side: const BorderSide(
-                              width: 2.0,
-                              color: Color(0xFFBDC1FF),
+                            side: BorderSide(
+                              width: 2.0.w,
+                              color: const Color(0xFFBDC1FF),
                             ),
                             backgroundColor: Colors.white,
                           ),
@@ -406,10 +410,10 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                             children: [
                               Image.asset(
                                 'assets/upload.png',
-                                height: 23,
+                                height: 23.h,
                               ),
-                              const SizedBox(
-                                width: 5,
+                              SizedBox(
+                                width: 5.w,
                               ),
                               const Text(
                                 'Upload an image',
@@ -420,25 +424,25 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 12,
+                    SizedBox(
+                      height: 12.h,
                     ),
                     Row(
                       children: [
-                        const Text(
+                        Text(
                           'Rentee Agreement',
                           style: TextStyle(
-                              fontWeight: FontWeight.w400, fontSize: 16),
+                              fontWeight: FontWeight.w400, fontSize: 16.sp),
                         ),
-                        const SizedBox(
-                          width: 10,
+                        SizedBox(
+                          width: 10.w,
                         ),
                         ElevatedButton(
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
-                            side: const BorderSide(
-                              width: 2.0,
-                              color: Color(0xFFBDC1FF),
+                            side: BorderSide(
+                              width: 2.0.w,
+                              color: const Color(0xFFBDC1FF),
                             ),
                             backgroundColor: Colors.white,
                           ),
@@ -446,10 +450,10 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                             children: [
                               Image.asset(
                                 'assets/upload.png',
-                                height: 23,
+                                height: 23.h,
                               ),
-                              const SizedBox(
-                                width: 5,
+                              SizedBox(
+                                width: 5.w,
                               ),
                               const Text(
                                 'Upload an image',
