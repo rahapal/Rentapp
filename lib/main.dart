@@ -65,7 +65,7 @@ class _RentAppState extends State<RentApp> {
           initialRoute: RouteManager.home,
           onGenerateRoute: generateRoute,
         ),
-        designSize: const Size(430, 932),
+        designSize: const Size(414, 896),
       ),
     );
   }

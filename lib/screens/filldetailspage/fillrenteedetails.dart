@@ -415,9 +415,10 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                               SizedBox(
                                 width: 5.w,
                               ),
-                              const Text(
+                              Text(
                                 'Upload an image',
-                                style: TextStyle(color: Colors.black),
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 14.sp),
                               ),
                             ],
                           ),
@@ -441,7 +442,7 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
                             side: BorderSide(
-                              width: 2.0.w,
+                              width: 2.w,
                               color: const Color(0xFFBDC1FF),
                             ),
                             backgroundColor: Colors.white,
@@ -455,10 +456,11 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                               SizedBox(
                                 width: 5.w,
                               ),
-                              const Text(
+                              Text(
                                 'Upload an image',
                                 style: TextStyle(
                                   color: Colors.black,
+                                  fontSize: 14.sp,
                                 ),
                               ),
                             ],
@@ -471,7 +473,7 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(double.infinity, 50),
+                  minimumSize: Size(double.infinity, 50.h),
                 ),
                 onPressed: () {
                   final property = Property(

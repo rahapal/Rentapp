@@ -118,7 +118,7 @@ class _DetailsPageState extends State<DetailsPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 684.h,
+              height: 580.h,
               width: double.infinity,
               decoration: BoxDecoration(
                 color: Colors.white,

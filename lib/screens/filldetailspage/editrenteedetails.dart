@@ -428,9 +428,10 @@ class _EditRenteeDetailsState extends State<EditRenteeDetails> {
                               SizedBox(
                                 width: 5.w,
                               ),
-                              const Text(
+                              Text(
                                 'Upload an image',
-                                style: TextStyle(color: Colors.black),
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 14.sp),
                               ),
                             ],
                           ),
@@ -468,10 +469,11 @@ class _EditRenteeDetailsState extends State<EditRenteeDetails> {
                               SizedBox(
                                 width: 5.w,
                               ),
-                              const Text(
+                              Text(
                                 'Upload an image',
                                 style: TextStyle(
                                   color: Colors.black,
+                                  fontSize: 14.sp,
                                 ),
                               ),
                             ],
@@ -484,7 +486,7 @@ class _EditRenteeDetailsState extends State<EditRenteeDetails> {
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(double.infinity, 50),
+                  minimumSize: Size(double.infinity, 50.h),
                 ),
                 onPressed: () {
                   final property = Property(

@@ -40,13 +40,13 @@ class _PieChartState extends State<PieChart> {
     return SizedBox(
       width: double.infinity,
       child: Padding(
-        padding: EdgeInsets.only(right: 20.0.w, bottom: 30.h),
+        padding: EdgeInsets.only(bottom: 15.h),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             CircularPercentIndicator(
               animation: true,
-              radius: 110.r,
+              radius: 90.r,
               lineWidth: 10.w,
               percent: 0.9,
               progressColor: const Color(0xFF5B67FE),

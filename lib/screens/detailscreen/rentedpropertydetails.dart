@@ -36,7 +36,7 @@ class _RentedPropertyDetailsState extends State<RentedPropertyDetails> {
             ClipRRect(
               borderRadius: BorderRadius.circular(10.r),
               child: SizedBox.fromSize(
-                size: Size.fromRadius(110.r),
+                size: Size.fromRadius(80.r),
                 child: Image.asset(
                   'assets/house.png',
                   // height: 58,
@@ -44,7 +44,7 @@ class _RentedPropertyDetailsState extends State<RentedPropertyDetails> {
                 ),
               ),
             ),
-            SizedBox(width: 10.w),
+            SizedBox(width: 12.w),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

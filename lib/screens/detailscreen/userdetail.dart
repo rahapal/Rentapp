@@ -44,7 +44,7 @@ class _UserDetailState extends State<UserDetail> {
           borderRadius: BorderRadius.circular(15.r),
         ),
         child: Padding(
-          padding: EdgeInsets.all(10.0.h),
+          padding: EdgeInsets.all(15.0.h),
           child: widget.getdetails.rentee.renteeName.isEmpty
               ? Center(
                   child: Text(

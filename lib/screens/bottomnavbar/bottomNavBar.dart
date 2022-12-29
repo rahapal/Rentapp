@@ -79,7 +79,7 @@ class _BottomNavState extends State<BottomNav> {
         shape: const CircularNotchedRectangle(),
         notchMargin: 10.h,
         child: SizedBox(
-          height: 72.h,
+          height: 65.h,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -99,7 +99,7 @@ class _BottomNavState extends State<BottomNav> {
                       },
                       child: Icon(
                         currentTab == 0 ? Icons.home : Icons.home_outlined,
-                        size: 32.w,
+                        size: 35.w,
                         color: currentTab == 0
                             ? const Color(0xFF5B67FE)
                             : Colors.grey,
@@ -117,7 +117,7 @@ class _BottomNavState extends State<BottomNav> {
                         currentTab == 1
                             ? Icons.bookmark
                             : Icons.bookmark_outline,
-                        size: 32.w,
+                        size: 35.w,
                         color: currentTab == 1
                             ? const Color(0xFF5B67FE)
                             : Colors.grey,
@@ -143,7 +143,7 @@ class _BottomNavState extends State<BottomNav> {
                         currentTab == 2
                             ? Icons.notifications
                             : Icons.notifications_outlined,
-                        size: 32.w,
+                        size: 35.w,
                         color: currentTab == 2
                             ? const Color(0xFF5B67FE)
                             : Colors.grey,
@@ -159,7 +159,7 @@ class _BottomNavState extends State<BottomNav> {
                       },
                       child: Icon(
                         currentTab == 3 ? Icons.person : Icons.person_outline,
-                        size: 32.w,
+                        size: 35.w,
                         color: currentTab == 3
                             ? const Color(0xFF5B67FE)
                             : Colors.grey,

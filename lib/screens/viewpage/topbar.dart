@@ -30,7 +30,7 @@ class _TopBarState extends State<TopBar> {
               children: [
                 Expanded(
                   child: PhysicalModel(
-                    borderRadius: BorderRadius.circular(20.r),
+                    borderRadius: BorderRadius.circular(15.r),
                     color: Colors.white,
                     elevation: 5.0.h,
                     shadowColor: Colors.black,
@@ -48,7 +48,7 @@ class _TopBarState extends State<TopBar> {
                         filled: true,
                         fillColor: Colors.white.withOpacity(0.13),
                         enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20.0.r),
+                          borderRadius: BorderRadius.circular(15.r),
                           borderSide: BorderSide(
                             color: Colors.white.withOpacity(0.13),
                           ),
@@ -71,14 +71,14 @@ class _TopBarState extends State<TopBar> {
                   child: PhysicalModel(
                     borderRadius: BorderRadius.circular(20.r),
                     color: const Color(0xFF5B67FE),
-                    elevation: 5.0.h,
+                    elevation: 5.0,
                     shadowColor: const Color(0xFF5B67FE),
                     child: Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20.r),
+                        borderRadius: BorderRadius.circular(15.r),
                         color: const Color(0xFF5B67FE),
                       ),
-                      height: 55.h,
+                      height: 50.h,
                       width: 45.w,
                       child: RotatedBox(
                         quarterTurns: 1,
