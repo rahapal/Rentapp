@@ -21,16 +21,21 @@ class PieChart extends StatefulWidget {
 }
 
 class _PieChartState extends State<PieChart> {
+  late Timer timer;
+
   @override
   void initState() {
     super.initState();
 
-    // Provider.of<PropertyProvider>(context, listen: false)
-    //     .addPayment(widget.getdetails.index);
+    timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      Provider.of<PropertyProvider>(context, listen: false)
+          .showPaymentsDetails();
+    });
   }
 
   @override
   void dispose() {
+    timer.cancel();
     super.dispose();
   }
 

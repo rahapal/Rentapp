@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import 'package:rentapp/controller/provider.dart';
+import 'package:rentapp/model/payment.dart';
 import 'package:rentapp/model/property.dart';
 
 class PaymentHistory extends StatefulWidget {
@@ -14,10 +16,17 @@ class PaymentHistory extends StatefulWidget {
 
 class _PaymentHistoryState extends State<PaymentHistory> {
   @override
-  Widget build(BuildContext context) {
-    var provider = Provider.of<PropertyProvider>(context);
+  // void initState() {
+  //   super.initState();
+  //   Provider.of<PropertyProvider>(context)
+  //       .getPaymentHistory(0)
+  //       .then((value) => payments = value);
+  // }
 
-    var payments = provider.getPaymentsIn(widget.property.index);
+  @override
+  Widget build(BuildContext context) {
+    final provider = Provider.of<PropertyProvider>(context);
+    final payments = provider.getPaymentsIn(widget.property.index);
     return SizedBox(
       height: 200.h,
       child: Padding(

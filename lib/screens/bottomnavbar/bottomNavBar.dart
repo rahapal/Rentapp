@@ -63,8 +63,7 @@ class _BottomNavState extends State<BottomNav> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          //navigate to pages
-          // Provider.of<PropertyProvider>(context, listen: false).clear();
+         
           Pbox.clear();
           Rbox.clear();
           Paybox.clear();

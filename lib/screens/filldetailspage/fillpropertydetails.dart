@@ -247,6 +247,11 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                               keyboardType: TextInputType.number,
                               controller: _propertyPrice,
                               decoration: InputDecoration(
+                                focusedBorder: const OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.red,
+                                  ),
+                                ),
                                 filled: true,
                                 fillColor:
                                     GlobalVariables.textFieldbackgroundColor,

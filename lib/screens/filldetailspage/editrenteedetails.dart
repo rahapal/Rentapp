@@ -78,7 +78,7 @@ class _EditRenteeDetailsState extends State<EditRenteeDetails> {
                 color: const Color(0xFFBDC1FF),
                 icon: const Icon(Icons.arrow_back_ios),
                 onPressed: () {
-                  Navigator.pushNamed(context, route.RouteManager.home);
+                  Navigator.pop(context);
                 },
               ),
             ),

@@ -79,11 +79,22 @@ class PropertyProvider with ChangeNotifier {
     return emptyLength;
   }
 
+  Set<dynamic> addedIndexes = Set<dynamic>();
+
   Future<void> paymentAdd(int index, Payment payment) async {
     var paymentbox = await Hive.openBox<Payment>('payment');
-    await paymentbox.add(payment);
-    print("Payment Added");
-    addPayment(index, payment);
+    paymentbox.add(payment);
+  }
+
+  Future<void> showPaymentsDetails() async {
+    var paymentbox = await Hive.openBox<Payment>('payment');
+    for (int i = 0; i < paymentbox.length; i++) {
+      if (!addedIndexes.contains(paymentbox.getAt(i)!.paymentDate)) {
+        addedIndexes.add(paymentbox.getAt(i)!.paymentDate);
+        addPayment(paymentbox.getAt(i)!.fieldIndex, paymentbox.getAt(i)!);
+      }
+    }
+    // addPayment(index, payment);
     notifyListeners();
   }
 
@@ -106,5 +117,10 @@ class PropertyProvider with ChangeNotifier {
     }
 
     notifyListeners();
+  }
+
+  Future<List<Payment>> getPaymentHistory(int index) async {
+    var paymentbox = await Hive.openBox<Payment>('payment');
+    return paymentbox.values.toList();
   }
 }
