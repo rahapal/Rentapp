@@ -6,7 +6,7 @@ import 'package:rentapp/model/property.dart';
 import 'package:rentapp/screens/filldetailspage/editrenteedetails.dart';
 
 import '../../controller/provider.dart';
-import 'historytopbar.dart';
+
 import 'paymenthistory.dart';
 import 'piechart.dart';
 import 'rentedpropertydetails.dart';
@@ -179,10 +179,6 @@ class _DetailsPageState extends State<DetailsPage> {
             ),
             SizedBox(
               height: 25.h,
-            ),
-            const HistoryTopBar(),
-            SizedBox(
-              height: 15.h,
             ),
             PaymentHistory(widget.getdetails),
           ],

@@ -3,15 +3,13 @@ import 'package:hive/hive.dart';
 import 'package:rentapp/model/payment.dart';
 import 'package:rentapp/model/property.dart';
 
-import '../model/rentee.dart';
-
 class PropertyProvider with ChangeNotifier {
   static const String _boxName = 'property';
   final List<Property> _property = [];
   List<Property> get property => _property;
   List<bool> isSelected = List.generate(30, (index) => false);
 
-  Map<int, List<Payment>> _paymentMap = {};
+  final Map<int, List<Payment>> _paymentMap = {};
 
   void addProperty(Property property) async {
     var propertybox = await Hive.openBox<Property>(_boxName);
@@ -119,8 +117,5 @@ class PropertyProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<List<Payment>> getPaymentHistory(int index) async {
-    var paymentbox = await Hive.openBox<Payment>('payment');
-    return paymentbox.values.toList();
-  }
+  
 }

@@ -16,87 +16,110 @@ class PaymentHistory extends StatefulWidget {
 
 class _PaymentHistoryState extends State<PaymentHistory> {
   @override
-  // void initState() {
-  //   super.initState();
-  //   Provider.of<PropertyProvider>(context)
-  //       .getPaymentHistory(0)
-  //       .then((value) => payments = value);
-  // }
+  late Box<Payment> paymentBox;
 
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<PropertyProvider>(context);
     final payments = provider.getPaymentsIn(widget.property.index);
     return SizedBox(
-      height: 200.h,
+      //height: 300.h,
       child: Padding(
         padding: EdgeInsets.only(
           right: 20.w,
           left: 20.w,
         ),
-        child: ListView.builder(
-          itemCount: payments.length,
-          shrinkWrap: true,
-          itemBuilder: (context, index) {
-            return Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          height: 55.h,
-                          width: 55.w,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(15.r),
-                            border: Border.all(
-                              color: const Color(0xFFE0E5FF),
-                            ),
+        child: Column(
+          children: [
+            SizedBox(
+              width: double.infinity,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'History',
+                    style:
+                        TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    'Total Rs${payments.fold(0, (sum, payment) => sum + payment.payedAmount)}',
+                    style:
+                        TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 20.h,
+            ),
+            SizedBox(
+              height: 300.h,
+              child: ListView.builder(
+                itemCount: payments.length,
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Container(
+                                height: 55.h,
+                                width: 55.w,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(15.r),
+                                  border: Border.all(
+                                    color: const Color(0xFFE0E5FF),
+                                  ),
+                                ),
+                                child: Image.asset(
+                                  "assets/cashlogo.png",
+                                  fit: BoxFit.fitWidth,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10.w,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Cash',
+                                    // provider.payedList[index]{"paymentId,
+                                    style: TextStyle(
+                                        fontSize: 17.sp,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    payments[index].paymentDate.toString(),
+                                    style: TextStyle(
+                                        fontSize: 11.sp,
+                                        color: const Color(0xFF9f9f9f),
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
-                          child: Image.asset(
-                            "assets/cashlogo.png",
-                            fit: BoxFit.fitWidth,
+                          Text(
+                            payments[index].payedAmount.toString(),
+                            // payments[index].payedAmount.toString(),
+                            style: TextStyle(
+                                fontSize: 17.sp, fontWeight: FontWeight.bold),
                           ),
-                        ),
-                        SizedBox(
-                          width: 10.w,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Cash',
-                              // provider.payedList[index]{"paymentId,
-                              style: TextStyle(
-                                  fontSize: 17.sp, fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              payments[index].paymentDate.toString(),
-                              style: TextStyle(
-                                  fontSize: 11.sp,
-                                  color: const Color(0xFF9f9f9f),
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Text(
-                      payments[index].payedAmount.toString(),
-                      // payments[index].payedAmount.toString(),
-                      style: TextStyle(
-                          fontSize: 17.sp, fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 20.h,
-                ),
-              ],
-            );
-          },
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                    ],
+                  );
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );
