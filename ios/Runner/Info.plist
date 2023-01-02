@@ -51,6 +51,10 @@
 	<array>
 		<string>sms</string>
 		<string>tel</string>
+		<string>mailto</string>
+		<string>http</string>
+		<string>https</string>
+		<string>url</string>
 	</array>
 </dict>
 </plist>

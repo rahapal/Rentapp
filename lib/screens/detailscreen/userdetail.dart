@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
 import 'package:rentapp/model/property.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-import '../../controller/provider.dart';
 import '../filldetailspage/fillrenteedetails.dart';
 
 class UserDetail extends StatefulWidget {
@@ -15,9 +14,51 @@ class UserDetail extends StatefulWidget {
 }
 
 class _UserDetailState extends State<UserDetail> {
+  Future<void>? _launched;
+  bool _hasCallSupport = false;
+  @override
+  void initState() {
+    super.initState();
+    // Check for phone call support.
+    canLaunchUrl(Uri(scheme: 'tel', path: '123')).then((bool result) {
+      setState(() {
+        _hasCallSupport = result;
+      });
+    });
+  }
+
+  Future<void> _makePhoneCall(String phoneNumber) async {
+    final Uri launchUri = Uri(
+      scheme: 'tel',
+      path: phoneNumber,
+    );
+    if (!await launchUrl(launchUri)) {
+      throw 'Could not launch $launchUri';
+    }
+  }
+
+  Future<void> _makeSms(String phoneNumber) async {
+    final Uri launchUri = Uri(
+      scheme: 'sms',
+      path: phoneNumber,
+    );
+    if (!await launchUrl(launchUri)) {
+      throw 'Could not launch $launchUri';
+    }
+  }
+
+  Future<void> _makeMail(String email) async {
+    final Uri launchUri = Uri(
+      scheme: 'mailto',
+      path: email,
+    );
+    if (!await launchUrl(launchUri)) {
+      throw 'Could not launch $launchUri';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<PropertyProvider>(context);
     return GestureDetector(
       onTap: () {
         if (widget.getdetails.rentee.renteeName.isEmpty) {
@@ -61,18 +102,18 @@ class _UserDetailState extends State<UserDetail> {
                   children: <Widget>[
                     Row(
                       children: <Widget>[
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(10.r),
-                          child: SizedBox.fromSize(
-                            size: Size.fromRadius(45.r),
-                            child: Image.asset(
-                              'assets/userface.png',
-                              // height: 58,
-                              // width: 58,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
+                        // ClipRRect(
+                        //   borderRadius: BorderRadius.circular(10.r),
+                        //   child: SizedBox.fromSize(
+                        //     size: Size.fromRadius(45.r),
+                        //     child: Image.asset(
+                        //       'assets/userface.png',
+                        //       // height: 58,
+                        //       // width: 58,
+                        //       fit: BoxFit.cover,
+                        //     ),
+                        //   ),
+                        // ),
                         SizedBox(width: 10.w),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,27 +137,78 @@ class _UserDetailState extends State<UserDetail> {
                         ),
                       ],
                     ),
-                    PhysicalModel(
-                      borderRadius: BorderRadius.circular(15.r),
-                      color: Colors.white,
-                      elevation: 5.0,
-                      shadowColor: const Color(0xFF69AC65),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15.r),
-                          color: const Color(0xFF69AC65),
+                    // PhysicalModel(
+                    //   borderRadius: BorderRadius.circular(15.r),
+                    //   color: Colors.white,
+                    //   elevation: 5.0,
+                    //   shadowColor: const Color(0xFF69AC65),
+                    //   child: Container(
+                    //     decoration: BoxDecoration(
+                    //       borderRadius: BorderRadius.circular(15.r),
+                    //       color: const Color(0xFF69AC65),
+                    //     ),
+                    // child:
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        IconButton(
+                          onPressed: _hasCallSupport
+                              ? () => setState(() {
+                                    _launched = _makePhoneCall(
+                                        widget.getdetails.rentee.renteeContact);
+                                  })
+                              : null,
+                          icon: _hasCallSupport
+                              ? Icon(
+                                  size: 30.h,
+                                  Icons.call_outlined,
+                                  color: Colors.black,
+                                )
+                              : Icon(
+                                  size: 30.h,
+                                  Icons.do_not_disturb,
+                                  color: Colors.black,
+                                ),
                         ),
-                        child: IconButton(
-                          onPressed: () {
-                            //show details name which is at index 0
-                            //print(Rbox.getAt(0)!.name);
-                          },
-                          icon: const Icon(
-                            Icons.message_rounded,
-                            color: Colors.white,
-                          ),
+                        IconButton(
+                          onPressed: _hasCallSupport
+                              ? () => setState(() {
+                                    _launched = _makeSms(
+                                        widget.getdetails.rentee.renteeContact);
+                                  })
+                              : null,
+                          icon: _hasCallSupport
+                              ? Icon(
+                                  size: 30.h,
+                                  Icons.message_outlined,
+                                  color: Colors.black,
+                                )
+                              : Icon(
+                                  size: 30.h,
+                                  Icons.do_not_disturb,
+                                  color: Colors.black,
+                                ),
                         ),
-                      ),
+                        IconButton(
+                          onPressed: _hasCallSupport
+                              ? () => setState(() {
+                                    _launched = _makeMail(
+                                        widget.getdetails.rentee.renteeEmail);
+                                  })
+                              : null,
+                          icon: _hasCallSupport
+                              ? Icon(
+                                  size: 30.h,
+                                  Icons.mail_outline,
+                                  color: Colors.black,
+                                )
+                              : Icon(
+                                  size: 30.h,
+                                  Icons.do_not_disturb,
+                                  color: Colors.black,
+                                ),
+                        ),
+                      ],
                     ),
                   ],
                 ),

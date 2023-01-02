@@ -7,7 +7,6 @@ import 'package:rentapp/controller/provider.dart';
 import 'package:rentapp/model/payment.dart';
 import 'package:rentapp/model/property.dart';
 import 'package:rentapp/model/rentee.dart';
-import 'package:rentapp/route/route.dart' as route;
 
 import '../viewpage/topbar.dart';
 import '../viewpage/pages.dart';

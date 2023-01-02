@@ -1,9 +1,7 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hive/hive.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:provider/provider.dart';
 import 'package:rentapp/common/commonbutton.dart';
@@ -27,7 +25,7 @@ class _PieChartState extends State<PieChart> {
   void initState() {
     super.initState();
 
-    timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+    timer = Timer.periodic(const Duration(milliseconds: 1), (timer) {
       Provider.of<PropertyProvider>(context, listen: false)
           .showPaymentsDetails();
     });
