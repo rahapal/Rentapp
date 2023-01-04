@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:rentapp/model/activity.dart';
 import 'package:rentapp/model/rentee.dart';
 import 'package:rentapp/route/route.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -21,9 +22,11 @@ void main() async {
   Hive.registerAdapter(PropertyAdapter());
   Hive.registerAdapter(RenteeAdapter());
   Hive.registerAdapter(PaymentAdapter());
+  Hive.registerAdapter(ActivityAdapter());
   var Pbox = await Hive.openBox<Property>('property');
   var Rbox = await Hive.openBox<Rentee>('rentee');
   var Paybox = await Hive.openBox<Payment>('payment');
+  var Activitybox = await Hive.openBox<Activity>('activity');
 
   //print(Pbox.values.last);
 

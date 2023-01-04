@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:rentapp/model/activity.dart';
 import 'package:rentapp/model/payment.dart';
 import 'package:rentapp/model/property.dart';
 
@@ -79,9 +80,15 @@ class PropertyProvider with ChangeNotifier {
 
   Set<dynamic> addedIndexes = Set<dynamic>();
 
-  Future<void> paymentAdd(int index, Payment payment) async {
+  Future<void> paymentAdd(int index, Payment payment, String name) async {
     var paymentbox = await Hive.openBox<Payment>('payment');
     paymentbox.add(payment);
+
+    var activitybox = await Hive.openBox<Activity>('activity');
+    activitybox.add(Activity(
+        name: name,
+        action: 'Paid the due amount of Rs.${payment.payedAmount}',
+        date: payment.paymentDate));
   }
 
   Future<void> showPaymentsDetails() async {
@@ -116,6 +123,4 @@ class PropertyProvider with ChangeNotifier {
 
     notifyListeners();
   }
-
-  
 }

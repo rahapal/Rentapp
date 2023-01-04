@@ -119,24 +119,21 @@ class _PieChartState extends State<PieChart> {
                 ),
                 CustomButton(
                   shadowColor: Colors.blue,
-                  text: 'Paid',
+                  text: 'Pay',
                   textColor: Colors.white,
                   onTap: () async {
                     // var paymentbox = await Hive.openBox<Payment>('payment');
-                    if (widget.getdetails.rentee.renteeName != '') {
-                      print('No Rentee');
-                    } else {
-                      provider.paymentAdd(
-                        widget.getdetails.index,
-                        Payment(
-                          paymentId: const Uuid().v4(),
-                          paymentDate: DateTime.now(),
-                          paymentNote: '',
-                          payedAmount: widget.getdetails.price.toInt(),
-                          fieldIndex: widget.getdetails.index,
-                        ),
-                      );
-                    }
+                    provider.paymentAdd(
+                      widget.getdetails.index,
+                      Payment(
+                        paymentId: const Uuid().v4(),
+                        paymentDate: DateTime.now(),
+                        paymentNote: '',
+                        payedAmount: widget.getdetails.price.toInt(),
+                        fieldIndex: widget.getdetails.index,
+                      ),
+                      widget.getdetails.rentee.renteeName,
+                    );
                   },
                 ),
               ],

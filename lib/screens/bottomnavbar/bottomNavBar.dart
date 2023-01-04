@@ -4,9 +4,11 @@ import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import 'package:rentapp/common/global_variables.dart';
 import 'package:rentapp/controller/provider.dart';
+import 'package:rentapp/model/activity.dart';
 import 'package:rentapp/model/payment.dart';
 import 'package:rentapp/model/property.dart';
 import 'package:rentapp/model/rentee.dart';
+import 'package:rentapp/screens/bottomnavbar/activityScreen.dart';
 
 import '../viewpage/topbar.dart';
 import '../viewpage/pages.dart';
@@ -23,7 +25,7 @@ class _BottomNavState extends State<BottomNav> {
   final List<Widget> screens = [
     const TopBar(),
     const pages(),
-    const pages(),
+    const ActivityScreenPage(),
     const pages(),
   ];
 
@@ -33,12 +35,14 @@ class _BottomNavState extends State<BottomNav> {
   // ignore: non_constant_identifier_names
   late Box<Rentee> Rbox;
   late Box<Payment> Paybox;
+  late Box<Activity> Activitybox;
 
   @override
   void initState() {
     Pbox = Hive.box<Property>('property');
     Rbox = Hive.box<Rentee>('rentee');
     Paybox = Hive.box<Payment>('payment');
+    Activitybox = Hive.box<Activity>('activity');
     super.initState();
   }
 
@@ -62,10 +66,10 @@ class _BottomNavState extends State<BottomNav> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-         
           Pbox.clear();
           Rbox.clear();
           Paybox.clear();
+          Activitybox.clear();
 
           //Navigator.pushNamed(context, route.RouteManager.toBeCreate);
         },
@@ -133,7 +137,7 @@ class _BottomNavState extends State<BottomNav> {
                       minWidth: 40.w,
                       onPressed: () {
                         setState(() {
-                          currentScreen = const pages();
+                          currentScreen = const ActivityScreenPage();
                           currentTab = 2;
                         });
                       },

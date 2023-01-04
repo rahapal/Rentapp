@@ -307,7 +307,6 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                               ),
                             ),
                             TextFormField(
-                              textAlign: TextAlign.end,
                               controller: _renteePanNumber,
                               decoration: InputDecoration(
                                 filled: true,
