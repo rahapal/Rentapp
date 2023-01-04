@@ -171,12 +171,8 @@ class _UserDetailState extends State<UserDetail> {
                                 ),
                         ),
                         IconButton(
-                          onPressed: _hasCallSupport
-                              ? () => setState(() {
-                                    _launched = _makeSms(
-                                        widget.getdetails.rentee.renteeContact);
-                                  })
-                              : null,
+                          onPressed: () => _makeSms(
+                              '+977${widget.getdetails.rentee.renteeContact}'),
                           icon: _hasCallSupport
                               ? Icon(
                                   size: 30.h,
