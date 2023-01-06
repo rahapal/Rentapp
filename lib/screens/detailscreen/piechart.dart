@@ -125,18 +125,26 @@ class _PieChartState extends State<PieChart> {
                   textColor: Colors.white,
                   onTap: () async {
                     // var paymentbox = await Hive.openBox<Payment>('payment');
-                    provider.paymentAdd(
-                      widget.getdetails.index,
-                      Payment(
-                        paymentId: const Uuid().v4(),
-                        paymentDate: formattedDate,
-                        paymentNote: '',
-                        refDate: DateTime.now(),
-                        payedAmount: widget.getdetails.price.toInt(),
-                        fieldIndex: widget.getdetails.index,
-                      ),
-                      widget.getdetails.rentee.renteeName,
-                    );
+                    if (widget.getdetails.rentee.renteeName == '') {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Fill the rentee details first'),
+                        ),
+                      );
+                    } else {
+                      provider.paymentAdd(
+                        widget.getdetails.index,
+                        Payment(
+                          paymentId: const Uuid().v4(),
+                          paymentDate: formattedDate,
+                          paymentNote: '',
+                          refDate: DateTime.now(),
+                          payedAmount: widget.getdetails.price.toInt(),
+                          fieldIndex: widget.getdetails.index,
+                        ),
+                        widget.getdetails.rentee.renteeName,
+                      );
+                    }
                   },
                 ),
               ],

@@ -457,7 +457,8 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                         renteePayment: Payment(
                           paymentId: '',
                           paymentNote: '',
-                          paymentDate: DateFormat.yMMMEd().format(DateTime.now()),
+                          paymentDate:
+                              DateFormat.yMMMEd().format(DateTime.now()),
                           fieldIndex: widget.getindex,
                         ),
                       ),
@@ -470,6 +471,11 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                   //     );
 
                   //provider.getIndexTrue(widget.getindex);
+                  // ScaffoldMessenger.of(context).showSnackBar(
+                  //   const SnackBar(
+                  //     content: Text('Property Successfully added'),
+                  //   ),
+                  // );
                 },
                 child: const Text(
                   'Upload details',
