@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:rentapp/controller/provider.dart';
 import 'package:rentapp/model/payment.dart';
@@ -508,7 +509,7 @@ class _EditRenteeDetailsState extends State<EditRenteeDetails> {
                         renteePanNumber: _renteePanNumber.text,
                         renteePayment: Payment(
                           paymentId: '',
-                          paymentDate: DateTime.now(),
+                          paymentDate: DateFormat.yMMMEd().format(DateTime.now()),
                           paymentNote: '',
                           fieldIndex: widget.getDetails.index,
                         )),

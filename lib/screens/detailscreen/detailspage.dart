@@ -148,7 +148,23 @@ class _DetailsPageState extends State<DetailsPage> {
                     SizedBox(
                       height: 10.h,
                     ),
-                    PieChart(getdetails: widget.getdetails),
+                    //PieChart(getdetails: widget.getdetails),
+                    Consumer<PropertyProvider>(
+                        builder: (context, propProvider, child) {
+                      Property? foundProperty;
+
+                      var properties = propProvider.property.where((element) {
+                        return element.propertyId ==
+                            widget.getdetails.propertyId;
+                      }).toList();
+
+                      if (properties.length > 0) {
+                        foundProperty = properties[0];
+                        return PieChart(getdetails: foundProperty);
+                      } else {
+                        return const Text("User not found");
+                      }
+                    }),
                     SizedBox(
                       height: 10.h,
                     ),

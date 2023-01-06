@@ -9,7 +9,7 @@ class Activity {
   @HiveField(1)
   String action;
   @HiveField(2)
-  DateTime? date;
+  String date;
 
   Activity({
     required this.name,

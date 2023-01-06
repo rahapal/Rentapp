@@ -94,8 +94,8 @@ class PropertyProvider with ChangeNotifier {
   Future<void> showPaymentsDetails() async {
     var paymentbox = await Hive.openBox<Payment>('payment');
     for (int i = 0; i < paymentbox.length; i++) {
-      if (!addedIndexes.contains(paymentbox.getAt(i)!.paymentDate)) {
-        addedIndexes.add(paymentbox.getAt(i)!.paymentDate);
+      if (!addedIndexes.contains(paymentbox.getAt(i)!.refDate)) {
+        addedIndexes.add(paymentbox.getAt(i)!.refDate);
         addPayment(paymentbox.getAt(i)!.fieldIndex, paymentbox.getAt(i)!);
       }
     }

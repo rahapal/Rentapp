@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:rentapp/common/global_variables.dart';
 import 'package:rentapp/controller/provider.dart';
@@ -456,7 +457,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                         renteePayment: Payment(
                           paymentId: '',
                           paymentNote: '',
-                          paymentDate: DateTime.now(),
+                          paymentDate: DateFormat.yMMMEd().format(DateTime.now()),
                           fieldIndex: widget.getindex,
                         ),
                       ),

@@ -53,7 +53,7 @@ class _PaymentHistoryState extends State<PaymentHistory> {
               height: 20.h,
             ),
             SizedBox(
-              height: 300.h,
+              height: 250.h,
               child: ListView.builder(
                 itemCount: payments.length,
                 itemBuilder: (context, index) {
@@ -93,7 +93,7 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(
-                                    payments[index].paymentDate.toString(),
+                                    payments[index].paymentDate,
                                     style: TextStyle(
                                         fontSize: 11.sp,
                                         color: const Color(0xFF9f9f9f),

@@ -19,7 +19,7 @@ class ActivityAdapter extends TypeAdapter<Activity> {
     return Activity(
       name: fields[0] as String,
       action: fields[1] as String,
-      date: fields[2] as DateTime?,
+      date: fields[2] as String,
     );
   }
 

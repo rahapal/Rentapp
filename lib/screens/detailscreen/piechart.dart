@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:provider/provider.dart';
 import 'package:rentapp/common/commonbutton.dart';
@@ -19,6 +20,7 @@ class PieChart extends StatefulWidget {
 }
 
 class _PieChartState extends State<PieChart> {
+  String formattedDate = DateFormat.yMMMEd().format(DateTime.now());
   late Timer timer;
 
   @override
@@ -91,7 +93,7 @@ class _PieChartState extends State<PieChart> {
                   height: 2.h,
                 ),
                 Text(
-                  'May 21,2021',
+                  formattedDate,
                   style:
                       TextStyle(fontSize: 17.sp, fontWeight: FontWeight.bold),
                 ),
@@ -127,8 +129,9 @@ class _PieChartState extends State<PieChart> {
                       widget.getdetails.index,
                       Payment(
                         paymentId: const Uuid().v4(),
-                        paymentDate: DateTime.now(),
+                        paymentDate: formattedDate,
                         paymentNote: '',
+                        refDate: DateTime.now(),
                         payedAmount: widget.getdetails.price.toInt(),
                         fieldIndex: widget.getdetails.index,
                       ),
