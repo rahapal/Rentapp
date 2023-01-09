@@ -7,9 +7,12 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:provider/provider.dart';
 import 'package:rentapp/common/commonbutton.dart';
 import 'package:rentapp/controller/provider.dart';
-import 'package:rentapp/model/payment.dart';
+
 import 'package:rentapp/model/property.dart';
 import 'package:uuid/uuid.dart';
+
+import '../../common/global_variables.dart';
+import '../../model/payment.dart';
 
 class PieChart extends StatefulWidget {
   Property getdetails;
@@ -33,9 +36,12 @@ class _PieChartState extends State<PieChart> {
     });
   }
 
+  TextEditingController _payAmount = TextEditingController();
+
   @override
   void dispose() {
     timer.cancel();
+    _payAmount.dispose();
     super.dispose();
   }
 
@@ -132,19 +138,99 @@ class _PieChartState extends State<PieChart> {
                         ),
                       );
                     } else {
-                      provider.paymentAdd(
-                        widget.getdetails.index,
-                        Payment(
-                          paymentId: const Uuid().v4(),
-                          paymentDate: formattedDate,
-                          paymentNote: '',
-                          refDate: DateTime.now(),
-                          payedAmount: widget.getdetails.price.toInt(),
-                          fieldIndex: widget.getdetails.index,
-                        ),
-                        widget.getdetails.rentee.renteeName,
-                      );
+                      showDialog(
+                          barrierDismissible: false,
+                          context: context,
+                          builder: (_) {
+                            return Dialog(
+                              child: Column(
+                                children: [
+                                  Container(
+                                    alignment: FractionalOffset.topRight,
+                                    child: GestureDetector(
+                                      child: const Icon(
+                                        Icons.clear,
+                                        color: Colors.red,
+                                      ),
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                      },
+                                    ),
+                                  ),
+                                  Text(
+                                    'Paid Amount',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 16.sp),
+                                  ),
+                                  SizedBox(
+                                    height: 12.h,
+                                  ),
+                                  TextFormField(
+                                    controller: _payAmount,
+                                    decoration: InputDecoration(
+                                      filled: true,
+                                      fillColor: GlobalVariables
+                                          .textFieldbackgroundColor,
+                                      contentPadding: EdgeInsets.symmetric(
+                                          vertical: 10.h, horizontal: 10.w),
+                                      hintText: 'Enter property name',
+                                      hintStyle: TextStyle(
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.w300,
+                                      ),
+                                      border: const OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(5.0),
+                                        ),
+                                      ),
+                                      enabledBorder: const OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: GlobalVariables
+                                              .textFieldborderColor,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  ElevatedButton(
+                                      onPressed: () {
+                                        provider.paymentAdd(
+                                          widget.getdetails.index,
+                                          Payment(
+                                            paymentId: const Uuid().v4(),
+                                            paymentDate: formattedDate,
+                                            paymentNote: '',
+                                            refDate: DateTime.now(),
+                                            payedAmount:
+                                                int.parse(_payAmount.text) -
+                                                    widget.getdetails.rentee
+                                                        .dueAmount
+                                                        .toInt(),
+                                            fieldIndex: widget.getdetails.index,
+                                          ),
+                                          widget.getdetails.rentee.renteeName,
+                                        );
+                                      },
+                                      child: const Text('Pay'))
+                                ],
+                              ),
+                            );
+                          });
                     }
+                    //  else {
+                    //   provider.paymentAdd(
+                    //     widget.getdetails.index,
+                    //     Payment(
+                    //       paymentId: const Uuid().v4(),
+                    //       paymentDate: formattedDate,
+                    //       paymentNote: '',
+                    //       refDate: DateTime.now(),
+                    //       payedAmount: widget.getdetails.price.toInt(),
+                    //       fieldIndex: widget.getdetails.index,
+                    //     ),
+                    //     widget.getdetails.rentee.renteeName,
+                    //   );
+                    // }
                   },
                 ),
               ],
