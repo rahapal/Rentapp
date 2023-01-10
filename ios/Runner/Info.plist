@@ -56,5 +56,8 @@
 		<string>https</string>
 		<string>url</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>$(PRODUCT_NAME) would like to acess your photos</string>
+	
 </dict>
 </plist>
