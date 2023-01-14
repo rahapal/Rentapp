@@ -4,8 +4,6 @@ import 'package:rentapp/model/activity.dart';
 import 'package:rentapp/model/payment.dart';
 import 'package:rentapp/model/property.dart';
 
-import '../model/rentee.dart';
-
 class PropertyProvider with ChangeNotifier {
   static const String _boxName = 'property';
   final List<Property> _property = [];
@@ -90,7 +88,8 @@ class PropertyProvider with ChangeNotifier {
     activitybox.add(Activity(
         name: name,
         action: 'Paid the Amount of Rs.${payment.payedAmount}',
-        date: payment.paymentDate));
+        date: payment.paymentDate,
+        addedDate: DateTime.now()));
   }
 
   Future<void> showPaymentsDetails() async {

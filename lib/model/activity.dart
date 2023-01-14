@@ -10,10 +10,13 @@ class Activity {
   String action;
   @HiveField(2)
   String date;
+  @HiveField(3)
+  DateTime addedDate;
 
   Activity({
     required this.name,
     required this.action,
     required this.date,
+    required this.addedDate,
   });
 }

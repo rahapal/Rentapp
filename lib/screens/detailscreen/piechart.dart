@@ -267,6 +267,7 @@ class _PieChartState extends State<PieChart> {
                                                       int.parse(
                                                           _payAmount.text));
                                             }
+                                            _payAmount.clear();
                                             Navigator.pop(context);
                                           },
                                           child: const Text('Pay'))

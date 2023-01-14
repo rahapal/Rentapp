@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive/hive.dart';
-import 'package:intl/intl.dart';
-import 'package:rentapp/common/global_variables.dart';
+
 import 'package:rentapp/model/activity.dart';
 
 class ActivityScreenPage extends StatefulWidget {
@@ -13,16 +12,18 @@ class ActivityScreenPage extends StatefulWidget {
 }
 
 class _ActivityScreenPageState extends State<ActivityScreenPage> {
-  late Box<Activity> Activitybox;
+  // late Box<Activity> Activitybox;
 
-  @override
-  void initState() {
-    Activitybox = Hive.box<Activity>('activity');
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   Activitybox = Hive.box<Activity>('activity');
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
+    final activities = Hive.box<Activity>('activity').values.toList()
+      ..sort((a, b) => b.addedDate.compareTo(a.addedDate));
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -34,9 +35,9 @@ class _ActivityScreenPageState extends State<ActivityScreenPage> {
         ),
       ),
       body: ListView.builder(
-        itemCount: Activitybox.length,
+        itemCount: activities.length,
         itemBuilder: (context, index) {
-          final activity = Activitybox.getAt(index);
+          final activity = activities[index];
           return Column(
             children: [
               Padding(
