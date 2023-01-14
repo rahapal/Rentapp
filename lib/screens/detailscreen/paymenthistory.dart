@@ -31,23 +31,20 @@ class _PaymentHistoryState extends State<PaymentHistory> {
         ),
         child: Column(
           children: [
-            SizedBox(
-              width: double.infinity,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'History',
-                    style:
-                        TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    'Total Rs${payments.fold(0, (sum, payment) => sum + payment.payedAmount)}',
-                    style:
-                        TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'History',
+                  style:
+                      TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  'Total Rs${payments.fold(0, (sum, payment) => sum + payment.payedAmount)}',
+                  style:
+                      TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
+                ),
+              ],
             ),
             SizedBox(
               height: 20.h,

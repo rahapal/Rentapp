@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rentapp/model/property.dart';
@@ -101,16 +103,13 @@ class _UserDetailState extends State<UserDetail> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Row(
-                      children: <Widget>[
+                      children: [
                         // ClipRRect(
                         //   borderRadius: BorderRadius.circular(10.r),
                         //   child: SizedBox.fromSize(
                         //     size: Size.fromRadius(45.r),
-                        //     child: Image.asset(
-                        //       'assets/userface.png',
-                        //       // height: 58,
-                        //       // width: 58,
-                        //       fit: BoxFit.cover,
+                        //     child: Image.file(
+                        //       File(widget.getdetails.rentee.citizenimage),
                         //     ),
                         //   ),
                         // ),

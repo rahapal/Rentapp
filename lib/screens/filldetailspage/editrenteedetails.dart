@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
@@ -18,6 +20,8 @@ class EditRenteeDetails extends StatefulWidget {
 }
 
 class _EditRenteeDetailsState extends State<EditRenteeDetails> {
+  File? _citizenImage;
+  File? _agreementImage;
   TextEditingController _renteeName = TextEditingController();
   TextEditingController _renteeContact = TextEditingController();
   TextEditingController _renteeEmail = TextEditingController();
@@ -509,7 +513,8 @@ class _EditRenteeDetailsState extends State<EditRenteeDetails> {
                         renteePanNumber: _renteePanNumber.text,
                         renteePayment: Payment(
                           paymentId: '',
-                          paymentDate: DateFormat.yMMMEd().format(DateTime.now()),
+                          paymentDate:
+                              DateFormat.yMMMEd().format(DateTime.now()),
                           paymentNote: '',
                           fieldIndex: widget.getDetails.index,
                         )),

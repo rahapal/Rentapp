@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:rentapp/controller/provider.dart';
@@ -19,6 +22,8 @@ class FillRenteeDetails extends StatefulWidget {
 }
 
 class _FillRenteeDetailsState extends State<FillRenteeDetails> {
+  File? _citizenImage;
+  File? _agreementImage;
   TextEditingController _renteeName = TextEditingController();
   TextEditingController _renteeContact = TextEditingController();
   TextEditingController _renteeEmail = TextEditingController();
@@ -26,6 +31,30 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
   TextEditingController _renteeDueAmount = TextEditingController();
   TextEditingController _renteePanNumber = TextEditingController();
   TextEditingController _renteeAdvanceDeposit = TextEditingController();
+
+  Future PickCitizenImage(ImageSource media) async {
+    final Cimage = await ImagePicker().pickImage(source: media);
+    if (Cimage == null) return;
+    final CimageTemp = File(Cimage.path);
+
+    setState(() {
+      _citizenImage = CimageTemp;
+      // _selected = _image;
+    });
+    return _citizenImage;
+  }
+
+  Future PickAgreementImage(ImageSource media) async {
+    final Aimage = await ImagePicker().pickImage(source: media);
+    if (Aimage == null) return;
+    final AimageTemp = File(Aimage.path);
+
+    setState(() {
+      _agreementImage = AimageTemp;
+      // _selected = _image;
+    });
+    return _agreementImage;
+  }
 
   @override
   void dispose() {
@@ -398,7 +427,12 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                           width: 66.w,
                         ),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            PickCitizenImage(ImageSource.gallery)
+                                .then((value) => setState(() {
+                                      _citizenImage = value;
+                                    }));
+                          },
                           style: ElevatedButton.styleFrom(
                             side: BorderSide(
                               width: 2.0.w,
@@ -439,7 +473,12 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                           width: 10.w,
                         ),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            PickAgreementImage(ImageSource.gallery)
+                                .then((value) => setState(() {
+                                      _agreementImage = value;
+                                    }));
+                          },
                           style: ElevatedButton.styleFrom(
                             side: BorderSide(
                               width: 2.w,
@@ -468,6 +507,30 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                         ),
                       ],
                     ),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Row(
+                        children: [
+                          _citizenImage != null
+                              ? Image.file(
+                                  File(_citizenImage!.path),
+                                  height: 100,
+                                  width: 100,
+                                )
+                              : SizedBox.shrink(),
+                          SizedBox(
+                            width: 10.w,
+                          ),
+                          _agreementImage != null
+                              ? Image.file(
+                                  File(_agreementImage!.path),
+                                  height: 100,
+                                  width: 100,
+                                )
+                              : SizedBox.shrink(),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -485,21 +548,22 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                     index: widget.getDetails.index,
                     fieldStatus: widget.getDetails.fieldStatus,
                     rentee: Rentee(
-                        renteeId: widget.getDetails.rentee.renteeId,
-                        renteeName: _renteeName.text,
-                        renteeEmail: _renteeEmail.text,
-                        renteeContact: _renteeContact.text,
-                        businessdetail: _renteeBusinessName.text,
-                        agreementimage: '',
-                        citizenimage: '',
-                        dueAmount: int.parse(_renteeDueAmount.text),
-                        renteePanNumber: _renteePanNumber.text,
-                        renteePayment: Payment(
-                          paymentId: '',
-                          paymentDate: DateFormat.yMMMEd().format(DateTime.now()),
-                          paymentNote: '',
-                          fieldIndex: widget.getDetails.index,
-                        )),
+                      renteeId: widget.getDetails.rentee.renteeId,
+                      renteeName: _renteeName.text,
+                      renteeEmail: _renteeEmail.text,
+                      renteeContact: _renteeContact.text,
+                      businessdetail: _renteeBusinessName.text,
+                      agreementimage: _agreementImage!.path,
+                      citizenimage: _citizenImage!.path,
+                      dueAmount: int.parse(_renteeDueAmount.text),
+                      renteePanNumber: _renteePanNumber.text,
+                      renteePayment: Payment(
+                        paymentId: '',
+                        paymentDate: DateFormat.yMMMEd().format(DateTime.now()),
+                        paymentNote: '',
+                        fieldIndex: widget.getDetails.index,
+                      ),
+                    ),
                     description: '',
                     image: '',
                     status: widget.getDetails.status,

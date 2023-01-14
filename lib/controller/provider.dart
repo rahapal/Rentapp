@@ -4,6 +4,8 @@ import 'package:rentapp/model/activity.dart';
 import 'package:rentapp/model/payment.dart';
 import 'package:rentapp/model/property.dart';
 
+import '../model/rentee.dart';
+
 class PropertyProvider with ChangeNotifier {
   static const String _boxName = 'property';
   final List<Property> _property = [];
@@ -87,7 +89,7 @@ class PropertyProvider with ChangeNotifier {
     var activitybox = await Hive.openBox<Activity>('activity');
     activitybox.add(Activity(
         name: name,
-        action: 'Paid the due amount of Rs.${payment.payedAmount}',
+        action: 'Paid the Amount of Rs.${payment.payedAmount}',
         date: payment.paymentDate));
   }
 
@@ -121,6 +123,14 @@ class PropertyProvider with ChangeNotifier {
       _paymentMap[index] = [payment];
     }
 
+    notifyListeners();
+  }
+
+  void updateDueAmount(String propertyId, int amount) async {
+    var propertybox = await Hive.openBox<Property>(_boxName);
+    var property = propertybox.get(propertyId);
+    property!.rentee.dueAmount = amount;
+    propertybox.put(propertyId, property);
     notifyListeners();
   }
 }
