@@ -245,7 +245,17 @@ class _PieChartState extends State<PieChart> {
                                                   0);
                                             } else if (int.parse(
                                                     _payAmount.text) <
-                                                widget.getdetails.price) {
+                                                val
+                                                        .getDetails(widget
+                                                            .getdetails.index)
+                                                        .rentee
+                                                        .dueAmount
+                                                        .toInt() +
+                                                    val
+                                                        .getDetails(widget
+                                                            .getdetails.index)
+                                                        .price
+                                                        .toInt()) {
                                               val.paymentAdd(
                                                 widget.getdetails.index,
                                                 Payment(
@@ -263,7 +273,17 @@ class _PieChartState extends State<PieChart> {
                                               );
                                               val.updateDueAmount(
                                                   widget.getdetails.propertyId,
-                                                  widget.getdetails.price -
+                                                  val
+                                                          .getDetails(widget
+                                                              .getdetails.index)
+                                                          .rentee
+                                                          .dueAmount
+                                                          .toInt() +
+                                                      val
+                                                          .getDetails(widget
+                                                              .getdetails.index)
+                                                          .price
+                                                          .toInt() -
                                                       int.parse(
                                                           _payAmount.text));
                                             }
