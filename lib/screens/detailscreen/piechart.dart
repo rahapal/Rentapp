@@ -241,7 +241,26 @@ class _PieChartState extends State<PieChart> {
                                                 widget.getdetails.propertyId,
                                                 0);
                                           }
-
+                                          else if (int.parse(_payAmount.text) < widget.getdetails.price){
+                                             provider.paymentAdd(
+                                              widget.getdetails.index,
+                                              Payment(
+                                                paymentId: const Uuid().v4(),
+                                                paymentDate: formattedDate,
+                                                paymentNote: '',
+                                                refDate: DateTime.now(),
+                                                payedAmount:
+                                                    int.parse(_payAmount.text),
+                                                fieldIndex:
+                                                    widget.getdetails.index,
+                                              ),
+                                              widget
+                                                  .getdetails.rentee.renteeName,
+                                            );
+                                            provider.updateDueAmount(
+                                                widget.getdetails.propertyId,
+                                                widget.getdetails.price - int.parse(_payAmount.text));
+                                          }
                                           Navigator.pop(context);
                                         },
                                         child: const Text('Pay'))
