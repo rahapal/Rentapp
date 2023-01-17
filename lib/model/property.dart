@@ -27,6 +27,7 @@ class Property {
   int index;
   @HiveField(10)
   bool fieldStatus;
+  
 
   Property({
     required this.propertyName,

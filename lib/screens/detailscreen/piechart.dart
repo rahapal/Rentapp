@@ -13,7 +13,6 @@ import 'package:uuid/uuid.dart';
 
 import '../../common/global_variables.dart';
 import '../../model/payment.dart';
-import '../../model/rentee.dart';
 
 class PieChart extends StatefulWidget {
   Property getdetails;
@@ -48,7 +47,7 @@ class _PieChartState extends State<PieChart> {
 
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<PropertyProvider>(context);
+    // var provider = Provider.of<PropertyProvider>(context);
     return SizedBox(
       width: double.infinity,
       child: Padding(
@@ -116,14 +115,6 @@ class _PieChartState extends State<PieChart> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  // SizedBox(
-                  //   height: 2.h,
-                  // ),
-                  // Text(
-                  //   'Monthly Rs ${widget.getdetails.price.toInt()}',
-                  //   style:
-                  //       TextStyle(fontSize: 17.sp, fontWeight: FontWeight.bold),
-                  // ),
                   SizedBox(
                     height: 15.h,
                   ),
@@ -132,7 +123,6 @@ class _PieChartState extends State<PieChart> {
                     text: 'Pay',
                     textColor: Colors.white,
                     onTap: () async {
-                      // var paymentbox = await Hive.openBox<Payment>('payment');
                       if (widget.getdetails.rentee.renteeName == '') {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
@@ -145,25 +135,29 @@ class _PieChartState extends State<PieChart> {
                             context: context,
                             builder: (_) {
                               return Dialog(
-                                child: Container(
+                                shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(15.0))),
+                                child: SizedBox(
                                   width: double.infinity,
                                   height: 200,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15),
-                                  ),
                                   child: Column(
                                     children: [
-                                      Container(
-                                        alignment: FractionalOffset.topRight,
-                                        child: GestureDetector(
-                                          child: Icon(
-                                            size: 30.sp,
-                                            Icons.clear,
-                                            color: Colors.red,
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            top: 2, right: 2),
+                                        child: Container(
+                                          alignment: FractionalOffset.topRight,
+                                          child: GestureDetector(
+                                            child: Icon(
+                                              size: 30.sp,
+                                              Icons.clear,
+                                              color: Colors.red,
+                                            ),
+                                            onTap: () {
+                                              Navigator.pop(context);
+                                            },
                                           ),
-                                          onTap: () {
-                                            Navigator.pop(context);
-                                          },
                                         ),
                                       ),
                                       Text(
@@ -173,37 +167,42 @@ class _PieChartState extends State<PieChart> {
                                             fontSize: 16.sp),
                                       ),
                                       SizedBox(
-                                        height: 12.h,
+                                        height: 25.h,
                                       ),
-                                      TextFormField(
-                                        controller: _payAmount,
-                                        decoration: InputDecoration(
-                                          filled: true,
-                                          fillColor: GlobalVariables
-                                              .textFieldbackgroundColor,
-                                          contentPadding: EdgeInsets.symmetric(
-                                              vertical: 10.h, horizontal: 10.w),
-                                          hintText: 'Enter Amount paid',
-                                          hintStyle: TextStyle(
-                                            fontSize: 14.sp,
-                                            fontWeight: FontWeight.w300,
-                                          ),
-                                          border: const OutlineInputBorder(
-                                            borderRadius: BorderRadius.all(
-                                              Radius.circular(5.0),
+                                      SizedBox(
+                                        width: 200.w,
+                                        child: TextFormField(
+                                          controller: _payAmount,
+                                          decoration: InputDecoration(
+                                            filled: true,
+                                            fillColor: GlobalVariables
+                                                .textFieldbackgroundColor,
+                                            contentPadding:
+                                                EdgeInsets.symmetric(
+                                                    vertical: 10.h,
+                                                    horizontal: 10.w),
+                                            hintText: 'Enter Amount paid',
+                                            hintStyle: TextStyle(
+                                              fontSize: 14.sp,
+                                              fontWeight: FontWeight.w300,
                                             ),
-                                          ),
-                                          enabledBorder:
-                                              const OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: GlobalVariables
-                                                  .textFieldborderColor,
+                                            border: const OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                Radius.circular(5.0),
+                                              ),
+                                            ),
+                                            enabledBorder:
+                                                const OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: GlobalVariables
+                                                    .textFieldborderColor,
+                                              ),
                                             ),
                                           ),
                                         ),
                                       ),
                                       SizedBox(
-                                        height: 28.h,
+                                        height: 20.h,
                                       ),
                                       ElevatedButton(
                                           onPressed: () {

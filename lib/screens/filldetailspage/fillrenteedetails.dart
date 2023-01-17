@@ -517,7 +517,7 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                                   height: 100,
                                   width: 100,
                                 )
-                              : SizedBox.shrink(),
+                              : const SizedBox.shrink(),
                           SizedBox(
                             width: 10.w,
                           ),
@@ -527,7 +527,7 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                                   height: 100,
                                   width: 100,
                                 )
-                              : SizedBox.shrink(),
+                              : const SizedBox.shrink(),
                         ],
                       ),
                     ),

@@ -63,9 +63,6 @@ class _TopBarState extends State<TopBar> {
                     ),
                   ),
                 ),
-                // const SizedBox(
-                //   width: 10,
-                // ),
                 Padding(
                   padding: EdgeInsets.only(left: 10.w),
                   child: PhysicalModel(
@@ -78,7 +75,7 @@ class _TopBarState extends State<TopBar> {
                         borderRadius: BorderRadius.circular(15.r),
                         color: const Color(0xFF5B67FE),
                       ),
-                      height: 50.h,
+                      height: 48.h,
                       width: 45.w,
                       child: RotatedBox(
                         quarterTurns: 1,
@@ -94,7 +91,6 @@ class _TopBarState extends State<TopBar> {
                   ),
                 ),
               ],
-              //),
             ),
           ),
           const BodyPart(),

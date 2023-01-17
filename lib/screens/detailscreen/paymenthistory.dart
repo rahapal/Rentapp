@@ -15,7 +15,6 @@ class PaymentHistory extends StatefulWidget {
 }
 
 class _PaymentHistoryState extends State<PaymentHistory> {
-  @override
   late Box<Payment> paymentBox;
 
   @override

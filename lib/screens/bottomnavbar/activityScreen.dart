@@ -59,7 +59,7 @@ class _ActivityScreenPageState extends State<ActivityScreenPage> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            activity!.name,
+                            activity.name,
                             style: TextStyle(
                                 fontSize: 16.sp, fontWeight: FontWeight.w400),
                           ),
