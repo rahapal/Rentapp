@@ -289,7 +289,7 @@ class _PieChartState extends State<PieChart> {
                                             _payAmount.clear();
                                             Navigator.pop(context);
                                           },
-                                          child: const Text('Pay'))
+                                          child: const Text('Paid'))
                                     ],
                                   ),
                                 ),

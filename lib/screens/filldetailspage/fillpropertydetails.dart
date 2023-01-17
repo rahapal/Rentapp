@@ -315,170 +315,129 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                   ],
                 ),
               ),
+
+              // Expanded(
+              //   child: Padding(
+              //     padding: EdgeInsets.only(right: 5.w),
+              //     child: Column(
+              //       crossAxisAlignment: CrossAxisAlignment.start,
+              //       children: [
+              //         Padding(
+              //           padding: EdgeInsets.only(bottom: 12.h),
+              //           child: Text(
+              //             'Agreement date start',
+              //             style: TextStyle(
+              //                 fontWeight: FontWeight.w400,
+              //                 fontSize: 16.sp),
+              //           ),
+              //         ),
+              //         TextFormField(
+              //           keyboardType: TextInputType.none,
+              //           controller: _agreementDateStart,
+              //           decoration: InputDecoration(
+              //             prefixIcon: const Icon(
+              //               Icons.calendar_today,
+              //             ),
+              //             filled: true,
+              //             fillColor:
+              //                 GlobalVariables.textFieldbackgroundColor,
+              //             contentPadding: EdgeInsets.symmetric(
+              //                 vertical: 10.h, horizontal: 10.w),
+              //             hintText: 'Select date',
+              //             hintStyle: TextStyle(
+              //               fontSize: 14.sp,
+              //               fontWeight: FontWeight.w300,
+              //             ),
+              //             border: OutlineInputBorder(
+              //               borderRadius: BorderRadius.all(
+              //                 Radius.circular(5.0.r),
+              //               ),
+              //             ),
+              //             enabledBorder: const OutlineInputBorder(
+              //               borderSide: BorderSide(
+              //                 color: GlobalVariables.textFieldborderColor,
+              //               ),
+              //             ),
+              //           ),
+              //           onTap: () async {
+              //             final DateTime? date = await showDatePicker(
+              //               context: context,
+              //               initialDate: DateTime.now(),
+              //               firstDate: DateTime(2000),
+              //               lastDate: DateTime(2100),
+              //             );
+              //             if (date != null) {
+              //               setState(() {
+              //                 _agreementDateStart.text = DateTime(
+              //                         date.year, date.month, date.day)
+              //                     .toString()
+              //                     .substring(0, 10);
+              //               });
+              //             }
+              //           },
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
+
               Padding(
-                padding: EdgeInsets.only(bottom: 40.h),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.only(right: 5.w),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(bottom: 12.h),
-                              child: Text(
-                                'Agreement date start',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 16.sp),
-                              ),
-                            ),
-                            TextFormField(
-                              keyboardType: TextInputType.none,
-                              controller: _agreementDateStart,
-                              decoration: InputDecoration(
-                                prefixIcon: const Icon(
-                                  Icons.calendar_today,
-                                ),
-                                filled: true,
-                                fillColor:
-                                    GlobalVariables.textFieldbackgroundColor,
-                                contentPadding: EdgeInsets.symmetric(
-                                    vertical: 10.h, horizontal: 10.w),
-                                hintText: 'Select date',
-                                hintStyle: TextStyle(
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w300,
-                                ),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(5.0.r),
-                                  ),
-                                ),
-                                enabledBorder: const OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: GlobalVariables.textFieldborderColor,
-                                  ),
-                                ),
-                              ),
-                              onTap: () async {
-                                final DateTime? date = await showDatePicker(
-                                  context: context,
-                                  initialDate: DateTime.now(),
-                                  firstDate: DateTime(2000),
-                                  lastDate: DateTime(2100),
-                                );
-                                if (date != null) {
-                                  setState(() {
-                                    _agreementDateStart.text = DateTime(
-                                            date.year, date.month, date.day)
-                                        .toString()
-                                        .substring(0, 10);
-                                  });
-                                }
-                              },
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 14.w),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(bottom: 12.h),
-                              child: Text(
-                                'Advance deposit',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 16.sp),
-                              ),
-                            ),
-                            TextFormField(
-                              keyboardType: TextInputType.number,
-                              controller: _propertyAdvanceDeposit,
-                              decoration: InputDecoration(
-                                filled: true,
-                                fillColor:
-                                    GlobalVariables.textFieldbackgroundColor,
-                                contentPadding: EdgeInsets.symmetric(
-                                    vertical: 10.h, horizontal: 10.w),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(5.0.r),
-                                  ),
-                                ),
-                                enabledBorder: const OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: GlobalVariables.textFieldborderColor,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(double.infinity, 50.h),
-                ),
-                onPressed: () {
-                  provider.addProperty(
-                    Property(
-                      propertyId: const Uuid().v4(),
-                      propertyName: _propertyName.text,
-                      address: _propertyAddress.text,
-                      description: _propertyDescription.text,
-                      price: int.parse(_propertyPrice.text),
-                      image: '',
-                      size: _propertySize.text,
-                      //yesai ho herna test garns cha
-                      status: 'paid',
-                      index: widget.getindex,
+                padding: const EdgeInsets.only(top: 150),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: Size(145.w, 50.h),
+                  ),
+                  onPressed: () {
+                    provider.addProperty(
+                      Property(
+                        propertyId: const Uuid().v4(),
+                        propertyName: _propertyName.text,
+                        address: _propertyAddress.text,
+                        description: _propertyDescription.text,
+                        price: int.parse(_propertyPrice.text),
 
-                      fieldStatus: true,
-                      rentee: Rentee(
-                        renteeId: const Uuid().v4(),
-                        agreementimage: '',
-                        businessdetail: '',
-                        citizenimage: '',
-                        renteeContact: '',
-                        renteeEmail: '',
-                        renteeName: '',
-                        renteePanNumber: '',
-                        renteePayment: Payment(
-                          paymentId: '',
-                          paymentNote: '',
-                          paymentDate:
-                              DateFormat.yMMMEd().format(DateTime.now()),
-                          fieldIndex: widget.getindex,
+                        size: _propertySize.text,
+                        //yesai ho herna test garns cha
+                        status: 'paid',
+                        index: widget.getindex,
+
+                        fieldStatus: true,
+                        rentee: Rentee(
+                          renteeId: const Uuid().v4(),
+                          agreementimage: '',
+                          businessdetail: '',
+                          citizenimage: '',
+                          renteeContact: '',
+                          renteeEmail: '',
+                          renteeName: '',
+                          renteePanNumber: '',
+                          agreementDate: '',
+                          renteePayment: Payment(
+                            paymentId: '',
+                            paymentNote: '',
+                            paymentDate:
+                                DateFormat.yMMMEd().format(DateTime.now()),
+                            fieldIndex: widget.getindex,
+                          ),
                         ),
                       ),
-                    ),
-                  );
-                  print('Index at fill : ${widget.getindex}');
-                  Navigator.pushNamed(context, route.RouteManager.home);
-                  // provider.setboolVal(widget.getindex).then(
-                  //       (value) => provider.getboolVal(),
-                  //     );
+                    );
+                    print('Index at fill : ${widget.getindex}');
+                    Navigator.pushNamed(context, route.RouteManager.home);
+                    // provider.setboolVal(widget.getindex).then(
+                    //       (value) => provider.getboolVal(),
+                    //     );
 
-                  //provider.getIndexTrue(widget.getindex);
-                  // ScaffoldMessenger.of(context).showSnackBar(
-                  //   const SnackBar(
-                  //     content: Text('Property Successfully added'),
-                  //   ),
-                  // );
-                },
-                child: const Text(
-                  'Upload details',
+                    //provider.getIndexTrue(widget.getindex);
+                    // ScaffoldMessenger.of(context).showSnackBar(
+                    //   const SnackBar(
+                    //     content: Text('Property Successfully added'),
+                    //   ),
+                    // );
+                  },
+                  child: const Text(
+                    'Upload details',
+                  ),
                 ),
               ),
             ],

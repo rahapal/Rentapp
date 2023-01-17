@@ -25,7 +25,8 @@ class Rentee {
   int advanceAmount;
   @HiveField(9)
   String renteePanNumber;
-
+  @HiveField(10)
+  String agreementDate;
   @HiveField(11)
   Payment renteePayment;
 
@@ -37,6 +38,7 @@ class Rentee {
     required this.citizenimage,
     required this.agreementimage,
     required this.renteeId,
+    required this.agreementDate,
     this.dueAmount = 0,
     this.advanceAmount = 0,
     required this.renteePayment,

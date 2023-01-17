@@ -21,20 +21,19 @@ class PropertyAdapter extends TypeAdapter<Property> {
       address: fields[1] as String,
       description: fields[2] as String,
       price: fields[3] as int,
-      image: fields[4] as String,
-      size: fields[5] as String,
-      status: fields[6] as String,
-      propertyId: fields[7] as String,
-      rentee: fields[8] as Rentee,
-      index: fields[9] as int,
-      fieldStatus: fields[10] as bool,
+      size: fields[4] as String,
+      status: fields[5] as String,
+      propertyId: fields[6] as String,
+      rentee: fields[7] as Rentee,
+      index: fields[8] as int,
+      fieldStatus: fields[9] as bool,
     );
   }
 
   @override
   void write(BinaryWriter writer, Property obj) {
     writer
-      ..writeByte(11)
+      ..writeByte(10)
       ..writeByte(0)
       ..write(obj.propertyName)
       ..writeByte(1)
@@ -44,18 +43,16 @@ class PropertyAdapter extends TypeAdapter<Property> {
       ..writeByte(3)
       ..write(obj.price)
       ..writeByte(4)
-      ..write(obj.image)
-      ..writeByte(5)
       ..write(obj.size)
-      ..writeByte(6)
+      ..writeByte(5)
       ..write(obj.status)
-      ..writeByte(7)
+      ..writeByte(6)
       ..write(obj.propertyId)
-      ..writeByte(8)
+      ..writeByte(7)
       ..write(obj.rentee)
-      ..writeByte(9)
+      ..writeByte(8)
       ..write(obj.index)
-      ..writeByte(10)
+      ..writeByte(9)
       ..write(obj.fieldStatus);
   }
 

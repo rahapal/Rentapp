@@ -31,6 +31,7 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
   TextEditingController _renteeDueAmount = TextEditingController();
   TextEditingController _renteePanNumber = TextEditingController();
   TextEditingController _renteeAdvanceDeposit = TextEditingController();
+  TextEditingController _agreementDateStart = TextEditingController();
 
   Future PickCitizenImage(ImageSource media) async {
     final Cimage = await ImagePicker().pickImage(source: media);
@@ -65,6 +66,7 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
     _renteeDueAmount.dispose();
     _renteePanNumber.dispose();
     _renteeAdvanceDeposit.dispose();
+    _agreementDateStart.dispose();
     super.dispose();
   }
 
@@ -246,71 +248,85 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(bottom: 17.h),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                padding: EdgeInsets.only(bottom: 30.h),
+                child: Row(
                   children: [
-                    Text(
-                      'Business name',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w400, fontSize: 16.sp),
-                    ),
-                    SizedBox(
-                      height: 12.h,
-                    ),
-                    TextFormField(
-                      controller: _renteeBusinessName,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: GlobalVariables.textFieldbackgroundColor,
-                        contentPadding: EdgeInsets.symmetric(
-                            vertical: 10.h, horizontal: 10.w),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(5.0.r),
-                          ),
-                        ),
-                        enabledBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: GlobalVariables.textFieldborderColor,
-                          ),
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.only(right: 10.w),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 12.h),
+                              child: Text(
+                                'Business Name',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 16.sp),
+                              ),
+                            ),
+                            TextFormField(
+                              controller: _renteeBusinessName,
+                              decoration: InputDecoration(
+                                filled: true,
+                                fillColor:
+                                    GlobalVariables.textFieldbackgroundColor,
+                                contentPadding: EdgeInsets.symmetric(
+                                    vertical: 10.h, horizontal: 20.w),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(5.0.r),
+                                  ),
+                                ),
+                                enabledBorder: const OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: GlobalVariables.textFieldborderColor,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(bottom: 17.h),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Rentee Due Amount',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w400, fontSize: 16.sp),
-                    ),
-                    SizedBox(
-                      height: 12.h,
-                    ),
-                    TextFormField(
-                      controller: _renteeDueAmount,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: GlobalVariables.textFieldbackgroundColor,
-                        contentPadding: EdgeInsets.symmetric(
-                            vertical: 10.h, horizontal: 10.w),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(5.0.r),
-                          ),
-                        ),
-                        enabledBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: GlobalVariables.textFieldborderColor,
-                          ),
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 10.w),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 12.h),
+                              child: Text(
+                                'Pan number',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 16.sp),
+                              ),
+                            ),
+                            TextFormField(
+                              keyboardType: TextInputType.number,
+                              controller: _renteePanNumber,
+                              decoration: InputDecoration(
+                                filled: true,
+                                fillColor:
+                                    GlobalVariables.textFieldbackgroundColor,
+                                contentPadding: EdgeInsets.symmetric(
+                                    vertical: 10.h, horizontal: 10.w),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(5.0.r),
+                                  ),
+                                ),
+                                enabledBorder: const OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: GlobalVariables.textFieldborderColor,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -330,14 +346,14 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                             Padding(
                               padding: EdgeInsets.only(bottom: 12.h),
                               child: Text(
-                                'Pan number',
+                                'Due Amount',
                                 style: TextStyle(
                                     fontWeight: FontWeight.w400,
                                     fontSize: 16.sp),
                               ),
                             ),
                             TextFormField(
-                              controller: _renteePanNumber,
+                              controller: _renteeDueAmount,
                               decoration: InputDecoration(
                                 filled: true,
                                 fillColor:
@@ -399,6 +415,66 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                           ],
                         ),
                       ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(right: 5.w, bottom: 30.h),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 12.h),
+                      child: Text(
+                        'Agreement date start',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400, fontSize: 16.sp),
+                      ),
+                    ),
+                    TextFormField(
+                      keyboardType: TextInputType.none,
+                      controller: _agreementDateStart,
+                      decoration: InputDecoration(
+                        prefixIcon: const Icon(
+                          Icons.calendar_today,
+                        ),
+                        filled: true,
+                        fillColor: GlobalVariables.textFieldbackgroundColor,
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: 10.h, horizontal: 10.w),
+                        hintText: 'Select date',
+                        hintStyle: TextStyle(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w300,
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(5.0.r),
+                          ),
+                        ),
+                        enabledBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: GlobalVariables.textFieldborderColor,
+                          ),
+                        ),
+                      ),
+                      onTap: () async {
+                        final DateTime? date = await showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(2000),
+                          lastDate: DateTime(2100),
+                        );
+                        if (date != null) {
+                          setState(() {
+                            _agreementDateStart.text =
+                                DateTime(date.year, date.month, date.day)
+                                    .toString()
+                                    .substring(0, 10);
+                          });
+                        }
+                      },
                     ),
                   ],
                 ),
@@ -557,6 +633,7 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                       citizenimage: _citizenImage!.path,
                       dueAmount: int.parse(_renteeDueAmount.text),
                       renteePanNumber: _renteePanNumber.text,
+                      agreementDate: '',
                       renteePayment: Payment(
                         paymentId: '',
                         paymentDate: DateFormat.yMMMEd().format(DateTime.now()),
@@ -565,7 +642,6 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                       ),
                     ),
                     description: '',
-                    image: '',
                     status: widget.getDetails.status,
                   );
 

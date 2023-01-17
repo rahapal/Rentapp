@@ -13,28 +13,25 @@ class Property {
   String description;
   @HiveField(3)
   int price;
+
   @HiveField(4)
-  String image;
-  @HiveField(5)
   String size;
-  @HiveField(6)
+  @HiveField(5)
   String status;
-  @HiveField(7)
+  @HiveField(6)
   String propertyId;
-  @HiveField(8)
+  @HiveField(7)
   Rentee rentee;
-  @HiveField(9)
+  @HiveField(8)
   int index;
-  @HiveField(10)
+  @HiveField(9)
   bool fieldStatus;
-  
 
   Property({
     required this.propertyName,
     required this.address,
     required this.description,
     required this.price,
-    required this.image,
     required this.size,
     this.status = 'empty',
     required this.propertyId,
