@@ -10,21 +10,34 @@ import 'package:rentapp/model/rentee.dart';
 import 'package:rentapp/route/route.dart' as route;
 import 'package:uuid/uuid.dart';
 
-class FillPropertyDetails extends StatefulWidget {
+class EditPropertyDetail extends StatefulWidget {
   final int getindex;
-  const FillPropertyDetails({Key? key, required this.getindex})
+  const EditPropertyDetail({Key? key, required this.getindex})
       : super(key: key);
 
   @override
-  State<FillPropertyDetails> createState() => _FillPropertyDetailsState();
+  State<EditPropertyDetail> createState() => _EditPropertyDetailState();
 }
 
-class _FillPropertyDetailsState extends State<FillPropertyDetails> {
+class _EditPropertyDetailState extends State<EditPropertyDetail> {
   TextEditingController _propertyName = TextEditingController();
   TextEditingController _propertyAddress = TextEditingController();
   TextEditingController _propertySize = TextEditingController();
   TextEditingController _propertyDescription = TextEditingController();
   TextEditingController _propertyPrice = TextEditingController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    var provider = Provider.of<PropertyProvider>(context, listen: false);
+    _propertyName.text = provider.atIndex(widget.getindex)!.propertyName;
+    _propertyAddress.text = provider.atIndex(widget.getindex)!.address;
+    _propertySize.text = provider.atIndex(widget.getindex)!.size;
+    _propertyDescription.text = provider.atIndex(widget.getindex)!.description;
+    _propertyPrice.text = provider.atIndex(widget.getindex)!.price.toString();
+
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -87,7 +100,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                     width: 5.w,
                   ),
                   Text(
-                    'Add Properties',
+                    'Edit Properties',
                     style:
                         TextStyle(fontWeight: FontWeight.w600, fontSize: 20.sp),
                   ),
@@ -385,7 +398,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                     minimumSize: Size(145.w, 50.h),
                   ),
                   onPressed: () {
-                    provider.addProperty(
+                    provider.updateProperty(
                       Property(
                         propertyId: const Uuid().v4(),
                         propertyName: _propertyName.text,
@@ -433,7 +446,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                     // );
                   },
                   child: const Text(
-                    'Upload details',
+                    'Save',
                   ),
                 ),
               ),

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 import 'package:rentapp/model/property.dart';
+import 'package:rentapp/screens/filldetailspage/editpropertydetails.dart';
 import 'package:rentapp/screens/filldetailspage/editrenteedetails.dart';
 
 import '../../controller/provider.dart';
@@ -64,8 +65,18 @@ class _DetailsPageState extends State<DetailsPage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => EditRenteeDetails(
-                        getDetails: widget.getdetails,
+                      builder: (context) => EditPropertyDetail(
+                        getindex: widget.getdetails.index,
+                      ),
+                    ),
+                  );
+                }
+                if (value == 1) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => EditRenteeDetail(
+                        getIndex: widget.getdetails.index,
                       ),
                     ),
                   );
@@ -97,7 +108,30 @@ class _DetailsPageState extends State<DetailsPage> {
                         width: 10.w,
                       ),
                       const Text(
-                        'Edit',
+                        'Edit Property Details',
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                PopupMenuItem(
+                  value: 1,
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 10.w,
+                      ),
+                      const Icon(
+                        Icons.edit,
+                        color: Colors.black,
+                      ),
+                      SizedBox(
+                        width: 10.w,
+                      ),
+                      const Text(
+                        'Edit Rentee Details',
                         style: TextStyle(
                           color: Colors.black,
                         ),

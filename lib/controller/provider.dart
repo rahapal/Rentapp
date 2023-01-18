@@ -3,6 +3,7 @@ import 'package:hive/hive.dart';
 import 'package:rentapp/model/activity.dart';
 import 'package:rentapp/model/payment.dart';
 import 'package:rentapp/model/property.dart';
+import 'package:rentapp/model/rentee.dart';
 
 class PropertyProvider with ChangeNotifier {
   static const String _boxName = 'property';
@@ -130,6 +131,18 @@ class PropertyProvider with ChangeNotifier {
     var property = propertybox.get(propertyId);
     property!.rentee.dueAmount = amount;
     propertybox.put(propertyId, property);
+    notifyListeners();
+  }
+
+  void updateProperty(Property property) async {
+    var propertybox = await Hive.openBox<Property>(_boxName);
+    propertybox.put(property.propertyId, property);
+    notifyListeners();
+  }
+
+  void updateRentee(Rentee rentee) async {
+    var renteebox = await Hive.openBox<Rentee>('rentee');
+    renteebox.put(rentee.renteeId, rentee);
     notifyListeners();
   }
 }

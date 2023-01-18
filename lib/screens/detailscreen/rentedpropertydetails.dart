@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 import 'package:rentapp/model/property.dart';
+
+import '../../controller/provider.dart';
 
 class RentedPropertyDetails extends StatefulWidget {
   Property getdetails;
@@ -14,6 +17,7 @@ class RentedPropertyDetails extends StatefulWidget {
 class _RentedPropertyDetailsState extends State<RentedPropertyDetails> {
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<PropertyProvider>(context);
     return Column(
       children: <Widget>[
         Row(
@@ -67,7 +71,7 @@ class _RentedPropertyDetailsState extends State<RentedPropertyDetails> {
                 ),
                 SizedBox(height: 10.h),
                 Text(
-                  'Rs ${widget.getdetails.price}/ month',
+                  'Rs ${provider.getDetails(widget.getdetails.index).price}/ month',
                   style: const TextStyle(
                       color: Color(0xFF9f9f9f), fontWeight: FontWeight.bold),
                 ),
