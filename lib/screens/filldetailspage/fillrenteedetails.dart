@@ -634,6 +634,7 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                       dueAmount: int.parse(_renteeDueAmount.text),
                       renteePanNumber: _renteePanNumber.text,
                       agreementDate: '',
+                      advanceAmount: int.parse(_renteeAdvanceDeposit.text),
                       renteePayment: Payment(
                         paymentId: '',
                         paymentDate: DateFormat.yMMMEd().format(DateTime.now()),

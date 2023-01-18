@@ -400,7 +400,8 @@ class _EditPropertyDetailState extends State<EditPropertyDetail> {
                   onPressed: () {
                     provider.updateProperty(
                       Property(
-                        propertyId: const Uuid().v4(),
+                        propertyId:
+                            provider.getDetails(widget.getindex).propertyId,
                         propertyName: _propertyName.text,
                         address: _propertyAddress.text,
                         description: _propertyDescription.text,
@@ -413,18 +414,53 @@ class _EditPropertyDetailState extends State<EditPropertyDetail> {
 
                         fieldStatus: true,
                         rentee: Rentee(
-                          renteeId: const Uuid().v4(),
-                          agreementimage: '',
-                          businessdetail: '',
-                          citizenimage: '',
-                          renteeContact: '',
-                          renteeEmail: '',
-                          renteeName: '',
-                          renteePanNumber: '',
-                          agreementDate: '',
+                          renteeId: provider
+                              .getDetails(widget.getindex)
+                              .rentee
+                              .renteeId,
+                          agreementimage: provider
+                              .getDetails(widget.getindex)
+                              .rentee
+                              .agreementimage,
+                          businessdetail: provider
+                              .getDetails(widget.getindex)
+                              .rentee
+                              .businessdetail,
+                          citizenimage: provider
+                              .getDetails(widget.getindex)
+                              .rentee
+                              .citizenimage,
+                          renteeContact: provider
+                              .getDetails(widget.getindex)
+                              .rentee
+                              .renteeContact,
+                          renteeEmail: provider
+                              .getDetails(widget.getindex)
+                              .rentee
+                              .renteeEmail,
+                          renteeName: provider
+                              .getDetails(widget.getindex)
+                              .rentee
+                              .renteeName,
+                          renteePanNumber: provider
+                              .getDetails(widget.getindex)
+                              .rentee
+                              .renteePanNumber,
+                          agreementDate: provider
+                              .getDetails(widget.getindex)
+                              .rentee
+                              .agreementDate,
                           renteePayment: Payment(
-                            paymentId: '',
-                            paymentNote: '',
+                            paymentId: provider
+                                .getDetails(widget.getindex)
+                                .rentee
+                                .renteePayment
+                                .paymentId,
+                            paymentNote: provider
+                                .getDetails(widget.getindex)
+                                .rentee
+                                .renteePayment
+                                .paymentNote,
                             paymentDate:
                                 DateFormat.yMMMEd().format(DateTime.now()),
                             fieldIndex: widget.getindex,
@@ -433,7 +469,7 @@ class _EditPropertyDetailState extends State<EditPropertyDetail> {
                       ),
                     );
                     print('Index at fill : ${widget.getindex}');
-                    Navigator.pushNamed(context, route.RouteManager.home);
+                    Navigator.pop(context);
                     // provider.setboolVal(widget.getindex).then(
                     //       (value) => provider.getboolVal(),
                     //     );

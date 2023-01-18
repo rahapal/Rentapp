@@ -634,41 +634,57 @@ class _EditRenteeDetailState extends State<EditRenteeDetail> {
                   minimumSize: Size(double.infinity, 50.h),
                 ),
                 onPressed: () {
-                  provider.updateRentee(Rentee(
-                    renteeId:
-                        provider.getDetails(widget.getIndex).rentee.renteeId,
-                    renteeName: _renteeName.text,
-                    renteeEmail: _renteeEmail.text,
-                    renteeContact: _renteeContact.text,
-                    dueAmount: int.parse(_renteeDueAmount.text),
-                    agreementimage: _agreementImage.toString(),
-                    citizenimage: _citizenImage.toString(),
-                    businessdetail: _renteeBusinessName.text,
-                    renteePanNumber: _renteePanNumber.text,
-                    agreementDate: '',
-                    renteePayment: Payment(
-                      paymentId: provider
-                          .getDetails(widget.getIndex)
-                          .rentee .renteePayment
-                          .paymentId,
-                      paymentDate: provider
-                          .getDetails(widget.getIndex)
-                          .rentee
-                          .renteePayment
-                          .paymentDate,
-                      payedAmount: provider
-                          .getDetails(widget.getIndex)
-                          .rentee
-                          .renteePayment
-                          .payedAmount,
-                      paymentNote: provider
-                          .getDetails(widget.getIndex)
-                          .rentee
-                          .renteePayment
-                          .paymentNote,
-                      fieldIndex: widget.getIndex,
-                    ),
-                  ));
+                  provider.updateProperty(Property(
+                      propertyName:
+                          provider.getDetails(widget.getIndex).propertyName,
+                      address: provider.getDetails(widget.getIndex).address,
+                      description:
+                          provider.getDetails(widget.getIndex).description,
+                      price: provider.getDetails(widget.getIndex).price,
+                      size: provider.getDetails(widget.getIndex).size,
+                      propertyId:
+                          provider.getDetails(widget.getIndex).propertyId,
+                      status: 'paid',
+                      index: widget.getIndex,
+                      fieldStatus: true,
+                      rentee: Rentee(
+                        renteeId: provider
+                            .getDetails(widget.getIndex)
+                            .rentee
+                            .renteeId,
+                        renteeName: _renteeName.text,
+                        renteeEmail: _renteeEmail.text,
+                        renteeContact: _renteeContact.text,
+                        dueAmount: int.parse(_renteeDueAmount.text),
+                        agreementimage: _agreementImage.toString(),
+                        citizenimage: _citizenImage.toString(),
+                        businessdetail: _renteeBusinessName.text,
+                        renteePanNumber: _renteePanNumber.text,
+                        agreementDate: '',
+                        renteePayment: Payment(
+                          paymentId: provider
+                              .getDetails(widget.getIndex)
+                              .rentee
+                              .renteePayment
+                              .paymentId,
+                          paymentDate: provider
+                              .getDetails(widget.getIndex)
+                              .rentee
+                              .renteePayment
+                              .paymentDate,
+                          payedAmount: provider
+                              .getDetails(widget.getIndex)
+                              .rentee
+                              .renteePayment
+                              .payedAmount,
+                          paymentNote: provider
+                              .getDetails(widget.getIndex)
+                              .rentee
+                              .renteePayment
+                              .paymentNote,
+                          fieldIndex: widget.getIndex,
+                        ),
+                      )));
                   //Navigator.pushNamed(context, route.RouteManager.viewpage);
                   Navigator.pop(context);
                 },

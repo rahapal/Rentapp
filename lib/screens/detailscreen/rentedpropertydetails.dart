@@ -53,19 +53,19 @@ class _RentedPropertyDetailsState extends State<RentedPropertyDetails> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  widget.getdetails.propertyName,
+                  provider.getDetails(widget.getdetails.index).propertyName,
                   style:
                       TextStyle(fontWeight: FontWeight.bold, fontSize: 14.5.sp),
                 ),
                 SizedBox(height: 10.h),
                 Text(
-                  widget.getdetails.address,
+                  provider.getDetails(widget.getdetails.index).address,
                   style: const TextStyle(
                       color: Color(0xFF9f9f9f), fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 10.h),
                 Text(
-                  widget.getdetails.size,
+                  provider.getDetails(widget.getdetails.index).size,
                   style: const TextStyle(
                       color: Color(0xFF9f9f9f), fontWeight: FontWeight.bold),
                 ),

@@ -1,6 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import 'package:rentapp/controller/provider.dart';
 import 'package:rentapp/model/property.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -60,6 +61,7 @@ class _UserDetailState extends State<UserDetail> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<PropertyProvider>(context);
     return GestureDetector(
       onTap: () {
         if (widget.getdetails.rentee.renteeName.isEmpty) {
@@ -118,13 +120,19 @@ class _UserDetailState extends State<UserDetail> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              widget.getdetails.rentee.renteeName,
+                              provider
+                                  .getDetails(widget.getdetails.index)
+                                  .rentee
+                                  .renteeName,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 18.sp),
                             ),
                             SizedBox(height: 10.h),
                             Text(
-                              widget.getdetails.rentee.renteeContact,
+                              provider
+                                  .getDetails(widget.getdetails.index)
+                                  .rentee
+                                  .renteeContact,
                               style: TextStyle(
                                 color: const Color(0xFF9f9f9f),
                                 fontSize: 16.sp,
