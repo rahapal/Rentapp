@@ -620,6 +620,7 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                     propertyName: widget.getDetails.propertyName,
                     price: widget.getDetails.price,
                     address: widget.getDetails.address,
+                    description: widget.getDetails.description,
                     size: widget.getDetails.size,
                     index: widget.getDetails.index,
                     fieldStatus: widget.getDetails.fieldStatus,
@@ -642,7 +643,6 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                         fieldIndex: widget.getDetails.index,
                       ),
                     ),
-                    description: '',
                     status: widget.getDetails.status,
                   );
 
