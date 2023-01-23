@@ -634,7 +634,7 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                       citizenimage: _citizenImage!.path,
                       dueAmount: int.parse(_renteeDueAmount.text),
                       renteePanNumber: _renteePanNumber.text,
-                      agreementDate: '',
+                      agreementDate: _agreementDateStart.text,
                       advanceAmount: int.parse(_renteeAdvanceDeposit.text),
                       renteePayment: Payment(
                         paymentId: '',

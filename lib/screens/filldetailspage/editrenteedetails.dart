@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:intl/intl.dart';
+
 import 'package:provider/provider.dart';
 import 'package:rentapp/controller/provider.dart';
 import 'package:rentapp/model/payment.dart';
@@ -72,6 +72,8 @@ class _EditRenteeDetailState extends State<EditRenteeDetail> {
         provider.atIndex(widget.getIndex)!.rentee.renteePanNumber;
     _renteeAdvanceDeposit.text =
         provider.atIndex(widget.getIndex)!.rentee.advanceAmount.toString();
+    _agreementDateStart.text =
+        provider.atIndex(widget.getIndex)!.rentee.agreementDate.toString();
 
     super.initState();
   }
@@ -656,11 +658,12 @@ class _EditRenteeDetailState extends State<EditRenteeDetail> {
                         renteeEmail: _renteeEmail.text,
                         renteeContact: _renteeContact.text,
                         dueAmount: int.parse(_renteeDueAmount.text),
+                        advanceAmount: int.parse(_renteeAdvanceDeposit.text),
                         agreementimage: _agreementImage.toString(),
                         citizenimage: _citizenImage.toString(),
                         businessdetail: _renteeBusinessName.text,
                         renteePanNumber: _renteePanNumber.text,
-                        agreementDate: '',
+                        agreementDate: _agreementDateStart.text,
                         renteePayment: Payment(
                           paymentId: provider
                               .getDetails(widget.getIndex)
