@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:provider/provider.dart';
 import 'package:rentapp/controller/provider.dart';
-import 'package:rentapp/model/payment.dart';
 
 import 'package:rentapp/model/property.dart';
 
@@ -21,7 +20,6 @@ class _PaymentHistoryState extends State<PaymentHistory> {
   Widget build(BuildContext context) {
     final provider = Provider.of<PropertyProvider>(context);
     final payments = provider.getPaymentsIn(widget.property.index);
-
     return SizedBox(
       //height: 300.h,
       child: Padding(

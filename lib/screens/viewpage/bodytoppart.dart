@@ -55,7 +55,7 @@ class BodyTopPart extends StatelessWidget {
                   width: 8.w,
                 ),
                 Text(
-                  'Unpaid(${provider.property.where((element) => element.status == 'Unpaid').length})',
+                  'Unpaid(${provider.property.where((element) => element.status == 'unpaid').length})',
                   style: const TextStyle(
                     color: Color(0xFF9F9F9F),
                     fontWeight: FontWeight.bold,

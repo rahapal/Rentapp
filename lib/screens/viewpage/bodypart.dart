@@ -75,6 +75,7 @@ class _BodyPartState extends State<BodyPart> {
                                     context: context,
                                     builder: (context) {
                                       return AlertDialog(
+                                        backgroundColor: Colors.white,
                                         title:
                                             const Text('Your space is Empty'),
                                         content: const Text(

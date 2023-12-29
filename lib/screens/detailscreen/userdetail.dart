@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:rentapp/controller/provider.dart';
 import 'package:rentapp/model/property.dart';
+import 'package:rentapp/screens/detailscreen/UserDetailView.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../filldetailspage/fillrenteedetails.dart';
@@ -70,6 +71,14 @@ class _UserDetailState extends State<UserDetail> {
             MaterialPageRoute(
               builder: (context) =>
                   FillRenteeDetails(getDetails: widget.getdetails),
+            ),
+          );
+        } else {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) =>
+                  UserDetailView(getindex: widget.getdetails.index),
             ),
           );
         }

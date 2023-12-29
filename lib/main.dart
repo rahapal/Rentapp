@@ -54,6 +54,7 @@ class _RentAppState extends State<RentApp> {
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             primaryColor: const Color(0xFF5B67FE),
+            scaffoldBackgroundColor: const Color(0xFFF6F5F2),
             colorScheme: ColorScheme.fromSwatch()
                 .copyWith(secondary: const Color(0xFF5B67FE)),
             elevatedButtonTheme: ElevatedButtonThemeData(

@@ -37,13 +37,13 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   path_provider_ios: ^2.0.11
-  uuid: ^3.0.7
+  uuid: ^4.2.2
   shared_preferences: ^2.0.15
-  flutter_screenutil: ^5.6.0
+  flutter_screenutil: ^5.0.0 
   url_launcher: ^6.1.7
-  intl: ^0.17.0
-  image_picker: ^0.8.6
-
+  intl: ^0.18.0
+  image_picker: ^1.0.5
+  syncfusion_flutter_charts: ^24.1.41
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -63,7 +63,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
@@ -9,7 +10,9 @@ import 'package:rentapp/model/payment.dart';
 import 'package:rentapp/model/property.dart';
 import 'package:rentapp/model/rentee.dart';
 import 'package:rentapp/screens/bottomnavbar/activityScreen.dart';
+import 'package:rentapp/screens/dashboard/dashboard.dart';
 
+import '../../main.dart';
 import '../viewpage/topbar.dart';
 import '../viewpage/pages.dart';
 
@@ -56,6 +59,7 @@ class _BottomNavState extends State<BottomNav> {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<PropertyProvider>(context);
     return Scaffold(
       backgroundColor: GlobalVariables.backgroundColor,
       //this helps to avoid the overflow of the screen or the fixedbutton don't come up
@@ -65,12 +69,22 @@ class _BottomNavState extends State<BottomNav> {
         child: currentScreen,
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: const Color(0xFF5B67FE),
         onPressed: () {
           Pbox.clear();
           Rbox.clear();
+          provider.clearPaymentMAp();
           Paybox.clear();
-          Activitybox.clear();
 
+          Activitybox.clear();
+          //aaded
+          SchedulerBinding.instance.addPostFrameCallback((_) {
+            // Your gesture recognizer code here
+            runApp(
+              const RentApp(),
+            );
+          });
+          //
           //Navigator.pushNamed(context, route.RouteManager.toBeCreate);
         },
         // backgroundColor: const Color(0xFF5B67FE),
@@ -111,7 +125,7 @@ class _BottomNavState extends State<BottomNav> {
                       minWidth: 40.w,
                       onPressed: () {
                         setState(() {
-                          currentScreen = const pages();
+                          currentScreen = const DashboardScreen();
                           currentTab = 1;
                         });
                       },

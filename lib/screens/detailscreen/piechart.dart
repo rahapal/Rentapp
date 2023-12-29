@@ -24,30 +24,48 @@ class PieChart extends StatefulWidget {
 
 class _PieChartState extends State<PieChart> {
   String formattedDate = DateFormat.yMMMEd().format(DateTime.now());
-  late Timer timer;
+  late Timer timer1;
+  late Timer timer2;
+  late Timer timer3;
 
   @override
   void initState() {
     super.initState();
 
-    timer = Timer.periodic(const Duration(milliseconds: 1), (timer) {
+    timer1 = Timer.periodic(const Duration(milliseconds: 3), (timer) {
       Provider.of<PropertyProvider>(context, listen: false)
           .showPaymentsDetails();
     });
+
+    //added
+    timer2 = Timer.periodic(const Duration(milliseconds: 3), (timer) {
+      Provider.of<PropertyProvider>(context, listen: false)
+          .rentPriceAdd(widget.getdetails);
+    });
+    //
   }
 
-  TextEditingController _payAmount = TextEditingController();
+  final TextEditingController _payAmount = TextEditingController();
 
   @override
   void dispose() {
-    timer.cancel();
+    timer1.cancel();
+    //added
+    timer2.cancel();
+
+    //
     _payAmount.dispose();
     super.dispose();
   }
 
+//
   @override
   Widget build(BuildContext context) {
     // var provider = Provider.of<PropertyProvider>(context);
+    Duration difference = widget.getdetails.rentee.rentDate
+        .add(const Duration(days: 30))
+        .difference(DateTime.now());
+
     return SizedBox(
       width: double.infinity,
       child: Padding(
@@ -67,7 +85,7 @@ class _PieChartState extends State<PieChart> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    '12',
+                    '${difference.inDays}',
                     style: TextStyle(
                       fontSize: 35.sp,
                       fontWeight: FontWeight.bold,
@@ -100,7 +118,13 @@ class _PieChartState extends State<PieChart> {
                     height: 3.h,
                   ),
                   Text(
-                    formattedDate,
+                    val
+                        .getDetails(widget.getdetails.index)
+                        .rentee
+                        .rentDate
+                        .add(const Duration(days: 30))
+                        .toString()
+                        .substring(0, 10),
                     style:
                         TextStyle(fontSize: 17.sp, fontWeight: FontWeight.bold),
                   ),
@@ -108,10 +132,23 @@ class _PieChartState extends State<PieChart> {
                     height: 10.h,
                   ),
                   Text(
-                    'Due Amount Rs ${val.getDetails(widget.getdetails.index).rentee.dueAmount.toInt() + val.getDetails(widget.getdetails.index).price.toInt()}',
+                    'Due Amount',
                     style: TextStyle(
                       fontSize: 17.sp,
                       color: const Color(0xFF9f9f9f),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 3.h,
+                  ),
+                  Text(
+                    //'Rs ${val.getDetails(widget.getdetails.index).rentee.dueAmount.toInt() + val.getDetails(widget.getdetails.index).price.toInt()}',
+                    //added
+                    'Rs ${val.getDetails(widget.getdetails.index).rentee.totalAmount.toInt()}',
+                    //
+                    style: TextStyle(
+                      fontSize: 17.sp,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -135,6 +172,7 @@ class _PieChartState extends State<PieChart> {
                             context: context,
                             builder: (_) {
                               return Dialog(
+                                backgroundColor: Colors.white,
                                 shape: const RoundedRectangleBorder(
                                     borderRadius: BorderRadius.all(
                                         Radius.circular(15.0))),
@@ -205,20 +243,19 @@ class _PieChartState extends State<PieChart> {
                                         height: 20.h,
                                       ),
                                       ElevatedButton(
-                                          onPressed: () {
-                                            if ((widget.getdetails.rentee
-                                                        .dueAmount
-                                                        .toInt() +
-                                                    widget.getdetails.price) <
-                                                int.parse(_payAmount.text)) {
-                                              ScaffoldMessenger.of(context)
-                                                  .showSnackBar(
-                                                SnackBar(
-                                                  content: Text(
-                                                      'Enter the amount below or equal ${widget.getdetails.rentee.dueAmount.toInt() + widget.getdetails.price}'),
-                                                ),
-                                              );
-                                            } else if ((int.parse(
+                                        onPressed: () {
+                                          if ((widget.getdetails.rentee
+                                                  .totalAmount) <
+                                              int.parse(_payAmount.text)) {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                    'Enter the amount below or equal ${widget.getdetails.rentee.totalAmount}'),
+                                              ),
+                                            );
+                                          }
+                                          /*else if ((int.parse(
                                                         _payAmount.text) -
                                                     widget.getdetails.price) ==
                                                 widget
@@ -242,37 +279,31 @@ class _PieChartState extends State<PieChart> {
                                               val.updateDueAmount(
                                                   widget.getdetails.propertyId,
                                                   0);
-                                            } else if (int.parse(
-                                                    _payAmount.text) <
-                                                val
-                                                        .getDetails(widget
-                                                            .getdetails.index)
-                                                        .rentee
-                                                        .dueAmount
-                                                        .toInt() +
-                                                    val
-                                                        .getDetails(widget
-                                                            .getdetails.index)
-                                                        .price
-                                                        .toInt()) {
-                                              val.paymentAdd(
-                                                widget.getdetails.index,
-                                                Payment(
-                                                  paymentId: const Uuid().v4(),
-                                                  paymentDate: formattedDate,
-                                                  paymentNote: '',
-                                                  refDate: DateTime.now(),
-                                                  payedAmount: int.parse(
-                                                      _payAmount.text),
-                                                  fieldIndex:
-                                                      widget.getdetails.index,
-                                                ),
-                                                widget.getdetails.rentee
-                                                    .renteeName,
-                                              );
-                                              val.updateDueAmount(
-                                                  widget.getdetails.propertyId,
-                                                  val
+                                            }*/
+                                          else if (int.parse(_payAmount.text) <=
+                                              val
+                                                  .getDetails(
+                                                      widget.getdetails.index)
+                                                  .rentee
+                                                  .totalAmount) {
+                                            val.paymentAdd(
+                                              widget.getdetails.index,
+                                              Payment(
+                                                paymentId: const Uuid().v4(),
+                                                paymentDate: formattedDate,
+                                                paymentNote: '',
+                                                refDate: DateTime.now(),
+                                                payedAmount:
+                                                    int.parse(_payAmount.text),
+                                                fieldIndex:
+                                                    widget.getdetails.index,
+                                              ),
+                                              widget
+                                                  .getdetails.rentee.renteeName,
+                                            );
+                                            val.updateDueAmount(
+                                                widget.getdetails.propertyId,
+                                                /*val
                                                           .getDetails(widget
                                                               .getdetails.index)
                                                           .rentee
@@ -282,14 +313,26 @@ class _PieChartState extends State<PieChart> {
                                                           .getDetails(widget
                                                               .getdetails.index)
                                                           .price
-                                                          .toInt() -
-                                                      int.parse(
-                                                          _payAmount.text));
-                                            }
-                                            _payAmount.clear();
-                                            Navigator.pop(context);
-                                          },
-                                          child: const Text('Paid'))
+                                                          .toInt()*/
+                                                val
+                                                        .getDetails(widget
+                                                            .getdetails.index)
+                                                        .rentee
+                                                        .totalAmount
+                                                        .toInt() -
+                                                    int.parse(_payAmount.text));
+                                          }
+
+                                          _payAmount.clear();
+                                          Navigator.pop(context);
+                                        },
+                                        child: const Text(
+                                          'Paid',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),

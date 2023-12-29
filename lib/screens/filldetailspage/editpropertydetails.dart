@@ -8,7 +8,6 @@ import 'package:rentapp/model/payment.dart';
 import 'package:rentapp/model/property.dart';
 import 'package:rentapp/model/rentee.dart';
 import 'package:rentapp/route/route.dart' as route;
-import 'package:uuid/uuid.dart';
 
 class EditPropertyDetail extends StatefulWidget {
   final int getindex;
@@ -20,11 +19,11 @@ class EditPropertyDetail extends StatefulWidget {
 }
 
 class _EditPropertyDetailState extends State<EditPropertyDetail> {
-  TextEditingController _propertyName = TextEditingController();
-  TextEditingController _propertyAddress = TextEditingController();
-  TextEditingController _propertySize = TextEditingController();
-  TextEditingController _propertyDescription = TextEditingController();
-  TextEditingController _propertyPrice = TextEditingController();
+  final TextEditingController _propertyName = TextEditingController();
+  final TextEditingController _propertyAddress = TextEditingController();
+  final TextEditingController _propertySize = TextEditingController();
+  final TextEditingController _propertyDescription = TextEditingController();
+  final TextEditingController _propertyPrice = TextEditingController();
 
   @override
   void initState() {
@@ -392,7 +391,7 @@ class _EditPropertyDetailState extends State<EditPropertyDetail> {
               // ),
 
               Padding(
-                padding: const EdgeInsets.only(top: 150),
+                padding: const EdgeInsets.only(top: 50),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     minimumSize: Size(145.w, 50.h),
@@ -450,6 +449,17 @@ class _EditPropertyDetailState extends State<EditPropertyDetail> {
                               .getDetails(widget.getindex)
                               .rentee
                               .agreementDate,
+                          //added
+                          rentDate: provider
+                              .getDetails(widget.getindex)
+                              .rentee
+                              .rentDate,
+                          totalAmount: provider
+                              .getDetails(widget.getindex)
+                              .rentee
+                              .totalAmount,
+
+                          //
                           renteePayment: Payment(
                             paymentId: provider
                                 .getDetails(widget.getindex)
@@ -483,6 +493,9 @@ class _EditPropertyDetailState extends State<EditPropertyDetail> {
                   },
                   child: const Text(
                     'Save',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),

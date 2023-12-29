@@ -9,9 +9,9 @@ class ViewPage extends StatelessWidget {
     return Scaffold(
       body: WillPopScope(
         onWillPop: () async => false,
-        child: SafeArea(
+        child: const SafeArea(
           child: Column(
-            children: const [
+            children: [
               TopBar(),
             ],
           ),

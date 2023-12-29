@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
@@ -24,14 +25,14 @@ class EditRenteeDetail extends StatefulWidget {
 class _EditRenteeDetailState extends State<EditRenteeDetail> {
   File? _citizenImage;
   File? _agreementImage;
-  TextEditingController _renteeName = TextEditingController();
-  TextEditingController _renteeContact = TextEditingController();
-  TextEditingController _renteeEmail = TextEditingController();
-  TextEditingController _renteeBusinessName = TextEditingController();
-  TextEditingController _renteeDueAmount = TextEditingController();
-  TextEditingController _renteePanNumber = TextEditingController();
-  TextEditingController _renteeAdvanceDeposit = TextEditingController();
-  TextEditingController _agreementDateStart = TextEditingController();
+  final TextEditingController _renteeName = TextEditingController();
+  final TextEditingController _renteeContact = TextEditingController();
+  final TextEditingController _renteeEmail = TextEditingController();
+  final TextEditingController _renteeBusinessName = TextEditingController();
+  final TextEditingController _renteeDueAmount = TextEditingController();
+  final TextEditingController _renteePanNumber = TextEditingController();
+  final TextEditingController _renteeAdvanceDeposit = TextEditingController();
+  final TextEditingController _agreementDateStart = TextEditingController();
 
   Future PickCitizenImage(ImageSource media) async {
     final Cimage = await ImagePicker().pickImage(source: media);
@@ -523,35 +524,38 @@ class _EditRenteeDetailState extends State<EditRenteeDetail> {
                         SizedBox(
                           width: 66.w,
                         ),
-                        ElevatedButton(
-                          onPressed: () {
-                            PickCitizenImage(ImageSource.gallery)
-                                .then((value) => setState(() {
-                                      _citizenImage = value;
-                                    }));
-                          },
-                          style: ElevatedButton.styleFrom(
-                            side: BorderSide(
-                              width: 2.0.w,
-                              color: const Color(0xFFBDC1FF),
+                        SizedBox(
+                          width: 173.w,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              PickCitizenImage(ImageSource.gallery)
+                                  .then((value) => setState(() {
+                                        _citizenImage = value;
+                                      }));
+                            },
+                            style: ElevatedButton.styleFrom(
+                              side: BorderSide(
+                                width: 2.0.w,
+                                color: const Color(0xFFBDC1FF),
+                              ),
+                              backgroundColor: Colors.white,
                             ),
-                            backgroundColor: Colors.white,
-                          ),
-                          child: Row(
-                            children: [
-                              Image.asset(
-                                'assets/upload.png',
-                                height: 23.h,
-                              ),
-                              SizedBox(
-                                width: 5.w,
-                              ),
-                              Text(
-                                'Upload an image',
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 14.sp),
-                              ),
-                            ],
+                            child: Row(
+                              children: [
+                                Image.asset(
+                                  'assets/upload.png',
+                                  height: 23.h,
+                                ),
+                                SizedBox(
+                                  width: 5.w,
+                                ),
+                                Text(
+                                  'Upload an image',
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 11.5.sp),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ],
@@ -569,37 +573,40 @@ class _EditRenteeDetailState extends State<EditRenteeDetail> {
                         SizedBox(
                           width: 10.w,
                         ),
-                        ElevatedButton(
-                          onPressed: () {
-                            PickAgreementImage(ImageSource.gallery)
-                                .then((value) => setState(() {
-                                      _agreementImage = value;
-                                    }));
-                          },
-                          style: ElevatedButton.styleFrom(
-                            side: BorderSide(
-                              width: 2.w,
-                              color: const Color(0xFFBDC1FF),
+                        SizedBox(
+                          width: 173.w,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              PickAgreementImage(ImageSource.gallery)
+                                  .then((value) => setState(() {
+                                        _agreementImage = value;
+                                      }));
+                            },
+                            style: ElevatedButton.styleFrom(
+                              side: BorderSide(
+                                width: 2.w,
+                                color: const Color(0xFFBDC1FF),
+                              ),
+                              backgroundColor: Colors.white,
                             ),
-                            backgroundColor: Colors.white,
-                          ),
-                          child: Row(
-                            children: [
-                              Image.asset(
-                                'assets/upload.png',
-                                height: 23.h,
-                              ),
-                              SizedBox(
-                                width: 5.w,
-                              ),
-                              Text(
-                                'Upload an image',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 14.sp,
+                            child: Row(
+                              children: [
+                                Image.asset(
+                                  'assets/upload.png',
+                                  height: 23.h,
                                 ),
-                              ),
-                            ],
+                                SizedBox(
+                                  width: 5.w,
+                                ),
+                                Text(
+                                  'Upload an image',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 11.5.sp,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ],
@@ -636,6 +643,8 @@ class _EditRenteeDetailState extends State<EditRenteeDetail> {
                   minimumSize: Size(double.infinity, 50.h),
                 ),
                 onPressed: () {
+                  DateTime agreementDate =
+                      DateTime.parse(_agreementDateStart.text);
                   provider.updateProperty(Property(
                       propertyName:
                           provider.getDetails(widget.getIndex).propertyName,
@@ -646,7 +655,14 @@ class _EditRenteeDetailState extends State<EditRenteeDetail> {
                       size: provider.getDetails(widget.getIndex).size,
                       propertyId:
                           provider.getDetails(widget.getIndex).propertyId,
-                      status: 'paid',
+                      status: (provider
+                                      .getDetails(widget.getIndex)
+                                      .rentee
+                                      .totalAmount ==
+                                  0 &&
+                              int.parse(_renteeDueAmount.text) == 0)
+                          ? 'paid'
+                          : 'unpaid',
                       index: widget.getIndex,
                       fieldStatus: true,
                       rentee: Rentee(
@@ -658,12 +674,25 @@ class _EditRenteeDetailState extends State<EditRenteeDetail> {
                         renteeEmail: _renteeEmail.text,
                         renteeContact: _renteeContact.text,
                         dueAmount: int.parse(_renteeDueAmount.text),
+                        totalAmount: provider
+                                .getDetails(widget.getIndex)
+                                .rentee
+                                .totalAmount +
+                            int.parse(_renteeDueAmount.text),
                         advanceAmount: int.parse(_renteeAdvanceDeposit.text),
                         agreementimage: _agreementImage.toString(),
                         citizenimage: _citizenImage.toString(),
                         businessdetail: _renteeBusinessName.text,
                         renteePanNumber: _renteePanNumber.text,
-                        agreementDate: _agreementDateStart.text,
+                        agreementDate: agreementDate.toString(),
+                        //added
+                        rentDate: DateTime(
+                          agreementDate.year,
+                          agreementDate.month,
+                          agreementDate.day,
+                        ),
+
+                        //
                         renteePayment: Payment(
                           paymentId: provider
                               .getDetails(widget.getIndex)
@@ -688,10 +717,19 @@ class _EditRenteeDetailState extends State<EditRenteeDetail> {
                           fieldIndex: widget.getIndex,
                         ),
                       )));
+                  print('Areement Date: ${_agreementDateStart.text}');
+                  print(
+                      'Rent Date: ${provider.getDetails(widget.getIndex).rentee.rentDate}');
+
                   //Navigator.pushNamed(context, route.RouteManager.viewpage);
                   Navigator.pop(context);
                 },
-                child: const Text('Save Profile'),
+                child: const Text(
+                  'Save Profile',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
               ),
             ],
           ),

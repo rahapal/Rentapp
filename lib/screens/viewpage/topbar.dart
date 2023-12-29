@@ -14,10 +14,11 @@ class _TopBarState extends State<TopBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFF8F7FE),
       appBar: AppBar(
         toolbarHeight: 5.h,
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.white.withOpacity(0),
+        backgroundColor: const Color(0xFFF8F7FE),
         elevation: 0,
       ),
       body: Column(
@@ -35,6 +36,7 @@ class _TopBarState extends State<TopBar> {
                     elevation: 5.0.h,
                     shadowColor: Colors.black,
                     child: TextField(
+                      keyboardType: TextInputType.none,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(
                           top: 30.h,

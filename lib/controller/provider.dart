@@ -13,6 +13,11 @@ class PropertyProvider with ChangeNotifier {
 
   final Map<int, List<Payment>> _paymentMap = {};
 
+  void clearPaymentMAp() {
+    _paymentMap.clear();
+    notifyListeners();
+  }
+
   void addProperty(Property property) async {
     var propertybox = await Hive.openBox<Property>(_boxName);
     await propertybox.put(property.propertyId, property);
@@ -79,7 +84,7 @@ class PropertyProvider with ChangeNotifier {
     return emptyLength;
   }
 
-  Set<dynamic> addedIndexes = Set<dynamic>();
+  Set<dynamic> addedIndexes = <dynamic>{};
 
   Future<void> paymentAdd(int index, Payment payment, String name) async {
     var paymentbox = await Hive.openBox<Payment>('payment');
@@ -95,6 +100,7 @@ class PropertyProvider with ChangeNotifier {
 
   Future<void> showPaymentsDetails() async {
     var paymentbox = await Hive.openBox<Payment>('payment');
+
     for (int i = 0; i < paymentbox.length; i++) {
       if (!addedIndexes.contains(paymentbox.getAt(i)!.refDate)) {
         addedIndexes.add(paymentbox.getAt(i)!.refDate);
@@ -129,7 +135,12 @@ class PropertyProvider with ChangeNotifier {
   void updateDueAmount(String propertyId, int amount) async {
     var propertybox = await Hive.openBox<Property>(_boxName);
     var property = propertybox.get(propertyId);
-    property!.rentee.dueAmount = amount;
+    property!.rentee.totalAmount = amount;
+    if (amount == 0) {
+      property.status = 'paid';
+    } else {
+      property.status = 'unpaid';
+    }
     propertybox.put(propertyId, property);
     notifyListeners();
   }
@@ -143,6 +154,117 @@ class PropertyProvider with ChangeNotifier {
   void updateRentee(Rentee rentee) async {
     var renteebox = await Hive.openBox<Rentee>('rentee');
     renteebox.put(rentee.renteeId, rentee);
+    notifyListeners();
+  }
+
+  //added
+  void rentPriceAdd(Property property) async {
+    var rentdate = property.rentee.rentDate;
+    //for same year  and date but different month
+    if (rentdate.year == DateTime.now().year &&
+        rentdate.month != DateTime.now().month &&
+        rentdate.day == DateTime.now().day) {
+      property.rentee.totalAmount =
+          (property.rentee.totalAmount - property.price).abs() +
+              property.price * (DateTime.now().month - rentdate.month);
+
+      property.rentee.rentDate = DateTime.now();
+
+      updateProperty(property);
+    }
+    //for same year but different month and date
+    else if (rentdate.year == DateTime.now().year &&
+        rentdate.month != DateTime.now().month &&
+        rentdate.day > DateTime.now().day) {
+      property.rentee.totalAmount =
+          (property.rentee.totalAmount - property.price).abs() +
+              property.price * ((DateTime.now().month - rentdate.month) - 1);
+
+      property.rentee.rentDate = DateTime.now();
+      updateProperty(property);
+    } else if (rentdate.year == DateTime.now().year &&
+        rentdate.month != DateTime.now().month &&
+        rentdate.day < DateTime.now().day) {
+      property.rentee.totalAmount =
+          (property.rentee.totalAmount - property.price).abs() +
+              property.price * ((DateTime.now().month - rentdate.month));
+
+      property.rentee.rentDate = DateTime.now();
+      updateProperty(property);
+    }
+    //for same month and date but different year
+    else if (rentdate.year != DateTime.now().year &&
+        rentdate.month == DateTime.now().month &&
+        rentdate.day == DateTime.now().day) {
+      property.rentee.totalAmount =
+          (property.rentee.totalAmount - property.price).abs() +
+              property.price *
+                  ((rentdate.year - DateTime.now().year).abs() * 12);
+
+      property.rentee.rentDate = DateTime.now();
+      updateProperty(property);
+    }
+    //for same month  but different year and date
+    else if (rentdate.year != DateTime.now().year &&
+        rentdate.month == DateTime.now().month &&
+        rentdate.day > DateTime.now().day) {
+      property.rentee.totalAmount =
+          (property.rentee.totalAmount - property.price).abs() +
+              property.price *
+                  (((rentdate.year - DateTime.now().year).abs() * 12) - 1);
+
+      property.rentee.rentDate = DateTime.now();
+      updateProperty(property);
+    } else if (rentdate.year != DateTime.now().year &&
+        rentdate.month == DateTime.now().month &&
+        rentdate.day < DateTime.now().day) {
+      property.rentee.totalAmount =
+          (property.rentee.totalAmount - property.price).abs() +
+              property.price *
+                  ((rentdate.year - DateTime.now().year).abs() * 12);
+
+      property.rentee.rentDate = DateTime.now();
+      updateProperty(property);
+    }
+
+    //for not same month and year
+    else if (rentdate.year != DateTime.now().year &&
+        rentdate.month != DateTime.now().month &&
+        rentdate.day == DateTime.now().day) {
+      property.rentee.totalAmount =
+          (property.rentee.totalAmount - property.price).abs() +
+              (property.price *
+                      ((rentdate.year - DateTime.now().year).abs() * 12) +
+                  property.price * (DateTime.now().month - rentdate.month));
+
+      property.rentee.rentDate = DateTime.now();
+      updateProperty(property);
+    }
+    //for not same month and year and date
+    else if (rentdate.year != DateTime.now().year &&
+        rentdate.month != DateTime.now().month &&
+        rentdate.day > DateTime.now().day) {
+      property.rentee.totalAmount = (property.rentee.totalAmount -
+                  property.price)
+              .abs() +
+          (property.price * ((rentdate.year - DateTime.now().year).abs() * 12) +
+              property.price * ((DateTime.now().month - rentdate.month) - 1));
+
+      property.rentee.rentDate = DateTime.now();
+      updateProperty(property);
+    } else if (rentdate.year != DateTime.now().year &&
+        rentdate.month != DateTime.now().month &&
+        rentdate.day < DateTime.now().day) {
+      property.rentee.totalAmount =
+          (property.rentee.totalAmount - property.price).abs() +
+              (property.price *
+                      ((rentdate.year - DateTime.now().year).abs() * 12) +
+                  property.price * (DateTime.now().month - rentdate.month));
+
+      property.rentee.rentDate = DateTime.now();
+      updateProperty(property);
+    }
+
     notifyListeners();
   }
 }

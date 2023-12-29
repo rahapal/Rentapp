@@ -24,14 +24,14 @@ class FillRenteeDetails extends StatefulWidget {
 class _FillRenteeDetailsState extends State<FillRenteeDetails> {
   File? _citizenImage;
   File? _agreementImage;
-  TextEditingController _renteeName = TextEditingController();
-  TextEditingController _renteeContact = TextEditingController();
-  TextEditingController _renteeEmail = TextEditingController();
-  TextEditingController _renteeBusinessName = TextEditingController();
-  TextEditingController _renteeDueAmount = TextEditingController();
-  TextEditingController _renteePanNumber = TextEditingController();
-  TextEditingController _renteeAdvanceDeposit = TextEditingController();
-  TextEditingController _agreementDateStart = TextEditingController();
+  final TextEditingController _renteeName = TextEditingController();
+  final TextEditingController _renteeContact = TextEditingController();
+  final TextEditingController _renteeEmail = TextEditingController();
+  final TextEditingController _renteeBusinessName = TextEditingController();
+  final TextEditingController _renteeDueAmount = TextEditingController();
+  final TextEditingController _renteePanNumber = TextEditingController();
+  final TextEditingController _renteeAdvanceDeposit = TextEditingController();
+  final TextEditingController _agreementDateStart = TextEditingController();
 
   Future PickCitizenImage(ImageSource media) async {
     final Cimage = await ImagePicker().pickImage(source: media);
@@ -502,35 +502,39 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                         SizedBox(
                           width: 66.w,
                         ),
-                        ElevatedButton(
-                          onPressed: () {
-                            PickCitizenImage(ImageSource.gallery)
-                                .then((value) => setState(() {
-                                      _citizenImage = value;
-                                    }));
-                          },
-                          style: ElevatedButton.styleFrom(
-                            side: BorderSide(
-                              width: 2.0.w,
-                              color: const Color(0xFFBDC1FF),
+                        SizedBox(
+                          height: 60.h,
+                          width: 174.w,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              PickCitizenImage(ImageSource.gallery)
+                                  .then((value) => setState(() {
+                                        _citizenImage = value;
+                                      }));
+                            },
+                            style: ElevatedButton.styleFrom(
+                              side: BorderSide(
+                                width: 2.0.w,
+                                color: const Color(0xFFBDC1FF),
+                              ),
+                              backgroundColor: Colors.white,
                             ),
-                            backgroundColor: Colors.white,
-                          ),
-                          child: Row(
-                            children: [
-                              Image.asset(
-                                'assets/upload.png',
-                                height: 23.h,
-                              ),
-                              SizedBox(
-                                width: 5.w,
-                              ),
-                              Text(
-                                'Upload an image',
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 14.sp),
-                              ),
-                            ],
+                            child: Row(
+                              children: [
+                                Image.asset(
+                                  'assets/upload.png',
+                                  height: 23.h,
+                                ),
+                                SizedBox(
+                                  width: 3.w,
+                                ),
+                                Text(
+                                  'Upload an image',
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 11.8.sp),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ],
@@ -548,37 +552,40 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                         SizedBox(
                           width: 10.w,
                         ),
-                        ElevatedButton(
-                          onPressed: () {
-                            PickAgreementImage(ImageSource.gallery)
-                                .then((value) => setState(() {
-                                      _agreementImage = value;
-                                    }));
-                          },
-                          style: ElevatedButton.styleFrom(
-                            side: BorderSide(
-                              width: 2.w,
-                              color: const Color(0xFFBDC1FF),
+                        SizedBox(
+                          width: 173.w,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              PickAgreementImage(ImageSource.gallery)
+                                  .then((value) => setState(() {
+                                        _agreementImage = value;
+                                      }));
+                            },
+                            style: ElevatedButton.styleFrom(
+                              side: BorderSide(
+                                width: 2.w,
+                                color: const Color(0xFFBDC1FF),
+                              ),
+                              backgroundColor: Colors.white,
                             ),
-                            backgroundColor: Colors.white,
-                          ),
-                          child: Row(
-                            children: [
-                              Image.asset(
-                                'assets/upload.png',
-                                height: 23.h,
-                              ),
-                              SizedBox(
-                                width: 5.w,
-                              ),
-                              Text(
-                                'Upload an image',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 14.sp,
+                            child: Row(
+                              children: [
+                                Image.asset(
+                                  'assets/upload.png',
+                                  height: 23.h,
                                 ),
-                              ),
-                            ],
+                                SizedBox(
+                                  width: 3.w,
+                                ),
+                                Text(
+                                  'Upload an image',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 11.5.sp,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ],
@@ -615,6 +622,9 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                   minimumSize: Size(double.infinity, 50.h),
                 ),
                 onPressed: () {
+                  DateTime agreementDate =
+                      DateTime.parse(_agreementDateStart.text);
+                  DateTime rentDate = agreementDate;
                   final property = Property(
                     propertyId: widget.getDetails.propertyId,
                     propertyName: widget.getDetails.propertyName,
@@ -634,7 +644,12 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                       citizenimage: _citizenImage!.path,
                       dueAmount: int.parse(_renteeDueAmount.text),
                       renteePanNumber: _renteePanNumber.text,
-                      agreementDate: _agreementDateStart.text,
+                      agreementDate: agreementDate.toString(),
+                      //added
+                      rentDate: rentDate,
+                      totalAmount: int.parse(_renteeDueAmount.text) +
+                          int.parse(widget.getDetails.price.toString()),
+                      //
                       advanceAmount: int.parse(_renteeAdvanceDeposit.text),
                       renteePayment: Payment(
                         paymentId: '',
@@ -650,7 +665,12 @@ class _FillRenteeDetailsState extends State<FillRenteeDetails> {
                   //Navigator.pushNamed(context, route.RouteManager.viewpage);
                   Navigator.pop(context);
                 },
-                child: const Text('Save Profile'),
+                child: const Text(
+                  'Save Profile',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
               ),
             ],
           ),

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -152,7 +154,7 @@ class _DetailsPageState extends State<DetailsPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 580.h,
+              height: 615.h,
               width: double.infinity,
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -183,22 +185,25 @@ class _DetailsPageState extends State<DetailsPage> {
                       height: 10.h,
                     ),
                     //PieChart(getdetails: widget.getdetails),
-                    Consumer<PropertyProvider>(
-                        builder: (context, propProvider, child) {
-                      Property? foundProperty;
+                    Padding(
+                      padding: EdgeInsets.only(right: 10.w),
+                      child: Consumer<PropertyProvider>(
+                          builder: (context, propProvider, child) {
+                        Property? foundProperty;
 
-                      var properties = propProvider.property.where((element) {
-                        return element.propertyId ==
-                            widget.getdetails.propertyId;
-                      }).toList();
+                        var properties = propProvider.property.where((element) {
+                          return element.propertyId ==
+                              widget.getdetails.propertyId;
+                        }).toList();
 
-                      if (properties.length > 0) {
-                        foundProperty = properties[0];
-                        return PieChart(getdetails: foundProperty);
-                      } else {
-                        return const Text("User not found");
-                      }
-                    }),
+                        if (properties.isNotEmpty) {
+                          foundProperty = properties[0];
+                          return PieChart(getdetails: foundProperty);
+                        } else {
+                          return const Text("User not found");
+                        }
+                      }),
+                    ),
                     SizedBox(
                       height: 10.h,
                     ),
@@ -212,7 +217,7 @@ class _DetailsPageState extends State<DetailsPage> {
                             widget.getdetails.propertyId;
                       }).toList();
 
-                      if (properties.length > 0) {
+                      if (properties.isNotEmpty) {
                         foundProperty = properties[0];
                         return UserDetail(getdetails: foundProperty);
                       } else {

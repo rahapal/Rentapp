@@ -20,11 +20,11 @@ class FillPropertyDetails extends StatefulWidget {
 }
 
 class _FillPropertyDetailsState extends State<FillPropertyDetails> {
-  TextEditingController _propertyName = TextEditingController();
-  TextEditingController _propertyAddress = TextEditingController();
-  TextEditingController _propertySize = TextEditingController();
-  TextEditingController _propertyDescription = TextEditingController();
-  TextEditingController _propertyPrice = TextEditingController();
+  final TextEditingController _propertyName = TextEditingController();
+  final TextEditingController _propertyAddress = TextEditingController();
+  final TextEditingController _propertySize = TextEditingController();
+  final TextEditingController _propertyDescription = TextEditingController();
+  final TextEditingController _propertyPrice = TextEditingController();
 
   @override
   void dispose() {
@@ -379,7 +379,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
               // ),
 
               Padding(
-                padding: const EdgeInsets.only(top: 150),
+                padding: const EdgeInsets.only(top: 50),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     minimumSize: Size(145.w, 50.h),
@@ -395,7 +395,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
 
                         size: _propertySize.text,
                         //yesai ho herna test garns cha
-                        status: 'paid',
+                        status: 'unpaid',
                         index: widget.getindex,
 
                         fieldStatus: true,
@@ -409,6 +409,10 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                           renteeName: '',
                           renteePanNumber: '',
                           agreementDate: '',
+                          //added
+                          rentDate: DateTime.now(),
+
+                          //
                           renteePayment: Payment(
                             paymentId: '',
                             paymentNote: '',
@@ -434,6 +438,9 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                   },
                   child: const Text(
                     'Upload details',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),

@@ -29,6 +29,13 @@ class Rentee {
   String agreementDate;
   @HiveField(11)
   Payment renteePayment;
+  //added
+  @HiveField(12)
+  DateTime rentDate;
+  @HiveField(13)
+  int totalAmount;
+
+  //
 
   Rentee({
     required this.renteeName,
@@ -43,5 +50,7 @@ class Rentee {
     this.advanceAmount = 0,
     required this.renteePayment,
     required this.renteePanNumber,
+    required this.rentDate,
+    this.totalAmount = 0,
   });
 }
