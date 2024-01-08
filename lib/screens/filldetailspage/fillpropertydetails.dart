@@ -12,8 +12,7 @@ import 'package:uuid/uuid.dart';
 
 class FillPropertyDetails extends StatefulWidget {
   final int getindex;
-  const FillPropertyDetails({Key? key, required this.getindex})
-      : super(key: key);
+  const FillPropertyDetails({super.key, required this.getindex});
 
   @override
   State<FillPropertyDetails> createState() => _FillPropertyDetailsState();
@@ -102,10 +101,25 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      'Property Name',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w400, fontSize: 16.sp),
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: 'Property Name',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 16.sp),
+                          ),
+                          TextSpan(
+                            text: '*',
+                            style: TextStyle(
+                                color: Colors.red,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 16.sp),
+                          ),
+                        ],
+                      ),
                     ),
                     SizedBox(
                       height: 12.h,
@@ -197,6 +211,7 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                               ),
                             ),
                             TextFormField(
+                              keyboardType: TextInputType.number,
                               textAlign: TextAlign.end,
                               controller: _propertySize,
                               decoration: InputDecoration(
@@ -234,22 +249,36 @@ class _FillPropertyDetailsState extends State<FillPropertyDetails> {
                           children: [
                             Padding(
                               padding: EdgeInsets.only(bottom: 12.h),
-                              child: Text(
-                                'Rent Cost',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 16.sp),
+                              child: RichText(
+                                text: TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text: 'Rent Cost',
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 16.sp),
+                                    ),
+                                    TextSpan(
+                                      text: '*',
+                                      style: TextStyle(
+                                          color: Colors.red,
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 16.sp),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                             TextFormField(
                               keyboardType: TextInputType.number,
                               controller: _propertyPrice,
                               decoration: InputDecoration(
-                                focusedBorder: const OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Colors.red,
-                                  ),
-                                ),
+                                // focusedBorder: const OutlineInputBorder(
+                                //     // borderSide: BorderSide(
+                                //     //   color: Colors.red,
+                                //     // ),
+                                //     ),
                                 filled: true,
                                 fillColor:
                                     GlobalVariables.textFieldbackgroundColor,

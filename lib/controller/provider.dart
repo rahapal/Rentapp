@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:rentapp/model/activity.dart';
+import 'package:rentapp/model/listBox.dart';
 import 'package:rentapp/model/payment.dart';
 import 'package:rentapp/model/property.dart';
 import 'package:rentapp/model/rentee.dart';
@@ -9,12 +10,56 @@ class PropertyProvider with ChangeNotifier {
   static const String _boxName = 'property';
   final List<Property> _property = [];
   List<Property> get property => _property;
-  List<bool> isSelected = List.generate(30, (index) => false);
+  List<bool> isSelected = List.generate(20, (index) => false);
+  int count = 0;
 
   final Map<int, List<Payment>> _paymentMap = {};
 
   void clearPaymentMAp() {
     _paymentMap.clear();
+    notifyListeners();
+  }
+
+  // void increaseSize() {
+  //   count++;
+  //   isSelected.add(false);
+  //   notifyListeners();
+  // }
+
+  void addList() async {
+    count++;
+    isSelected.add(false);
+    var listbox = await Hive.openBox<ListBox>('listbox');
+
+    if (listbox.isNotEmpty) {
+      // If the box is not empty, retrieve the existing ListBox and update its selectedList
+      var existingListBox = listbox.getAt(0);
+      existingListBox?.selectedList = isSelected;
+      listbox.putAt(0, existingListBox!);
+    } else {
+      // If the box is empty, add a new ListBox with selectedList
+      listbox.add(ListBox(selectedList: isSelected));
+    }
+    print('${listbox.values.first.selectedList}');
+
+    // Call the function to show the contents
+    notifyListeners();
+  }
+
+  Future<void> showList() async {
+    var listbox = await Hive.openBox<ListBox>('listbox');
+
+    if (listbox.isNotEmpty) {
+      // If the box is not empty, retrieve the existing ListBox and update isSelected
+      var existingListBox = listbox.getAt(0);
+      isSelected = existingListBox!.selectedList;
+    } else {
+      // If the box is empty, use the default isSelected list
+      isSelected = List.generate(20, (index) => false);
+    }
+
+    print('Updated isSelected: $isSelected');
+    // Call the function to show the contents
     notifyListeners();
   }
 
@@ -168,7 +213,8 @@ class PropertyProvider with ChangeNotifier {
           (property.rentee.totalAmount - property.price).abs() +
               property.price * (DateTime.now().month - rentdate.month);
 
-      property.rentee.rentDate = DateTime.now();
+      property.rentee.rentDate =
+          DateTime(DateTime.now().year, DateTime.now().month, rentdate.day);
 
       updateProperty(property);
     }
@@ -180,7 +226,8 @@ class PropertyProvider with ChangeNotifier {
           (property.rentee.totalAmount - property.price).abs() +
               property.price * ((DateTime.now().month - rentdate.month) - 1);
 
-      property.rentee.rentDate = DateTime.now();
+      property.rentee.rentDate =
+          DateTime(DateTime.now().year, DateTime.now().month, rentdate.day);
       updateProperty(property);
     } else if (rentdate.year == DateTime.now().year &&
         rentdate.month != DateTime.now().month &&
@@ -189,7 +236,8 @@ class PropertyProvider with ChangeNotifier {
           (property.rentee.totalAmount - property.price).abs() +
               property.price * ((DateTime.now().month - rentdate.month));
 
-      property.rentee.rentDate = DateTime.now();
+      property.rentee.rentDate =
+          DateTime(DateTime.now().year, DateTime.now().month, rentdate.day);
       updateProperty(property);
     }
     //for same month and date but different year
@@ -201,7 +249,8 @@ class PropertyProvider with ChangeNotifier {
               property.price *
                   ((rentdate.year - DateTime.now().year).abs() * 12);
 
-      property.rentee.rentDate = DateTime.now();
+      property.rentee.rentDate =
+          DateTime(DateTime.now().year, DateTime.now().month, rentdate.day);
       updateProperty(property);
     }
     //for same month  but different year and date
@@ -213,7 +262,8 @@ class PropertyProvider with ChangeNotifier {
               property.price *
                   (((rentdate.year - DateTime.now().year).abs() * 12) - 1);
 
-      property.rentee.rentDate = DateTime.now();
+      property.rentee.rentDate =
+          DateTime(DateTime.now().year, DateTime.now().month, rentdate.day);
       updateProperty(property);
     } else if (rentdate.year != DateTime.now().year &&
         rentdate.month == DateTime.now().month &&
@@ -223,7 +273,8 @@ class PropertyProvider with ChangeNotifier {
               property.price *
                   ((rentdate.year - DateTime.now().year).abs() * 12);
 
-      property.rentee.rentDate = DateTime.now();
+      property.rentee.rentDate =
+          DateTime(DateTime.now().year, DateTime.now().month, rentdate.day);
       updateProperty(property);
     }
 
@@ -237,7 +288,8 @@ class PropertyProvider with ChangeNotifier {
                       ((rentdate.year - DateTime.now().year).abs() * 12) +
                   property.price * (DateTime.now().month - rentdate.month));
 
-      property.rentee.rentDate = DateTime.now();
+      property.rentee.rentDate =
+          DateTime(DateTime.now().year, DateTime.now().month, rentdate.day);
       updateProperty(property);
     }
     //for not same month and year and date
@@ -250,7 +302,8 @@ class PropertyProvider with ChangeNotifier {
           (property.price * ((rentdate.year - DateTime.now().year).abs() * 12) +
               property.price * ((DateTime.now().month - rentdate.month) - 1));
 
-      property.rentee.rentDate = DateTime.now();
+      property.rentee.rentDate =
+          DateTime(DateTime.now().year, DateTime.now().month, rentdate.day);
       updateProperty(property);
     } else if (rentdate.year != DateTime.now().year &&
         rentdate.month != DateTime.now().month &&
@@ -261,7 +314,8 @@ class PropertyProvider with ChangeNotifier {
                       ((rentdate.year - DateTime.now().year).abs() * 12) +
                   property.price * (DateTime.now().month - rentdate.month));
 
-      property.rentee.rentDate = DateTime.now();
+      property.rentee.rentDate =
+          DateTime(DateTime.now().year, DateTime.now().month, rentdate.day);
       updateProperty(property);
     }
 

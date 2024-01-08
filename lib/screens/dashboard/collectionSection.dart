@@ -99,7 +99,7 @@ class _CollectionRentState extends State<CollectionRent> {
                       topLeft: Radius.circular(10.r),
                       bottomLeft: Radius.circular(10.r),
                     ),
-                    color: Color(0xFFF8F7FE),
+                    color: const Color(0xFFF8F7FE),
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -125,7 +125,7 @@ class _CollectionRentState extends State<CollectionRent> {
                       topRight: Radius.circular(10.r),
                       bottomRight: Radius.circular(10.r),
                     ),
-                    color: Color(0xFF5B67FE).withOpacity(0.85),
+                    color: const Color(0xFF5B67FE).withOpacity(0.85),
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,

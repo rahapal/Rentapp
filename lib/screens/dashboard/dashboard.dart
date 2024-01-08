@@ -17,9 +17,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF8F7FE),
+      appBar: AppBar(
+        toolbarHeight: 5.h,
+        automaticallyImplyLeading: false,
+        backgroundColor: const Color(0xFFF8F7FE),
+        elevation: 0,
+      ),
       body: Padding(
-        padding:
-            const EdgeInsets.only(top: 10.0, left: 16, right: 16, bottom: 10),
+        padding: const EdgeInsets.only(left: 16, right: 16, bottom: 10),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

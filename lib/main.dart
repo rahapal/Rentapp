@@ -6,6 +6,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:rentapp/model/activity.dart';
+import 'package:rentapp/model/listBox.dart';
 import 'package:rentapp/model/rentee.dart';
 import 'package:rentapp/route/route.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -23,12 +24,14 @@ void main() async {
   Hive.registerAdapter(RenteeAdapter());
   Hive.registerAdapter(PaymentAdapter());
   Hive.registerAdapter(ActivityAdapter());
+  Hive.registerAdapter(ListBoxAdapter());
   var Pbox = await Hive.openBox<Property>('property');
   var Rbox = await Hive.openBox<Rentee>('rentee');
   var Paybox = await Hive.openBox<Payment>('payment');
   var Activitybox = await Hive.openBox<Activity>('activity');
+  var Listbox = await Hive.openBox<ListBox>('listbox');
 
-  //print(Pbox.values.last);
+  //print(Listbox.values.first);
 
   runApp(
     const RentApp(),

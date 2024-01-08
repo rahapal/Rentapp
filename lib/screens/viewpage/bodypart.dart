@@ -48,7 +48,8 @@ class _BodyPartState extends State<BodyPart> {
             const BodyTopPart(),
             Expanded(
               child: Padding(
-                padding: EdgeInsets.only(left: 15.0.w, right: 15.w),
+                padding:
+                    EdgeInsets.only(left: 15.0.w, right: 15.w, bottom: 30.h),
                 child:
                     Consumer<PropertyProvider>(builder: (context, val, child) {
                   return GridView.builder(

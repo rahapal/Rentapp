@@ -62,9 +62,12 @@ class _PieChartState extends State<PieChart> {
   @override
   Widget build(BuildContext context) {
     // var provider = Provider.of<PropertyProvider>(context);
-    Duration difference = widget.getdetails.rentee.rentDate
-        .add(const Duration(days: 30))
-        .difference(DateTime.now());
+    DateTime rentDate = DateTime(DateTime.now().year, DateTime.now().month,
+        widget.getdetails.rentee.rentDate.day);
+    if (rentDate.isBefore(DateTime.now())) {
+      rentDate = rentDate.add(Duration(days: 30));
+    }
+    Duration difference = rentDate.difference(DateTime.now());
 
     return SizedBox(
       width: double.infinity,

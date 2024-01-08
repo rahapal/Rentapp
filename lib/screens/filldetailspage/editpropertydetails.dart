@@ -11,8 +11,7 @@ import 'package:rentapp/route/route.dart' as route;
 
 class EditPropertyDetail extends StatefulWidget {
   final int getindex;
-  const EditPropertyDetail({Key? key, required this.getindex})
-      : super(key: key);
+  const EditPropertyDetail({super.key, required this.getindex});
 
   @override
   State<EditPropertyDetail> createState() => _EditPropertyDetailState();
@@ -27,7 +26,6 @@ class _EditPropertyDetailState extends State<EditPropertyDetail> {
 
   @override
   void initState() {
-    // TODO: implement initState
     var provider = Provider.of<PropertyProvider>(context, listen: false);
     _propertyName.text = provider.atIndex(widget.getindex)!.propertyName;
     _propertyAddress.text = provider.atIndex(widget.getindex)!.address;
@@ -209,6 +207,7 @@ class _EditPropertyDetailState extends State<EditPropertyDetail> {
                               ),
                             ),
                             TextFormField(
+                              keyboardType: TextInputType.number,
                               textAlign: TextAlign.end,
                               controller: _propertySize,
                               decoration: InputDecoration(
@@ -257,11 +256,11 @@ class _EditPropertyDetailState extends State<EditPropertyDetail> {
                               keyboardType: TextInputType.number,
                               controller: _propertyPrice,
                               decoration: InputDecoration(
-                                focusedBorder: const OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Colors.red,
-                                  ),
-                                ),
+                                // focusedBorder: const OutlineInputBorder(
+                                //   borderSide: BorderSide(
+                                //     color: Colors.red,
+                                //   ),
+                                // ),
                                 filled: true,
                                 fillColor:
                                     GlobalVariables.textFieldbackgroundColor,

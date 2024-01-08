@@ -157,10 +157,25 @@ class _EditRenteeDetailState extends State<EditRenteeDetail> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      'Rentee Name',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w400, fontSize: 16.sp),
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: 'Rentee Name',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 16.sp),
+                          ),
+                          TextSpan(
+                            text: '*',
+                            style: TextStyle(
+                                color: Colors.red,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 16.sp),
+                          ),
+                        ],
+                      ),
                     ),
                     SizedBox(
                       height: 12.h,
@@ -198,15 +213,31 @@ class _EditRenteeDetailState extends State<EditRenteeDetail> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      'Mobile number',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w400, fontSize: 16.sp),
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: 'Mobile Number',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 16.sp),
+                          ),
+                          TextSpan(
+                            text: '*',
+                            style: TextStyle(
+                                color: Colors.red,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 16.sp),
+                          ),
+                        ],
+                      ),
                     ),
                     SizedBox(
                       height: 12.h,
                     ),
                     TextFormField(
+                      keyboardType: TextInputType.number,
                       controller: _renteeContact,
                       decoration: InputDecoration(
                         filled: true,
@@ -229,6 +260,81 @@ class _EditRenteeDetailState extends State<EditRenteeDetail> {
                           ),
                         ),
                       ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(right: 5.w, bottom: 30.h),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 12.h),
+                      child: RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: 'Agreement Date Start',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 16.sp),
+                            ),
+                            TextSpan(
+                              text: '*',
+                              style: TextStyle(
+                                  color: Colors.red,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 16.sp),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    TextFormField(
+                      keyboardType: TextInputType.none,
+                      controller: _agreementDateStart,
+                      decoration: InputDecoration(
+                        prefixIcon: const Icon(
+                          Icons.calendar_today,
+                        ),
+                        filled: true,
+                        fillColor: GlobalVariables.textFieldbackgroundColor,
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: 10.h, horizontal: 10.w),
+                        hintText: 'Select date',
+                        hintStyle: TextStyle(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w300,
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(5.0.r),
+                          ),
+                        ),
+                        enabledBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: GlobalVariables.textFieldborderColor,
+                          ),
+                        ),
+                      ),
+                      onTap: () async {
+                        final DateTime? date = await showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(2000),
+                          lastDate: DateTime(2100),
+                        );
+                        if (date != null) {
+                          setState(() {
+                            _agreementDateStart.text =
+                                DateTime(date.year, date.month, date.day)
+                                    .toString()
+                                    .substring(0, 10);
+                          });
+                        }
+                      },
                     ),
                   ],
                 ),
@@ -321,7 +427,7 @@ class _EditRenteeDetailState extends State<EditRenteeDetail> {
                             Padding(
                               padding: EdgeInsets.only(bottom: 12.h),
                               child: Text(
-                                'Pan number',
+                                'Pan Number',
                                 style: TextStyle(
                                     fontWeight: FontWeight.w400,
                                     fontSize: 16.sp),
@@ -375,6 +481,7 @@ class _EditRenteeDetailState extends State<EditRenteeDetail> {
                               ),
                             ),
                             TextFormField(
+                              keyboardType: TextInputType.number,
                               controller: _renteeDueAmount,
                               decoration: InputDecoration(
                                 filled: true,
@@ -407,7 +514,7 @@ class _EditRenteeDetailState extends State<EditRenteeDetail> {
                             Padding(
                               padding: EdgeInsets.only(bottom: 12.h),
                               child: Text(
-                                'Advance deposit',
+                                'Advance Deposit',
                                 style: TextStyle(
                                     fontWeight: FontWeight.w400,
                                     fontSize: 16.sp),
@@ -437,66 +544,6 @@ class _EditRenteeDetailState extends State<EditRenteeDetail> {
                           ],
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(right: 5.w, bottom: 30.h),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(bottom: 12.h),
-                      child: Text(
-                        'Agreement date start',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w400, fontSize: 16.sp),
-                      ),
-                    ),
-                    TextFormField(
-                      keyboardType: TextInputType.none,
-                      controller: _agreementDateStart,
-                      decoration: InputDecoration(
-                        prefixIcon: const Icon(
-                          Icons.calendar_today,
-                        ),
-                        filled: true,
-                        fillColor: GlobalVariables.textFieldbackgroundColor,
-                        contentPadding: EdgeInsets.symmetric(
-                            vertical: 10.h, horizontal: 10.w),
-                        hintText: 'Select date',
-                        hintStyle: TextStyle(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w300,
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(5.0.r),
-                          ),
-                        ),
-                        enabledBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: GlobalVariables.textFieldborderColor,
-                          ),
-                        ),
-                      ),
-                      onTap: () async {
-                        final DateTime? date = await showDatePicker(
-                          context: context,
-                          initialDate: DateTime.now(),
-                          firstDate: DateTime(2000),
-                          lastDate: DateTime(2100),
-                        );
-                        if (date != null) {
-                          setState(() {
-                            _agreementDateStart.text =
-                                DateTime(date.year, date.month, date.day)
-                                    .toString()
-                                    .substring(0, 10);
-                          });
-                        }
-                      },
                     ),
                   ],
                 ),
@@ -678,10 +725,14 @@ class _EditRenteeDetailState extends State<EditRenteeDetail> {
                                 .getDetails(widget.getIndex)
                                 .rentee
                                 .totalAmount +
-                            int.parse(_renteeDueAmount.text),
+                            int.parse(_renteeDueAmount.text) -
+                            provider
+                                .getDetails(widget.getIndex)
+                                .rentee
+                                .dueAmount,
                         advanceAmount: int.parse(_renteeAdvanceDeposit.text),
-                        agreementimage: _agreementImage.toString(),
-                        citizenimage: _citizenImage.toString(),
+                        agreementimage: _agreementImage?.path ?? '',
+                        citizenimage: _citizenImage?.path ?? '',
                         businessdetail: _renteeBusinessName.text,
                         renteePanNumber: _renteePanNumber.text,
                         agreementDate: agreementDate.toString(),

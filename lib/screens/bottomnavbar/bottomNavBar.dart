@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:rentapp/common/global_variables.dart';
 import 'package:rentapp/controller/provider.dart';
 import 'package:rentapp/model/activity.dart';
+import 'package:rentapp/model/listBox.dart';
 import 'package:rentapp/model/payment.dart';
 import 'package:rentapp/model/property.dart';
 import 'package:rentapp/model/rentee.dart';
@@ -39,6 +40,7 @@ class _BottomNavState extends State<BottomNav> {
   late Box<Rentee> Rbox;
   late Box<Payment> Paybox;
   late Box<Activity> Activitybox;
+  late Box<ListBox> Listbox;
 
   @override
   void initState() {
@@ -46,6 +48,7 @@ class _BottomNavState extends State<BottomNav> {
     Rbox = Hive.box<Rentee>('rentee');
     Paybox = Hive.box<Payment>('payment');
     Activitybox = Hive.box<Activity>('activity');
+    Listbox = Hive.box<ListBox>('listbox');
     super.initState();
   }
 
@@ -53,6 +56,7 @@ class _BottomNavState extends State<BottomNav> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     Provider.of<PropertyProvider>(context).getProperties();
+    Provider.of<PropertyProvider>(context).showList();
   }
 
   Widget currentScreen = const TopBar();
@@ -64,19 +68,25 @@ class _BottomNavState extends State<BottomNav> {
       backgroundColor: GlobalVariables.backgroundColor,
       //this helps to avoid the overflow of the screen or the fixedbutton don't come up
       resizeToAvoidBottomInset: false,
-      body: PageStorage(
-        bucket: bucket,
-        child: currentScreen,
+      body: PopScope(
+        canPop: false,
+        child: PageStorage(
+          bucket: bucket,
+          child: currentScreen,
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color(0xFF5B67FE),
         onPressed: () {
-          Pbox.clear();
-          Rbox.clear();
-          provider.clearPaymentMAp();
-          Paybox.clear();
+          // Pbox.clear();
+          // Rbox.clear();
+          // provider.clearPaymentMAp();
+          // Paybox.clear();
+          // Listbox.clear();
+          // Activitybox.clear();
 
-          Activitybox.clear();
+          provider.addList();
+
           //aaded
           SchedulerBinding.instance.addPostFrameCallback((_) {
             // Your gesture recognizer code here
@@ -131,8 +141,8 @@ class _BottomNavState extends State<BottomNav> {
                       },
                       child: Icon(
                         currentTab == 1
-                            ? Icons.bookmark
-                            : Icons.bookmark_outline,
+                            ? Icons.dashboard
+                            : Icons.dashboard_outlined,
                         size: 35.w,
                         color: currentTab == 1
                             ? const Color(0xFF5B67FE)

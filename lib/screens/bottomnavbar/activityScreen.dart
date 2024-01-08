@@ -33,6 +33,7 @@ class _ActivityScreenPageState extends State<ActivityScreenPage> {
           'Activities',
           style: TextStyle(color: Colors.black),
         ),
+        automaticallyImplyLeading: false,
       ),
       body: ListView.builder(
         itemCount: activities.length,

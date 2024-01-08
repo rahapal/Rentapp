@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:provider/provider.dart';
 import 'package:rentapp/controller/provider.dart';
-import 'package:rentapp/model/payment.dart';
 
 import 'package:rentapp/model/property.dart';
 
