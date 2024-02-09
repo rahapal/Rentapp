@@ -25,6 +25,7 @@ class _BodyPartState extends State<BodyPart> {
 
   @override
   void initState() {
+    context.read<PropertyProvider>().showList();
     box = Hive.box('property');
 
     super.initState();

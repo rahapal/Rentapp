@@ -56,7 +56,7 @@ class _BottomNavState extends State<BottomNav> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     Provider.of<PropertyProvider>(context).getProperties();
-    Provider.of<PropertyProvider>(context).showList();
+    // Provider.of<PropertyProvider>(context).showList();
   }
 
   Widget currentScreen = const TopBar();
@@ -88,12 +88,12 @@ class _BottomNavState extends State<BottomNav> {
           provider.addList();
 
           //aaded
-          SchedulerBinding.instance.addPostFrameCallback((_) {
-            // Your gesture recognizer code here
-            runApp(
-              const RentApp(),
-            );
-          });
+          // SchedulerBinding.instance.addPostFrameCallback((_) {
+          //   // Your gesture recognizer code here
+          //   runApp(
+          //     const RentApp(),
+          //   );
+          // });
           //
           //Navigator.pushNamed(context, route.RouteManager.toBeCreate);
         },
